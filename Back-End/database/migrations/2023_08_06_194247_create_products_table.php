@@ -15,14 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained();
             $table->string('title')->unique();
-            $table->double('price');
-            $table->double('discount')->default(0.0);
-            $table->integer('stock')->nullable();
-            $table->string('size')->nullable();
-            $table->longText('image_data')->nullable();
-            $table->string('image_type');
-            $table->string('image_name');
-            $table->double('ratings');
+            $table->double('ratings')->nullable();
             $table->timestamps();
         });
     }

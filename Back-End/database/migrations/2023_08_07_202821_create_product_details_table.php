@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('product_details', function (Blueprint $table) {
             $table->id();
-            $table->string('user_email');
-            $table->string('subject');
-            $table->text('message');
-            $table->string('replied')->default('no');
+            $table->foreignId('product_id')->constrained();
+            $table->double('price');
+            $table->double('discount')->default(0.0);
+            $table->integer('stock')->nullable();
+            $table->string('size')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('product_details');
     }
 };
