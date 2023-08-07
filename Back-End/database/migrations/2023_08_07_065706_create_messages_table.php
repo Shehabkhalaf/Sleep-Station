@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('user_email');
             $table->string('subject');
             $table->text('message');
+            $table->string('replied')->default('no');
             $table->timestamps();
         });
     }
