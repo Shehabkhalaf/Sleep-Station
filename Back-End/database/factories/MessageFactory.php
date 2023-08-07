@@ -17,8 +17,8 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_email' => fake()->email(),
-            'subject' => fake()->text(10),
+            'email' => fake()->email(),
+            'name' => fake()->name('male'),
             'message' => fake()->text(100)
         ];
     }

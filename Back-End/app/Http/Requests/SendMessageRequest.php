@@ -34,7 +34,7 @@ class SendMessageRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'subject' => 'required',
+            'name' => 'required',
             'message' => 'required'
         ];
     }
@@ -43,7 +43,7 @@ class SendMessageRequest extends FormRequest
         return [
             'email.required' => 'Email Field is required',
             'email.email' => 'Email must have @',
-            'subject.required' => 'Subject field is required',
+            'name.required' => 'name field is required',
             'message.required' => 'Message field is required'
         ];
     }
