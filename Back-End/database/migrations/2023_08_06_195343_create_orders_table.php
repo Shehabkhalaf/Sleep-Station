@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('status', ['shipped', 'delivered', 'in consider'])->default('in consider');
-            $table->string('items');
+            $table->string('order_details');
             $table->string('total_price');
+            $table->enum('status', ['shipped', 'delivered', 'in consider'])->default('in consider');
             $table->enum('paid', ['cash', 'paid'])->default('cash');
             $table->text('payment_details')->nullable();
             $table->timestamp('ordered_date')->nullable();

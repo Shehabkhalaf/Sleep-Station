@@ -44,4 +44,14 @@ class AuthController extends Controller
             return $this->JsonResponse(401, 'Must register before logging', null);
         }
     }
+    public function sendVerification(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+        return $this->JsonResponse(200, 'Email Sent');
+    }
+    public function verify(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+        return $this->JsonResponse(200, 'Verified Successfully');
+    }
 }

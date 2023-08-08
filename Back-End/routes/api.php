@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\user\AuthController;
+use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +51,16 @@ Route::prefix('user')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::post('register', 'register');
         Route::post('login', 'login');
+        Route::post('/email/verification-notification', 'sendVerification')->middleware('auth:sanctum');
+        Route::get('/email/verify/{id}/{hash}', 'verify')->middleware('auth:sanctum')->name('verification.verify');
+        Route::middleware('auth:sanctum', 'verified')->controller(UserUserController::class)->group(function () {
+            Route::get('home', 'index');
+            Route::get('products', 'allProducts');
+            Route::post('update', 'updateData');
+            Route::post('Contact Us', 'contactUs')->withoutMiddleware(['auth:sanctum','verified']);
+        });
+        Route::middleware('auth:sanctum')->controller(OrderController::class)->group(function () {
+            Route::get('all_orders', 'allOrders');
+        });
     });
 });

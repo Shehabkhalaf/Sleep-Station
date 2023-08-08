@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Traits\ApiResponse;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,6 +59,10 @@ class ProductController extends Controller
     public function updateProduct(Request $request)
     {
         $product = Product::find($request->input('id'));
+        $photos = explode('|', $product->image);
+        foreach ($photos as $photo) {
+            Storage::delete($photo);
+        }
         $product->title = $request->input('title');
         $product->description = $request->input('description');
         $product->color = $request->input('color');
