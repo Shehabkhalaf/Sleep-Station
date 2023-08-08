@@ -19,6 +19,7 @@ class ProductsResource extends JsonResource
     {
         return [
             'category_name' => $this->title,
+            'category_id' => $this->id,
             'status' => $this->status,
             'products' => $this->products->map(function ($product) {
                 $imagePaths = explode('|', $product->image);
