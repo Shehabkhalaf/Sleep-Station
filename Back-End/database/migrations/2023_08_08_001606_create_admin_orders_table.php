@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('admin_orders', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
+            $table->string('user_data');
             $table->string('order_details');
             $table->enum('status', ['shipped', 'delivered', 'in consider'])->default('in consider');
             $table->enum('paid', ['cash', 'paid'])->default('cash');
+            $table->text('payment_details')->nullable();
             $table->timestamp('ordered_date');
             $table->timestamp('shipped_date')->nullable();
             $table->timestamp('delivered_date')->nullable();
