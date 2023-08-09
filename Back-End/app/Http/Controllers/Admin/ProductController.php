@@ -23,7 +23,7 @@ class ProductController extends Controller
         $product->category_id = $addProductRequest->input('category_id');
         $product->title = $addProductRequest->input('title');
         $product->description = $addProductRequest->input('description');
-        $product->color = $addProductRequest->input('color');
+        $product->color = implode('|', $addProductRequest->input('color'));
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
         $images = $addProductRequest->file('image');

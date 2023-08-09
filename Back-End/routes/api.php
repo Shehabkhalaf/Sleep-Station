@@ -44,6 +44,13 @@ Route::prefix('admin')->controller(ContactUsController::class)->group(function (
         Route::get('show_product/{id}', 'showProductWithCategory');
         Route::post('update_product', 'updateProduct');
     });
+    #########/*Offers Module*/#########
+    Route::controller(OfferController::class)->group(function () {
+        Route::post('add_offer', 'addOffer');
+        Route::post('update_offer', 'updateOffer');
+        Route::get('all_offers', 'allOffers');
+        Route::post('delete_offer/{id}', 'deleteOffer');
+    });
 });
 
 ########################/*User Module*/##########################
