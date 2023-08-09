@@ -12,14 +12,14 @@ class UserController extends Controller
     public function allUsers()
     {
         $users = User::all();
-        $data = [
+        /*$data = [
             'count' => $users->count(),
             'users' => $users
-        ];
-        if ($data) {
-            return $this->JsonResponse(200, 'Users are here', $data);
-        } else {
-            $this->JsonResponse(200, 'No available users', $data);
-        }
+        ];*/
+        //if ($data) {
+        return $this->JsonResponse(200, 'Users are here', $users);
+        /*} else {
+            $this->JsonResponse(200, 'No available users', $user);
+        }*/
     }
 }
