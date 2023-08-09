@@ -38,7 +38,7 @@ class OfferController extends Controller
     public function showOffer($id)
     {
         $offer = Offer::find($id);
-        return $this->JsonResponse(200, 'Offer is here', $offer);
+        return $this->JsonResponse(200, 'Your Offer is here', $offer);
     }
     public function deleteOffer($id)
     {

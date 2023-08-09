@@ -8,9 +8,7 @@ use App\Http\Resources\ProductsResource;
 use App\Http\Resources\ShowProduct;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductDetail;
 use App\Traits\ApiResponse;
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,17 +24,13 @@ class ProductController extends Controller
         $product->color = implode('|', $addProductRequest->input('color'));
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
-        $images = $addProductRequest->file('image');
+        /*$images = $addProductRequest->file('image');
         $paths = [];
-        if ($images) {
-            foreach ($images as $image) {
-                $path = $image->store('public/products');
-                $paths[] = $path;
-            }
-        } else {
-            return $this->JsonResponse(200, 'enter valid data', $images);
+        foreach ($images as $image) {
+            $path = $image->store('public/products');
+            $paths[] = $path;
         }
-        $product->image = implode('|', $paths);
+        $product->image = implode('|', $paths);*/
         $size = implode('|', $addProductRequest->input('size'));
         $product->size = $size;
         $price = implode('|', $addProductRequest->input('price'));
@@ -85,14 +79,14 @@ class ProductController extends Controller
         $product->price = $price;
         $stored = $product->save();
         if ($stored) {
-            return $this->JsonResponse(201, 'Updated success fully', $product);
+            return $this->JsonResponse(201, 'Added success fully', $product);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
     }
-    public function deleteProduct($id)
+    public function deleteProduct(Request $request)
     {
-        $deleted = Product::destroy($id);
+        $deleted = Product::destroy($request->id);
         if ($deleted) {
             return $this->JsonResponse(200, 'Deleted success fully');
         } else {
