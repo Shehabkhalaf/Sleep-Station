@@ -26,7 +26,7 @@ class ProductController extends Controller
         $product->color = implode('|', $addProductRequest->input('color'));
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
-        /*$images = $addProductRequest->file('image');
+        $images = $addProductRequest->file('image');
         $paths = [];
         if ($images) {
             foreach ($images as $image) {
@@ -36,8 +36,7 @@ class ProductController extends Controller
         } else {
             return $this->JsonResponse(200, 'enter valid data', $images);
         }
-        $product->image = implode('|', $paths);*/
-        $product->image = 'image';
+        $product->image = implode('|', $paths);
         $size = implode('|', $addProductRequest->input('size'));
         $product->size = $size;
         $price = implode('|', $addProductRequest->input('price'));
