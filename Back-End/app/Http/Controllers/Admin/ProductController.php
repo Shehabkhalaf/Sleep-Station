@@ -85,7 +85,7 @@ class ProductController extends Controller
         $product->price = $price;
         $stored = $product->save();
         if ($stored) {
-            return $this->JsonResponse(201, 'Added success fully', $product);
+            return $this->JsonResponse(201, 'Updated success fully', $product);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
