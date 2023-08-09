@@ -1,0 +1,62 @@
+{
+    "status": 200,
+    "message": "Here are the products",
+    "data": [
+        {
+            "category_name": "Bellows",
+            "category_id": 1,
+            "status": "active",
+            "products": [
+                {
+                    "product_id": 1,
+                    "product_name": "pillow",
+                    "description": "undefined",
+                    "color": "white",
+                    "discount": 0,
+                    "stock": 15,
+                    "images": [
+                        "images/Hollow-Fiber-Quilt/Quilt-1.jpg",
+                        "images/Hollow-Fiber-Quilt/Quilt-2.jpg"
+                    ],
+                    "ratings": null,
+                    "price": [
+                        "210",
+                        "180"
+                    ],
+                    "size": [
+                        "800gm,128*200",
+                        "100g,505*70"
+                    ]
+                }
+            ]
+        },
+        {
+            "category_name": "Pillows",
+            "status": "not active",
+            "category_id": 2,
+            "products": [
+                {
+                    "product_id": 2,
+                    "product_name": "sheat pillow",
+                    "description": "undefined",
+                    "color": "white",
+                    "discount": 0,
+                    "stock": 15,
+                    "images": [
+                        "images/Down-Like-Quilt/Quilt-1.jpg",
+                        "images/Down-Like-Quilt/Quilt-2.jpg"
+                    ],
+                    "ratings": null,
+                    "price": [
+                        "210",
+                        "180"
+                    ],
+                    "size": [
+                        "800gm,128*200",
+                        "100g,505*70"
+                    ]
+                }
+            ]
+        }
+    ]
+}

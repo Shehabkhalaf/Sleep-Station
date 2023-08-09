@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "message": "User orders",
+    "data": [
+        {
+            "order_id": 1,
+            "order_details": "2 m5da",
+            "price": "50",
+            "status": "in consider",
+            "ordered_at": null
+        },
+        {
+            "order_id": 2,
+            "order_details": "2 Pillows",
+            "price": "100",
+            "status": "shipped",
+            "ordered_at": null
+        }
+    ]
+}

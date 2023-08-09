@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Station</title>
+    <!--Bootstrap css file-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css.map">
+    <!-- animate on scroll library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Owl Carousel Css -->
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <!-- Font AweSome -->
+    <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
+    <!-- Header css file -->
+    <link rel="stylesheet" href="./css/header.css">
+    <!-- Footer css file -->
+    <link rel="stylesheet" href="./css/footer.css">
+    <!-- userHome css file -->
+    <link rel="stylesheet" href="./css/userHome.css">
+    <!-- Main css file -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+    <!-- Start Header -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky">
+        <div class="container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./images/logo/logo.png" alt="">
+                </a>
+            </div>
+            <div class="btn-group mb-3 smallNone" role="group">
+                <button type="button" class="language dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="./images/language-icon/united-states-of-america.png"> EN
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="arabic"><a href="./homeArabic.html"><img src="./images/language-icon/egypt.png">
+                            AR</a> </li>
+                    <li> <a href="./index.html"><img src="./images/language-icon/united-states-of-america.png">
+                            EN</a> </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./profileUser.html">My Account</a>
+                    </li>
+                </ul>
+                <div class="btn-group mb-3 bigNone" role="group">
+                    <button type="button" class="language dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src="./images/language-icon/united-states-of-america.png"> EN
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="arabic"><a href="./homeArabic.html"><img src="./images/language-icon/egypt.png">
+                                AR</a> </li>
+                        <li> <a href="./index.html"><img src="./images/language-icon/united-states-of-america.png">
+                                EN</a> </li>
+                    </ul>
+                </div>
+                <div class="icon" id="cartIcon" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                    aria-controls="offcanvasExample">
+                    <span class="count" id="count">0</span>
+                    <i class="fa-solid fa-cart-plus"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Header -->
+    <div class="details overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 position-relative image">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./images/bath-towel/towels-1.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/Contour-Foam-Pillow/Pillow-3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/bath-towel/towels-2.jpg" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 p-5" id="details-container">
+                    <button class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All
+                        Products</button>
+                    <h2 class="mt-5">${product.productTitle}</h2>
+                    <p class="price" id="discountP">EGP ${product.discount[0]} <del id="priceDel">EGP
+                            ${product.price[0]}</del></p>
+                    <div class="description">${product.description}</div>
+                    <div class="form">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="qty">
+                                    <label for="">Quantity</label>
+                                    <input type="number" min="1" id="quantity" value="1">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="select">
+                                    <label for="">size</label>
+                                    <select class="form-select" id="selected" aria-label="Default select example">
+                                        ${product.size.map((sizetype, index) => `<option value="${index}">${sizetype}
+                                        </option>
+                                        `).join(" ")}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="color mt-2 d-flex">
+                            <span>color:</span>
+                            <span id="chooseColor">${product.color === true ? product.colorTypes[0] : "white" }</span>
+                        </div>
+                        ${product.color === true ?
+                        `<ul class="mt-2 colors d-flex align-items-center">
+                            ${product.colorTypes.map((colorType, index) => ` <li ${index===0 ? `class="active" `:""}
+                                id="${colorType}"></li>
+                            `).join(" ")}
+                        </ul>`
+                        : ""}
+                    </div>
+                    <button class="buttonStyle add-card mt-5" id="addCardd">Add To Cart <i
+                            class="fa-solid fa-cart-shopping"></i></button>
+                    <div class="icon">
+                        <img src="images/icon.avif" class="img-size img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- start footer -->
+    <footer class="pb-5" data-aos="fade-zoom-in" data-aos-delay="300" data-aos-duration="1000">
+        <div class="part position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 p-sm-3">
+                        <div class="part-1 mt-5">
+                            <a href="./index.html"><img src="./images/logo/logo.png" alt=""></a>
+                            <p class="text-white-50 pe-1 mt-3">Sleep Station Is One Shop Where You Can Find The Best Bed
+                                Linen, Bedding, Mattress, Towels, Bean Bags & More.....</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 p-sm-3">
+                        <div class="part-2 mt-5">
+                            <h3>Address</h3>
+                            <ul class="mt-4">
+                                <li class="phone">
+                                    <a href="https://wa.me/+2001017159471">
+                                        +20 01017159471
+                                    </a>
+                                </li>
+                                <li class="email">
+                                    <a href="mailto:Sales@Sleepstation-Eg.Com?subject=&body=">
+                                        Sales@Sleepstation-Eg.Com
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 p-sm-3">
+                        <div class="part-3 mt-5">
+                            <h3>Quick Links</h3>
+                            <ul class="pt-3">
+                                <li><a href="./products.html">Products</a></li>
+                                <li><a href="./contact.html">Contact Us</a></li>
+                                <li><a href="./profileUser.html">My Account</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 p-sm-3">
+                        <div class="part-4 mt-5">
+                            <h3>Call us</h3>
+                            <p class="text-white-50 pe-5">Contact us via e-mail or phone, we are waiting for your call
+                                or message</p>
+                            <div class="email-call mt-2 mb-2">
+                                <a href="mailto:Sales@Sleepstation-Eg.Com?subject=&body=">
+                                    Sales@Sleepstation-Eg.Com
+                                </a>
+                            </div>
+                            <div class="icons d-flex justify-content-start mt-4">
+                                <div class="icon facebook">
+                                    <a href="https://www.facebook.com/officialsleepstation?mibextid=ZbWKwL"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                                <div class="icon instagram">
+                                    <a href="https://instagram.com/officialsleepstation?igshid=YmMyMTA2M2Y="><i
+                                            class="fa-brands fa-instagram"></i></i></a>
+                                </div>
+                                <div class="icon twitter">
+                                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                                <div class="icon linkedin">
+                                    <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
