@@ -1,0 +1,237 @@
+.height-100 {
+    min-height: 100vh;
+}
+
+.admin ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin .part-1 {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+    min-height: 100vh;
+}
+
+.admin ul a {
+    text-decoration: none;
+    display: block;
+    margin: 20px 15px;
+    color: #999;
+    transition: 0.5s;
+}
+
+.admin ul a:hover {
+    color: black;
+}
+
+.admin ul a.active {
+    color: black;
+}
+
+.admin ul a:hover i {
+    color: var(--primary-color);
+}
+
+
+.admin ul a i {
+    margin: 0 5px;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.admin .row .nonePadding {
+    padding: 0;
+}
+
+.admin nav {
+    background-color: var(--primary-color);
+}
+
+.admin nav .navbar-brand {
+    color: white;
+}
+
+.admin nav i {
+    color: white;
+}
+
+.admin nav i:hover,
+.admin nav .dropdown-toggle:focus {
+    color: white;
+}
+
+.admin nav .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.admin nav .fa-bars {
+    font-size: 35px;
+    color: white;
+}
+
+
+
+@media(max-width:768px) {
+    .bigScreen {
+        display: none;
+    }
+
+    .admin nav .navbar-collapse {
+        background-color: white;
+    }
+
+}
+
+@media(min-width:768px) {
+    .smallScreen {
+        display: none;
+    }
+
+    .admin nav .fa-bars {
+        display: none;
+    }
+}
+
+
+.buttonAdd {
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 5px 0px;
+    margin: 5px 0;
+    transition: 0.5s;
+}
+
+.buttonAdd:hover {
+    color: var(--primary-color);
+    background-color: white;
+}
+
+.admin input:focus,
+.admin select:focus {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #28b8c09a;
+}
+
+.admin .delete {
+    color: #f80031;
+    background-color: rgba(251, 175, 190, .5);
+    border: navajowhite;
+    border-radius: 9px;
+    font-size: 11px;
+    padding: 3px 10px;
+}
+
+
+.admin .edit {
+    color: #2643e9;
+    background-color: rgba(203,210,246,.5);
+    border: navajowhite;
+    border-radius: 9px;
+    font-size: 11px;
+    padding: 3px 10px;
+}
+
+.admin table img {
+    width: 60px;
+}
+
+.admin .dashBoard {
+    background-color: #f8f9fe;
+}
+
+.admin .dashBoard .box {
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 20px;
+}
+
+.admin .dashBoard .box .icon {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    color: white;
+    border-radius: 50%;
+}
+
+
+.admin .dashBoard .box .icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
+
+.admin .dashBoard .box h5 {
+    color: var(--grey-color);
+}
+
+.admin .dashBoard p {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.admin .search .close {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid var(--orange-color);
+    background-color: var(--orange-color);
+    color: white;
+    font-size: 18px;
+    width: 35px;
+
+}
+
+.admin .search input {
+    width: 150px;
+    border-right: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: none;
+}
+
+
+
+
+.offcanvas-start {
+    width: 100% !important;
+}
+
+
+.offcanvas-start input:focus,
+.offcanvas-start select:focus {
+    background-color: transparent;
+    border-color: #ffa35866;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ffa35866;
+}
+
+.admin .dishes img {
+    width: 150px;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+}
+
+.warring {
+    font-weight:600;
+    color:red;
+}
+
+.color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin:0px 5px;
+}
