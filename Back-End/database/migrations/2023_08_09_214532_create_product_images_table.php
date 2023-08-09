@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->binary('image_data')->nullable(); // Change 'image_blob' to your column name
-            $table->string('image_name'); // Store the image name (optional)
-            $table->string('image_type');
+            $table->binary('image');
             $table->timestamps();
         });
     }

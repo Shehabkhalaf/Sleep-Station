@@ -13,9 +13,9 @@ class ContactUsController extends Controller
     public function allMessages()
     {
         $messages = Message::all();
-        $data=[
-            'messages'=>$messages,
-            'count'=>$messages->count()
+        $data = [
+            'messages' => $messages,
+            'count' => $messages->count()
         ];
         return $this->JsonResponse(200, 'Messages are here', $data);
     }
