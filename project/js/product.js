@@ -1,12 +1,13 @@
+// URL API
+const urlApi = "json/da.json";
+
+// Get Element
 let sliderImages = document.getElementById("sliderImages");
 let detailsContainer = document.getElementById("detailsContainer");
 
 
-
-
-
-
-fetch("json/da.json").then(
+// Call Date
+fetch(urlApi).then(
     (result) => result.json()
 ).then(
     (data) => {
@@ -14,9 +15,7 @@ fetch("json/da.json").then(
     }
 )
 
-
-
-
+// Add Products
 function addProduct(data) {
     detailsContainer.innerHTML =  `
     <button class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All
@@ -64,3 +63,4 @@ function addProduct(data) {
     
     `
 }
+

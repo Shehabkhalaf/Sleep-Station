@@ -8,10 +8,8 @@
     <title>Sleep Station</title>
     <!--Bootstrap css file-->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css.map">
-    <!-- File Css Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- animate on scroll library -->
+    <link href="./css/animate.min.css" rel="stylesheet">
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
     <!-- File Css Main -->
@@ -85,7 +83,7 @@
     <!-- End Header -->
     <!-- End Header -->
     <!-- Start Profile -->
-    <div class="profile">
+    <div class="profile wow animate__fadeIn" data-wow-duration="2s">
         <div class="container">
             <div class="title pt-5">
                 My Account
@@ -162,14 +160,19 @@
         </div>
     </div>
     <!-- End Profile -->
-    <!-- start Footer -->
-    <footer class="pb-5" data-aos="fade-zoom-in" data-aos-delay="300" data-aos-duration="1000">
+    <!-- Button Scroll UP And Button Whatts App -->
+    <button class="btn btn-primary rounded-pill scroll" id="buttonScroll"><i class="fa-solid
+        fa-angles-up"></i></button>
+    <a class="whatts" href="https://wa.me/+2001017159471"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- Button Scroll UP And Button Whatts App -->
+    <!-- Start Footer -->
+    <footer class="pb-5">
         <div class="part position-relative">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-1 mt-5">
-                            <a href="./index.html"><img src="./images/logo/logo.png" alt=""></a>
+                            <a href="./products.html"><img src="./images/logo/logo.png" alt=""></a>
                             <p class="text-white-50 pe-1 mt-3">Sleep Station Is One Shop Where You Can Find The Best Bed
                                 Linen, Bedding, Mattress, Towels, Bean Bags & More.....</p>
                         </div>
@@ -196,8 +199,8 @@
                             <h3>Quick Links</h3>
                             <ul class="pt-3">
                                 <li><a href="./products.html">Products</a></li>
-                                <li><a href="./offers.html">Offers</a></li>
                                 <li><a href="./contact.html">Contact Us</a></li>
+                                <li><a href="./profileUser.html">My Account</a></li>
                             </ul>
                         </div>
                     </div>
@@ -234,13 +237,13 @@
         </div>
     </footer>
     <!-- End Footer -->
-
     <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-
+    <!-- File Js Wow -->
+    <script src="./js/wow.min.js"></script>
     <script>
+        new WOW().init();
         let emailUser = JSON.parse(localStorage.getItem("emailUser"));
-
         fetch(`http://localhost/footer-hunter/implementation/getUserData.php?email=${emailUser}`).then(res => res.json())
             .then(data => {
                 document.getElementById("name").value = data[0].name;

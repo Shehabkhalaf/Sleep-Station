@@ -90,6 +90,11 @@ video {
   border: 1px solid var(--primary-color);
   caret-color: white;
   color: white;
+  padding-left: 36px;
+}
+
+.signup label {
+  padding-left: 36px;
 }
 
 .signup input:focus {
@@ -99,3 +104,13 @@ video {
 .signup label {
   color: white;
 }
+
+
+.signup .form-floating i {
+  position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+}
+

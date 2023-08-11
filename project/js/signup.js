@@ -9,24 +9,30 @@ let form = document.getElementById('submit');
 
 
 
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name.value);
+    formData.append('email',email.value);
+    formData.append('phone', phone.value);
+    formData.append('password', password.value);
+    formData.append('address',address.value);
 
 
-form.addEventListener('submit', () => {
-    const formData = new FormData(form);
 
-    fetch('http://127.0.0.1:8000/api/user/register', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 201) {
-                localStorage.setItem("data", JSON.stringify(data.data))
-                location.href = "./products.html"
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://127.0.0.1:8000/api/user/register', true);
 
-})
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log('تم تحميل الصورة بنجاح.');
+        } else {
+            console.log('فشل تحميل الصورة.');
+        }
+    };
+    xhr.send(formData);
+});
+
+
+new WOW().init();
+
