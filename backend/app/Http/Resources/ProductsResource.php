@@ -28,6 +28,7 @@ class ProductsResource extends JsonResource
                 }, $imagePaths);
                 return [
                     'product_id' => $product->id,
+                    'category_id'=>$this->id,
                     'product_name' => $product->title,
                     'description' => $product->description,
                     'color' => $product->color,
