@@ -11,7 +11,7 @@
                     "product_id": 1,
                     "product_name": "pillow",
                     "description": "undefined",
-                    "color": "white",
+                    "color": "white | code",
                     "discount": 0,
                     "stock": 15,
                     "images": [

@@ -1,22 +1,10 @@
 import { setData as setData, getData as getData , createProduct , setDataLocal} from "./localStorage.js";
 
-// Scroll Down
-let btnn = document.querySelector(".scroll");
-window.onscroll = function () {
-    if (window.scrollY >= 400) {
-        btnn.style.display = "block";
-    } else {
-        btnn.style.display = "none";
-    }
-    btnn.onclick = function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-};
 
 // GET Elements
 let products = document.getElementById("products");
 let detailsContainer = document.getElementById("details-container");
-let sliderContainerParent = document.getElementById("slider-container-parent");
+let sliderImages = document.getElementById("slider-container-parent");
 let count = document.getElementById("count");
 let cartIcon = document.getElementById("cartIcon");
 let checkOutButton = document.getElementById("checkOut");
@@ -143,7 +131,7 @@ function showDetails() {
     let buttonId = +this.getAttribute("data-id");
     dataProducts.forEach(product => {
         if (+product.id === buttonId) {
-            sliderContainerParent.innerHTML += `
+            sliderImages.innerHTML += `
                     <div class="slider-container" id="slider-container">
                     ${product.imageDetalias.map(img => `<img src=${img} >`).join(" ")}
                     </div>
@@ -199,7 +187,7 @@ function showDetails() {
             let btnBack = document.getElementById("back-btnn");
             btnClose.addEventListener("click", () => {
                 detailsContainer.innerHTML = "";
-                sliderContainerParent.innerHTML = "";
+                sliderImages.innerHTML = "";
             })
 
             btnBack.addEventListener("click", () => {

@@ -75,7 +75,7 @@ andSizeAndPrice.addEventListener('click', function (e) {
 fileInput.addEventListener("change", (e) => {
     console.log(e.target.value)
     // Add To List
-    listImages.push(e.target.files[0]);
+    listImages.push(fileInput.files[0]);
     e.target.value = '';
     draggableList.innerHTML = ''
     createList();
@@ -101,7 +101,7 @@ createList();
 // Insert Items in draggable List in Dom
 function createList() {
     listImages
-        .map(element => ({ value: URL.createObjectURL(element), sort: Math.random() }))
+        .map(element => ({ value: element , sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(element => element.value)
         .forEach((person, index) => {
@@ -113,7 +113,7 @@ function createList() {
             li.innerHTML = `
             <span class="number" > ${index + 1}</span>
                 <div class="draggable" draggable="true">
-                <img src=${person} alt="" width="150" height='150px'>
+                <img src=${ URL.createObjectURL(person)} alt="" width="150" height='150px'>
                 </div>
         `
             // Push li in List items
@@ -195,17 +195,6 @@ function addEventListeners() {
 document.getElementById('submitButton').addEventListener('click', () => {
     submit.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        console.log(productName.value)
-        console.log(description.value)
-        console.log(listDiscount)
-        console.log(listPrice)
-        console.log(listSize)
-        console.log(stock.value)
-        console.log(productName.value)
-        console.log(listColor)
-        console.log(categoryValue)
-        console.log(listImages)
         const formData = new FormData();
         formData.append('title', productName.value);
         formData.append('description', description.value);
@@ -222,7 +211,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
 
         xhr.onload = function () {
             if (xhr.status === 200) {
-                console.log('تم تحميل الصورة بنجاح.');
+                console.log(xhr.responseText);
             } else {
                 console.log('فشل تحميل الصورة.');
             }

@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css.map">
     <!-- animate on scroll library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Owl Carousel Css -->
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link href="./css/animate.min.css" rel="stylesheet">
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
     <!-- Header css file -->
@@ -93,8 +90,8 @@
         </div>
     </div>
     <!-- end landing about -->
-    <!-- Start restaurants -->
-    <div class="restaurants pt-5 pb-5">
+    <!-- Start Products -->
+    <div class="products pt-5 pb-5">
         <div class="container">
             <div class="row pt-2 pb-5">
                 <div class="col-lg-3 col-md-3">
@@ -114,15 +111,20 @@
             </div>
         </div>
     </div>
-    <!-- End restaurants -->
-    <!-- start footer -->
-    <footer class="pb-5" data-aos="fade-zoom-in" data-aos-delay="300" data-aos-duration="1000">
+    <!-- End Products -->
+    <!-- Button Scroll UP And Button Whatts App -->
+    <button class="btn btn-primary rounded-pill scroll" id="buttonScroll"><i class="fa-solid
+        fa-angles-up"></i></button>
+    <a class="whatts" href="https://wa.me/+2001017159471"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- Button Scroll UP And Button Whatts App -->
+    <!-- Start Footer -->
+    <footer class="pb-5">
         <div class="part position-relative">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-1 mt-5">
-                            <a href="./index.html"><img src="./images/logo/logo.png" alt=""></a>
+                            <a href="./products.html"><img src="./images/logo/logo.png" alt=""></a>
                             <p class="text-white-50 pe-1 mt-3">Sleep Station Is One Shop Where You Can Find The Best Bed
                                 Linen, Bedding, Mattress, Towels, Bean Bags & More.....</p>
                         </div>
@@ -151,7 +153,6 @@
                                 <li><a href="./products.html">Products</a></li>
                                 <li><a href="./contact.html">Contact Us</a></li>
                                 <li><a href="./profileUser.html">My Account</a></li>
-
                             </ul>
                         </div>
                     </div>
@@ -187,12 +188,28 @@
             </div>
         </div>
     </footer>
-    <!-- End footer -->
+    <!-- End Footer -->
+    <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- File Js Wow -->
+    <script src="./js/wow.min.js"></script>
+    <!-- File Js Contact -->
     <script src="./js/products.js"></script>
+    <script>
+        new WOW().init();
+        let buttonScroll = document.getElementById("buttonScroll");
+        window.onscroll = function () {
+            if (window.scrollY >= 300) {
+                buttonScroll.style.display = "block";
+            } else {
+                buttonScroll.style.display = "none";
+            }
+            buttonScroll.onclick = function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+        }
+
+    </script>
 </body>
-
-<script src="./js/bootstrap.bundle.min.js"></script>
-
 
 </html>

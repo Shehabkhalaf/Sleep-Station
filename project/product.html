@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css.map">
     <!-- animate on scroll library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Owl Carousel Css -->
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link href="./css/animate.min.css" rel="stylesheet">
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
     <!-- Header css file -->
@@ -24,6 +21,8 @@
     <link rel="stylesheet" href="./css/userHome.css">
     <!-- Main css file -->
     <link rel="stylesheet" href="./css/main.css">
+    <!-- Product Css File -->
+    <link rel="stylesheet" href="./css/product.css">
 </head>
 
 <body>
@@ -85,20 +84,21 @@
         </div>
     </nav>
     <!-- End Header -->
-    <div class="details overflow-hidden">
+
+    <div class="details overflow-hidden pt-5 pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12 position-relative image">
                     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./images/bath-towel/towels-1.jpg" class="d-block w-100" alt="...">
+                                <img src="./images/bath-towel/towels-1.jpg" class="d-block" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="./images/Contour-Foam-Pillow/Pillow-3.jpg" class="d-block w-100" alt="...">
+                                <img src="./images/Contour-Foam-Pillow/Pillow-3.jpg" class="d-block" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="./images/bath-towel/towels-2.jpg" class="d-block w-100" alt="...">
+                                <img src="./images/bath-towel/towels-2.jpg" class="d-block" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -113,63 +113,26 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 p-5" id="details-container">
-                    <button class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All
-                        Products</button>
-                    <h2 class="mt-5">${product.productTitle}</h2>
-                    <p class="price" id="discountP">EGP ${product.discount[0]} <del id="priceDel">EGP
-                            ${product.price[0]}</del></p>
-                    <div class="description">${product.description}</div>
-                    <div class="form">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="qty">
-                                    <label for="">Quantity</label>
-                                    <input type="number" min="1" id="quantity" value="1">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="select">
-                                    <label for="">size</label>
-                                    <select class="form-select" id="selected" aria-label="Default select example">
-                                        ${product.size.map((sizetype, index) => `<option value="${index}">${sizetype}
-                                        </option>
-                                        `).join(" ")}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="color mt-2 d-flex">
-                            <span>color:</span>
-                            <span id="chooseColor">${product.color === true ? product.colorTypes[0] : "white" }</span>
-                        </div>
-                        ${product.color === true ?
-                        `<ul class="mt-2 colors d-flex align-items-center">
-                            ${product.colorTypes.map((colorType, index) => ` <li ${index===0 ? `class="active" `:""}
-                                id="${colorType}"></li>
-                            `).join(" ")}
-                        </ul>`
-                        : ""}
-                    </div>
-                    <button class="buttonStyle add-card mt-5" id="addCardd">Add To Cart <i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                    <div class="icon">
-                        <img src="images/icon.avif" class="img-size img-fluid">
-                    </div>
+                <div class="col-lg-6 col-md-12" id="detailsContainer">
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- start footer -->
-    <footer class="pb-5" data-aos="fade-zoom-in" data-aos-delay="300" data-aos-duration="1000">
+    <!-- Button Scroll UP And Button Whatts App -->
+    <button class="btn btn-primary rounded-pill scroll" id="buttonScroll"><i class="fa-solid
+        fa-angles-up"></i></button>
+    <a class="whatts" href="https://wa.me/+2001017159471"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- Button Scroll UP And Button Whatts App -->
+    <!-- Start Footer -->
+    <footer class="pb-5">
         <div class="part position-relative">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-1 mt-5">
-                            <a href="./index.html"><img src="./images/logo/logo.png" alt=""></a>
+                            <a href="./products.html"><img src="./images/logo/logo.png" alt=""></a>
                             <p class="text-white-50 pe-1 mt-3">Sleep Station Is One Shop Where You Can Find The Best Bed
                                 Linen, Bedding, Mattress, Towels, Bean Bags & More.....</p>
                         </div>
@@ -198,7 +161,6 @@
                                 <li><a href="./products.html">Products</a></li>
                                 <li><a href="./contact.html">Contact Us</a></li>
                                 <li><a href="./profileUser.html">My Account</a></li>
-
                             </ul>
                         </div>
                     </div>
@@ -234,8 +196,28 @@
             </div>
         </div>
     </footer>
-    <!-- End footer -->
+    <!-- End Footer -->
+    <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- File Js Wow -->
+    <script src="./js/wow.min.js"></script>
+    <!-- File Js Product -->
+    <script src="./js/product.js"></script>
+    <script>
+        new WOW().init();
+        let buttonScroll = document.getElementById("buttonScroll");
+        window.onscroll = function () {
+            if (window.scrollY >= 300) {
+                buttonScroll.style.display = "block";
+            } else {
+                buttonScroll.style.display = "none";
+            }
+            buttonScroll.onclick = function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+        }
+
+    </script>
 
 </body>
 

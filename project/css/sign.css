@@ -22,7 +22,6 @@ body {
   background: #000;
 }
 
-
 body * {
   z-index: 2;
 }
@@ -41,40 +40,62 @@ video {
 
 /* End Background */
 
-
 .signup {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
+.signup form {
+  border-bottom: 1px solid #77777754;
+  padding-bottom: 15px;
+}
 
-@media(min-width:1200px) {
-    .signup form {
-        width:50%;
-        margin:auto;
-    }
+.signup p {
+  padding-top: 13px;
+  color: white;
+}
+
+.signup a {
+  color:var(--primary-color);
+}
+
+@media (min-width: 1200px) {
+  .signup form {
+    width: 50%;
+    margin: auto;
+  }
 }
 
 .signup button {
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    width: 140px;
-    padding: 10px 0px;
-    border-radius: 10px;
-    margin-left: auto;
-    display: block;
-    margin-top: 10px;
-    color: white;
-    font-weight: 600;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  width: 140px;
+  padding: 10px 0px;
+  border-radius: 10px;
+  margin-left: auto;
+  display: block;
+  margin-top: 10px;
+  color: white;
+  transition:0.5s;
+  font-weight: 600;
+}
+
+.signup button:hover {
+  background-color: white;
+  color: var(--primary-color);
 }
 
 .signup input,
-.signup input:focus{
-    background-color: transparent;
-    border: 1px solid var(--primary-color);
-    caret-color: white;
-    color: white;
+.signup input:focus {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  caret-color: white;
+  color: white;
+}
+
+.signup input:focus {
+  box-shadow: 0 0 3px 2px #28b8c09a;
 }
 
 .signup label {
-    color:white;
+  color: white;
 }

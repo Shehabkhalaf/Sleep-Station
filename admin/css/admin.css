@@ -182,16 +182,40 @@
 .admin .search .close {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    border: 1px solid var(--orange-color);
-    background-color: var(--orange-color);
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
     font-size: 18px;
     width: 35px;
 
 }
 
+.admin .numberOfUsers {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.admin .search  {
+    flex: 1;
+    margin: 0px 29px 0 0px;
+}
+
+@media(max-width:767px) {
+    .admin .search  {
+        flex: 1;
+        margin: 0px;
+        width: 100%;
+    }
+}
+
+.admin  .showUsers {
+    border-top: 1px solid #77777745;
+    padding-top: 13px;
+}
+
+
 .admin .search input {
-    width: 150px;
+    display:block;
     border-right: none;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
