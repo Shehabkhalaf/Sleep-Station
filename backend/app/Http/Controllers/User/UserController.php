@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $product = new ProductController;
         $prodcut_data = $product->showProductWithCategory($id);
-        return $this->JsonResponse(200, 'Product is here', $prodcut_data);
+        return $prodcut_data;
     }
     public function contactUs(Request $request)
     {
