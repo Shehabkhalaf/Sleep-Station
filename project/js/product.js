@@ -1,18 +1,14 @@
 
 
-// const URL = 'http://127.0.0.1:8000';
-const URL = "";
+const URL = 'http://127.0.0.1:8000';
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
 
 // URL API
-// const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;
-// const urlApiAllData = "http://127.0.0.1:8000/api/user/products";
-
-const urlApi = `json/da.json`;
-const urlApiAllData = "json/data.json";
+const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;
+const urlApiAllData = "http://127.0.0.1:8000/api/user/products";
 
 
 // Get Data From Local Storage
