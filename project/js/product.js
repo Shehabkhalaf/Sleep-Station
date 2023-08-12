@@ -1,9 +1,9 @@
-// // URL API
+// URL API
 const urlApi = "json/da.json";
 const urlApiAllData = "json/data.json";
 
 
-// // Get Product_id and Category_id From LocalStorage
+// Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = productDetails.product_id;
 const categoryId = +productDetails.category_id;
@@ -11,13 +11,13 @@ const categoryId = +productDetails.category_id;
 
 
 
-// // Get Element
+// Get Element
 let sliderImages = document.getElementById("sliderImages");
 let detailsContainer = document.getElementById("detailsContainer");
 let boxesProducts = document.getElementById("boxes");
 
 
-// // Call Date
+// Call Date
 fetch(urlApi).then(
     (result) => result.json()
 ).then(
@@ -26,8 +26,14 @@ fetch(urlApi).then(
     }
 )
 
-// // Add Products
+// Add Products
 function addProduct(data) {
+    sliderImages.innerHTML = `
+        ${data.color.map((colorType, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
+            <img src=${data.images[index]} class="d-block" alt="...">
+        </div>
+        `).join(" ")}
+    `
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
             <h2 class="mt-5">${data.product_name}</h2>
