@@ -30,9 +30,12 @@
                         <ul>
                             <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
                             <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
-                            <li><a class="active" href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
-                            <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update Products</a></li>
-                            <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a></li>
+                            <li><a class="active" href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add
+                                    Products</a></li>
+                            <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
+                                    Products</a></li>
+                            <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
+                            </li>
                             <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
                             <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
                             <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
@@ -54,14 +57,23 @@
                                     <div class="navbar-nav">
                                         <div class="dash smallScreen">
                                             <ul>
-                                                <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
-                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
-                                                <li><a class="active" href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
-                                                <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update Products</a></li>
-                                                <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a></li>
-                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
-                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-                                                <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
+                                                <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a>
+                                                </li>
+                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i>
+                                                        Products</a></li>
+                                                <li><a class="active" href="./addProducts.html"><i
+                                                            class="fa-solid fa-cart-plus"></i> Add Products</a></li>
+                                                <li><a href="./updateProduct.html"><i
+                                                            class="fa-solid fa-cart-arrow-down"></i> Update Products</a>
+                                                </li>
+                                                <li><a href="./addCategory.html"><i
+                                                            class="fa-solid fa-lines-leaning"></i> Add Category</a></li>
+                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i>
+                                                        Orders</a></li>
+                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a>
+                                                </li>
+                                                <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -119,7 +131,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 mt-3">
-                                                    <button type="button" id="andSizeAndPrice" class="buttonAdd">Add Size and
+                                                    <button type="button" id="andSizeAndPrice" class="buttonAdd">Add
+                                                        Size and
                                                         Price</button>
                                                 </div>
                                             </div>
@@ -152,25 +165,35 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-9">
-                                            <div class="mb-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-lg-2 mb-1">
-                                                        <label for="color" class="form-label">Color</label>
-                                                        <input type="color" class="form-control form-control-color"
-                                                            id="color" value="#563d7c" title="Choose your color">
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="colors d-flex" id="colors">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <button type="button" id="andSizeAndPrice" class="buttonAdd">Add
-                                                            Color</button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <p class="warring">In the absence of a color other than white, please do not
                                                 choose the color</p>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-2 mb-1">
+                                                    <label for="color" class="form-label">Color</label>
+                                                    <input type="color" class="form-control form-control-color"
+                                                        id="color" value="#563d7c" title="Choose your color">
+                                                </div>
+                                                <div class="col-lg-6 mb-1">
+                                                    <label for="colorName" class="form-label">NameColor</label>
+                                                    <input type="text" class="form-control"
+                                                        id="colorName" placeholder="Name Color..." title="Choose your color">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <button type="button" id="addColor" class="buttonAdd">Add
+                                                        Color</button>
+                                                </div>
+                                            </div>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Color</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="colors">
+                                                </tbody>
+                                            </table>
                                         </div>
                                         <div class="col-lg-9">
                                             <div class="mb-3">
@@ -184,7 +207,8 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
-                                            <button type="submit" id="submitButton" class="buttonAdd">Add Product</button>
+                                            <button type="submit" id="submitButton" class="buttonAdd">Add
+                                                Product</button>
                                         </div>
                                     </div>
                                 </form>

@@ -10,25 +10,44 @@ let productName = document.getElementById("productname"),
     tablePrice = document.getElementById("tablePrice"),
     andSizeAndPrice = document.getElementById("andSizeAndPrice"),
     colors = document.getElementById("colors"),
+    colorName = document.getElementById("colorName"),
+    addColor = document.getElementById("addColor"),
     stock = document.getElementById("stock"),
     categories = document.getElementById("categories"),
     colorInput = document.getElementById("color");
 
 let categoryValue;
+
 categories.addEventListener("change", (e) => {
     categoryValue = e.target.value;
 });
 
 let listColor = [];
 
-colorInput.addEventListener('change', (e) => {
+addColor.addEventListener('click', function (e) {
+    if (colorName.value.trim() && colorInput.value.trim()) {
+        listColor.push(colorName.value + " | " + colorInput.value);
 
-    let para = document.createElement("p");
-    para.setAttribute('class', 'color');
-    para.style.backgroundColor = e.target.value;
-    colors.appendChild(para);
-    listColor.push(e.target.value)
+        let tr = document.createElement("tr");
+        tr.setAttribute("id", countIndex);
+        tr.innerHTML = `
+                    <td scope="col">${colorName.value}</td>
+                    <td scope="col">${colorInput.value}</td>
+                    <td scope="col">
+                        <button class="deleteColor delete me-2" data-colorId=${countIndex}>delete</button>
+                    </td>
+            `
+        colors.append(tr)
+        countIndex++;
+        document.querySelectorAll('.deleteColor').forEach((element, index) => {
+            element.addEventListener('click', () => {
+                document.getElementById(element.getAttribute("data-colorId")).remove();
+                listColor = listColor.filter((value, i) => i !== index);
+            })
+        })
+    }
 })
+
 
 let listSize = [];
 let listPrice = [];
@@ -42,11 +61,6 @@ andSizeAndPrice.addEventListener('click', function (e) {
         listPrice.push(price.value);
         listDiscount.push(discount.value);
 
-        console.log(listSize)
-        console.log(listPrice)
-        console.log(listDiscount)
-
-
         let tr = document.createElement("tr");
         tr.setAttribute("id", countIndex);
         tr.innerHTML = `
@@ -54,18 +68,17 @@ andSizeAndPrice.addEventListener('click', function (e) {
                     <td scope="col">${price.value}</td>
                     <td scope="col">${discount.value}</td>
                     <td scope="col">
-                        <button class="delete me-2" data-id=${countIndex}>delete</button>
+                        <button class="delete deletePrice me-2" data-id=${countIndex}>delete</button>
                     </td>
             `
         tablePrice.append(tr)
         countIndex++;
-        document.querySelectorAll('.delete').forEach((element, index) => {
+        document.querySelectorAll('.deletePrice').forEach((element, index) => {
             element.addEventListener('click', () => {
                 document.getElementById(element.getAttribute("data-id")).remove();
                 listSize = listSize.filter((value, i) => i !== index);
                 listPrice = listPrice.filter((value, i) => i !== index);
                 listDiscount = listDiscount.filter((value, i) => i !== index);
-
             })
         })
     }
@@ -73,7 +86,6 @@ andSizeAndPrice.addEventListener('click', function (e) {
 
 
 fileInput.addEventListener("change", (e) => {
-    console.log(e.target.value)
     // Add To List
     listImages.push(fileInput.files[0]);
     e.target.value = '';
@@ -101,7 +113,7 @@ createList();
 // Insert Items in draggable List in Dom
 function createList() {
     listImages
-        .map(element => ({ value: element , sort: Math.random() }))
+        .map(element => ({ value: element, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(element => element.value)
         .forEach((person, index) => {
@@ -113,7 +125,7 @@ function createList() {
             li.innerHTML = `
             <span class="number" > ${index + 1}</span>
                 <div class="draggable" draggable="true">
-                <img src=${ URL.createObjectURL(person)} alt="" width="150" height='150px'>
+                <img src=${URL.createObjectURL(person)} alt="" width="150" height='150px'>
                 </div>
         `
             // Push li in List items
@@ -188,10 +200,6 @@ function addEventListeners() {
 }
 
 
-
-
-
-
 document.getElementById('submitButton').addEventListener('click', () => {
     submit.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -204,7 +212,9 @@ document.getElementById('submitButton').addEventListener('click', () => {
         formData.append('stock', stock.value);
         formData.append('color', listColor);
         formData.append('category_id', categoryValue);
-        formData.append('image', listImages);
+        listImages.forEach((img,index)=>{
+            formData.append(`image${index + 1}`, img);
+        })
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_product', true);
