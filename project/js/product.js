@@ -1,5 +1,3 @@
-
-
 const URL = 'http://127.0.0.1:8000';
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
@@ -44,8 +42,6 @@ fetch(urlApi).then(
 // Add Products
 
 function addProduct(data) {
-
-
     sliderImages.innerHTML = `
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
