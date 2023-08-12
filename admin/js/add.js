@@ -206,11 +206,11 @@ document.getElementById('submitButton').addEventListener('click', () => {
         const formData = new FormData();
         formData.append('title', productName.value);
         formData.append('description', description.value);
-        formData.append('discount', listDiscount);
-        formData.append('price', listPrice);
-        formData.append('size', listSize);
+        formData.append('discount', JSON.stringify(listDiscount));
+        formData.append('price', JSON.stringify(listPrice));
+        formData.append('size', JSON.stringify(listSize));
         formData.append('stock', stock.value);
-        formData.append('color', listColor);
+        formData.append('color', JSON.stringify(listColor));
         formData.append('category_id', categoryValue);
         listImages.forEach((img,index)=>{
             formData.append(`image${index + 1}`, img);
