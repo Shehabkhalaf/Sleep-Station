@@ -37,6 +37,12 @@ class UserController extends Controller
             return $this->JsonResponse(500, 'Error');
         }
     }
+    public function showProduct($id)
+    {
+        $product = new ProductController;
+        $prodcut_data = $product->showProductWithCategory($id);
+        return $prodcut_data;
+    }
     public function contactUs(Request $request)
     {
         $message = Message::create($request->all());

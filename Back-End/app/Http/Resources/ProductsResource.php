@@ -20,7 +20,7 @@ class ProductsResource extends JsonResource
         return [
             'category_name' => $this->title,
             'status' => $this->status,
-            'category_id'=>$this->id,
+            'category_id' => $this->id,
             'products' => $this->products->map(function ($product) {
                 $imagePaths = explode('|', $product->image); // Explode the concatenated string
                 $imageUrls = array_map(function ($imagePath) {
@@ -28,16 +28,15 @@ class ProductsResource extends JsonResource
                 }, $imagePaths);
                 return [
                     'product_id' => $product->id,
-                    'category_id'=>$this->id,
+                    'category_id' => $this->id,
                     'product_name' => $product->title,
                     'description' => $product->description,
-                    'color' => $product->color,
-                    'discount' => $product->discount,
+                    'color' => json_decode($product->color),
+                    'discount' => json_decode($product->discount),
                     'stock' => $product->stock,
                     'images' => $imageUrls, // Use the array of image URLs
-                    'ratings' => $product->ratings,
-                    'price' => explode('|', $product->price),
-                    'size' => explode('|', $product->size),
+                    'price' => json_decode($product->price),
+                    'size' => json_decode($product->size),
                 ];
             }),
         ];

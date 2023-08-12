@@ -1,18 +1,7 @@
 
 
-// fetch("http://127.0.0.1:8000/api/admin/all_users").then(
-//     (res) => res.json()
-// ).then(
-//     (date) => console.log(date)
-// )
-
-
 let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
-
-
-
-
 
 
 fetch("http://127.0.0.1:8000/api/admin/all_users").then(
@@ -34,7 +23,8 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
 )
 
 
-// Show Products
+
+// // Show Products
 function showUsers(data) {
     bodyTable.innerHTML = ''
     // Add Product In Dom
@@ -70,3 +60,4 @@ function searchProduct(dataAll, value) {
         });
     }
 }
+
