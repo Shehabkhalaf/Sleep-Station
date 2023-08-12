@@ -5,7 +5,6 @@ const urlApi = "json/data.json";
 let categories = document.getElementById("categories");
 let boxesProducts = document.getElementById("boxes");
 let iconSearch = document.getElementById("iconSearch");
-let allBoxes = document.querySelectorAll('[data-product="box"]');
 
 
 
@@ -113,8 +112,20 @@ function addProduct(product) {
                 </div>
                 `
         boxesProducts.appendChild(div)
-    })
 
+        // Storage [category_id , product_id ] In LocalStorage untill Call product Details
+        let allBoxes = document.querySelectorAll('[data-product="box"]');
+        allBoxes.forEach(element => {
+            element.addEventListener("click", (e) => {
+                let category_id = element.getAttribute("data-category");
+                let product_id = element.getAttribute("data-productId");
+                // Set Data From Local Storage
+                localStorage.setItem("productDetails", JSON.stringify({ 'category_id': category_id, "product_id": product_id }));
+                // Go To Location Product Details
+                location.href = 'product.html'
+            })
+        })
+    })
 }
 
 
@@ -160,15 +171,3 @@ function searchProduct(dataAll, value) {
 }
 
 
-// Storage [category_id , product_id ] In LocalStorage untill Call product Details
-allBoxes.forEach(element => {
-    element.addEventListener("click", (e) => {
-        console.log(element)
-        let category_id = element.getAttribute("data-category");
-        let product_id = element.getAttribute("data-productId");
-        console.log(category_id)
-        console.log(product_id)
-        // Set Data From Local Storage
-        localStorage.setItem("productDetails", JSON.stringify({ 'category_id': category_id, "product_id": product_id }));
-    })
-})
