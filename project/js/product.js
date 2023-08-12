@@ -1,16 +1,33 @@
-const URL = 'http://127.0.0.1:8000';
+
+
+// const URL = 'http://127.0.0.1:8000';
+const URL = "";
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
 
 // URL API
-const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;
-const urlApiAllData = "http://127.0.0.1:8000/api/user/products";
+// const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;
+// const urlApiAllData = "http://127.0.0.1:8000/api/user/products";
+
+const urlApi = `json/da.json`;
+const urlApiAllData = "json/data.json";
 
 
+// Get Data From Local Storage
+function getDataLocal() {
+    const products = JSON.parse(localStorage.getItem("products"));
+    return products === null ? [] : products;
+}
 
+// Set Data In local Storage
+function setDataLocal(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+}
 
+// Storage Data
+let listItems = getDataLocal();
 
 
 // Get Element
@@ -24,7 +41,7 @@ fetch(urlApi).then(
     (result) => result.json()
 ).then(
     (data) => {
-        addProduct(data.data);
+        addProduct(data);
     }
 )
 
@@ -92,11 +109,41 @@ function addProduct(data) {
 
     let selected = document.getElementById("selected");
     selected.addEventListener("change", (select) => {
-        console.log(+selected.value)
-        console.log(+quantity.value)
         document.getElementById("discountP").innerHTML = "EGP " + (+quantity.value * data.discount[+selected.value]) + `<del id="priceDel">EGP ${+quantity.value * data.price[+selected.value]}</del>`;
     })
+
+
+    // Choose Colors
+    let itemsColor = document.querySelectorAll("ul.colors li");
+    let colorChoose = "white"; // Defualt Color
+    itemsColor.forEach(itemColor => {
+        itemColor.addEventListener("click", () => {
+            itemsColor.forEach(item => item.classList.remove("active"));
+            itemColor.classList.add("active");
+            document.getElementById("chooseColor").innerHTML = itemColor.id;
+            colorChoose = itemColor.id;
+        })
+    })
+
+
+    // Add To Card
+    let addCardd = document.getElementById("addCardd");
+    addCardd.addEventListener("click", () => {
+        addToCard(data.product_name, data.size[+selected.value], data.discount[+selected.value], +quantity.value, colorChoose)
+    })
 }
+
+// ADD To Cart
+function addToCard(title, size, discount, quantity, color = "white") {
+    let id = listItems.length === 0 ? 0 : listItems[listItems.length - 1].id + 1;
+    // Create Object Task Store Text and Place
+    const newPrduct = { title, size, discount, quantity, id, color };
+    listItems = getDataLocal();
+    listItems.push(newPrduct);
+    // Add Object In Local Storage
+    setDataLocal(listItems);
+}
+
 
 
 // Call Date
@@ -104,7 +151,7 @@ fetch(urlApiAllData).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
-        dataAll = dataApi.data;
+        let dataAll = dataApi.data;
         showProducts(dataAll)
     }
 )
@@ -162,8 +209,6 @@ function addProducts(product) {
         })
     })
 }
-
-
 
 
 
