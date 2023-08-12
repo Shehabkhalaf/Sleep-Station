@@ -48,11 +48,27 @@ fetch(urlApi).then(
 // Add Products
 
 function addProduct(data) {
+
+
     sliderImages.innerHTML = `
-        ${data.image.map((img, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
-            <img src=${URL}${data.img} class="d-block" alt="...">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            ${data.image.map((img, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "class=carousel-item"}>
+                <img src="${URL}${img}" class="d-block" alt="..." />
+            </div>
+            `).join(" ")}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        `).join(" ")}
     `
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
@@ -174,7 +190,7 @@ function addProducts(product) {
         // create div
         let div = document.createElement("div");
         // Add class
-        div.setAttribute('class', "col-lg-5 mb-3")
+        div.setAttribute('class', "col-lg-4 col-md-6 mb-3")
         div.setAttribute('data-id', element.product_id)
         div.innerHTML = `
                 <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>

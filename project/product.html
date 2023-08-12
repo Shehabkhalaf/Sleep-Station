@@ -88,21 +88,8 @@
     <div class="details overflow-hidden pt-5 pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12 position-relative image">
-                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner" id="sliderImages">
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div class="col-lg-6 col-md-12 position-relative image"  id="sliderImages">
+
                 </div>
                 <div class="col-lg-6 col-md-12" id="detailsContainer">
                 </div>
@@ -113,8 +100,9 @@
 
     <div class="productsSame pt-5 pb-5">
         <div class="container">
-            <h1 class="text-center">related products</h1>
-            <div class="boxes row products" id="boxes">
+            <h1 class="text-center" style="color: #28b8c0;">related products</h1>
+            <div class="border w-25 mx-auto mt-3"></div>
+            <div class="boxes row products mt-5" id="boxes">
             </div>
         </div>
     </div>
@@ -201,10 +189,7 @@
     <!-- File Js Wow -->
     <script src="./js/wow.min.js"></script>
     <!-- File Js Product -->
-    <script src="./js/product.js" type="module"></script>
-    <!-- File Js localStorage -->
-    <script src="./js/localStorage.js" type="module"></script>
-    
+    <script src="./js/product.js" type="module"></script>    
     <script>
         new WOW().init();
         let buttonScroll = document.getElementById("buttonScroll");

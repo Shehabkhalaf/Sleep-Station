@@ -27,6 +27,27 @@
                         "800gm,128*200",
                         "100g,505*70"
                     ]
+                },
+                {
+                    "product_id": 1,
+                    "product_name": "pillow",
+                    "description": "undefined",
+                    "color": "white | code",
+                    "discount": 0,
+                    "stock": 15,
+                    "images": [
+                        "images/Hollow-Fiber-Quilt/Quilt-1.jpg",
+                        "images/Hollow-Fiber-Quilt/Quilt-2.jpg"
+                    ],
+                    "ratings": null,
+                    "price": [
+                        "210",
+                        "180"
+                    ],
+                    "size": [
+                        "800gm,128*200",
+                        "100g,505*70"
+                    ]
                 }
             ]
         },
