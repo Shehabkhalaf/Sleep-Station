@@ -1,12 +1,14 @@
-// URL API
-const urlApi = "json/da.json";
-const urlApiAllData = "json/data.json";
-
-
+const URL = 'http://127.0.0.1:8000';
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
-const productId = productDetails.product_id;
+const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
+
+// URL API
+const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;
+const urlApiAllData = "http://127.0.0.1:8000/api/user/products";
+
+
 
 
 
@@ -22,18 +24,22 @@ fetch(urlApi).then(
     (result) => result.json()
 ).then(
     (data) => {
-        addProduct(data);
+        console.log(data.data);
+        let x = data.data.color
+        console.log(x) 
+        addProduct(data.data);
     }
 )
 
 // Add Products
+
 function addProduct(data) {
-    // sliderImages.innerHTML = `
-    //     ${data.color.map((colorType, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
-    //         <img src=${data.images[index]} class="d-block" alt="...">
-    //     </div>
-    //     `).join(" ")}
-    // `
+    sliderImages.innerHTML = `
+        ${data.color.map((colorType, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
+            <img src=${data.images[index]} class="d-block" alt="...">
+        </div>
+        `).join(" ")}
+    `
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
             <h2 class="mt-5">${data.product_name}</h2>
@@ -130,7 +136,7 @@ function addProducts(product) {
                 <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
                     <div class="overflow-hidden">
                         <div class="image overflow-hidden" id="card" data-id="${element.id}">
-                            <img src=${element.images[0]} class="card-img-top">
+                            <img src=${URL}${element.images[0]} class="card-img-top">
                         </div>
                         <div class="card-body">
                             <div class="title mb-2">
@@ -159,5 +165,8 @@ function addProducts(product) {
         })
     })
 }
+
+
+
 
 

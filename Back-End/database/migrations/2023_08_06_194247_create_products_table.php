@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->text('description');
             $table->string('color');
-            $table->double('discount')->default(0.0);
+            $table->string('discount')->default(0.0);
             $table->integer('stock')->nullable();
             $table->string('image')->nullable();
             $table->text('size')->nullable();
