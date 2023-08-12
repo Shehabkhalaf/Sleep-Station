@@ -1,4 +1,5 @@
 const URL = 'http://127.0.0.1:8000';
+
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
@@ -35,7 +36,7 @@ fetch(urlApi).then(
     (result) => result.json()
 ).then(
     (data) => {
-        addProduct(data);
+        addProduct(data.data);
     }
 )
 
