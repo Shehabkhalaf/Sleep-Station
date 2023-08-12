@@ -26,11 +26,11 @@ class ShowProduct extends JsonResource
             'category_name' => $this->category->title,
             'description' => $this->description,
             'color' => json_decode($this->color, true),
-            'discount' => $this->discount,
+            'discount' => json_decode($this->discount),
             'stock' => $this->stock,
             'image' => $imageUrls,
-            'size' =>  json_decode($this->size,true),
-            'price' =>  json_decode($this->price,true) 
+            'size' =>  json_decode($this->size, true),
+            'price' =>  json_decode($this->price, true)
         ];
     }
 }
