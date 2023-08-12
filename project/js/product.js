@@ -24,9 +24,6 @@ fetch(urlApi).then(
     (result) => result.json()
 ).then(
     (data) => {
-        console.log(data.data);
-        let x = data.data.color
-        console.log(x) 
         addProduct(data.data);
     }
 )
@@ -35,16 +32,16 @@ fetch(urlApi).then(
 
 function addProduct(data) {
     sliderImages.innerHTML = `
-        ${data.color.map((colorType, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
-            <img src=${data.images[index]} class="d-block" alt="...">
+        ${data.image.map((img, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "carousel-item"}>
+            <img src=${URL}${data.img} class="d-block" alt="...">
         </div>
         `).join(" ")}
     `
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
             <h2 class="mt-5">${data.product_name}</h2>
-            <p class="price" id="discountP">EGP ${data.price[0]} <del id="priceDel">EGP
-                    ${data.discount[0]}</del></p>
+            <p class="price" id="discountP">EGP ${data.discount[0]} <del id="priceDel">EGP
+                    ${data.price[0]}</del></p>
             <div class="description">${data.description}</div>
             <div class="form">
                 <div class="row">
