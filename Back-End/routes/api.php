@@ -74,7 +74,7 @@ Route::prefix('user')->group(function () {
         Route::post('/email/verification-notification', 'sendVerification')->middleware('auth:sanctum');
         Route::get('/email/verify/{id}/{hash}', 'verify')->middleware('auth:sanctum')->name('verification.verify');
     });
-    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    //Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ###############User Controller#################
         Route::controller(UserUserController::class)->group(function () {
             Route::get('home', 'index');
@@ -92,5 +92,5 @@ Route::prefix('user')->group(function () {
         Route::controller(UserOfferController::class)->group(function () {
             Route::get('all_offers', 'allOffers');
         });
-    });
+    //});
 });
