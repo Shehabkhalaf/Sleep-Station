@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="col-10">
                                         <input type="text" id="email" class="form-control"
-                                            aria-describedby="passwordHelpInline" value="">
+                                            aria-describedby="passwordHelpInline" value="" readonly>
                                     </div>
                                 </div>
                                 <div class="row g-3 align-items-center mb-2">
@@ -226,6 +226,42 @@
     <script src="./js/wow.min.js"></script>
     <script>
         new WOW().init();
+        let nameInput = document.getElementById("name");
+        let emailInput = document.getElementById("email");
+        let locationInput = document.getElementById("location");
+        let phoneInput = document.getElementById("phone");
+
+
+        let dataUser = JSON.parse(localStorage.getItem("userData"));
+        nameInput.value = dataUser.name;
+        emailInput.value = dataUser.email;
+        locationInput.value = dataUser.location;
+        phoneInput.value = dataUser.phone;
+        document.getElementById("updateData").addEventListener("click", () => {
+            const formData = new FormData();
+            formData.append('name', nameInput.value);
+            formData.append('phone', phoneInput.value)
+            formData.append('address', locationInput.value)
+            fetch('http://127.0.0.1:8000/api/user/register', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${dataUser.token}`
+                },
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status) {
+                        localStorage.setItem("userData", JSON.stringify(data.data));
+                        window.location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        })
+
+
     </script>
 </body>
 
