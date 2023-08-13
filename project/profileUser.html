@@ -243,24 +243,28 @@
     <script src="./js/wow.min.js"></script>
     <script>
         new WOW().init();
-        let emailUser = JSON.parse(localStorage.getItem("emailUser"));
-        fetch(`http://localhost/footer-hunter/implementation/getUserData.php?email=${emailUser}`).then(res => res.json())
-            .then(data => {
-                document.getElementById("name").value = data[0].name;
-                document.getElementById("email").value = data[0].email;
-                document.getElementById("location").value = data[0].location;
-                document.getElementById("phone").value = data[0].phone;
-                fetch(`http://localhost/footer-hunter/implementation/getOrdersUser.php?id=${data[0].id}`)
-                    .then(res => res.json())
-                    .then(dataAll => {
-                        document.getElementById("totalOrders").value = dataAll.length;
-                        if (dataAll.length === 0) {
-                            document.getElementById("totalSales").value = 0;
-                        } else {
-                            document.getElementById("totalSales").value = dataAll.map(e => +e.totalPrice).reduce((acc, ele) => acc + ele);
-                        }
-                    })
-            })
+        let dataUser = JSON.parse(localStorage.getItem("userData"));
+        document.getElementById("name").value = dataUser.name;
+        document.getElementById("email").value = dataUser.email;
+        document.getElementById("location").value = dataUser.location;
+        document.getElementById("phone").value = dataUser.phone;
+        // fetch(`http://localhost/footer-hunter/implementation/getUserData.php?email=${emailUser}`).then(res => res.json())
+        //     .then(data => {
+        //         document.getElementById("name").value = data[0].name;
+        //         document.getElementById("email").value = data[0].email;
+        //         document.getElementById("location").value = data[0].location;
+        //         document.getElementById("phone").value = data[0].phone;
+        //         fetch(`http://localhost/footer-hunter/implementation/getOrdersUser.php?id=${data[0].id}`)
+        //             .then(res => res.json())
+        //             .then(dataAll => {
+        //                 document.getElementById("totalOrders").value = dataAll.length;
+        //                 if (dataAll.length === 0) {
+        //                     document.getElementById("totalSales").value = 0;
+        //                 } else {
+        //                     document.getElementById("totalSales").value = dataAll.map(e => +e.totalPrice).reduce((acc, ele) => acc + ele);
+        //                 }
+        //             })
+        //     })
 
 
     </script>
