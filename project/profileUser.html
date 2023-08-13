@@ -248,24 +248,13 @@
         document.getElementById("email").value = dataUser.email;
         document.getElementById("location").value = dataUser.location;
         document.getElementById("phone").value = dataUser.phone;
-        // fetch(`http://localhost/footer-hunter/implementation/getUserData.php?email=${emailUser}`).then(res => res.json())
-        //     .then(data => {
-        //         document.getElementById("name").value = data[0].name;
-        //         document.getElementById("email").value = data[0].email;
-        //         document.getElementById("location").value = data[0].location;
-        //         document.getElementById("phone").value = data[0].phone;
-        //         fetch(`http://localhost/footer-hunter/implementation/getOrdersUser.php?id=${data[0].id}`)
-        //             .then(res => res.json())
-        //             .then(dataAll => {
-        //                 document.getElementById("totalOrders").value = dataAll.length;
-        //                 if (dataAll.length === 0) {
-        //                     document.getElementById("totalSales").value = 0;
-        //                 } else {
-        //                     document.getElementById("totalSales").value = dataAll.map(e => +e.totalPrice).reduce((acc, ele) => acc + ele);
-        //                 }
-        //             })
-        //     })
-
+        fetch(`http://127.0.0.1:8000/api/user/all_orders?token=${dataUser.token}`).then(res => res.json())
+            .then(data => {
+                let dataAll = data.data;
+                document.getElementById("phone").value = data[0].phone;
+                document.getElementById("totalOrders").value = dataAll.lenght;
+                document.getElementById("totalSales").value = dataAll.map(e => +e.price).reduce((acc, ele) => acc + ele);
+            })
 
     </script>
 </body>
