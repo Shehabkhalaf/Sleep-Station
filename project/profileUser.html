@@ -256,7 +256,11 @@
         }).then(res => res.json())
             .then(data => {
                 let dataAll = data.data;
-                document.getElementById("totalOrders").value = dataAll.lenght;
+                let count = 0;
+                dataAll.forEach(element => {
+                    count++;
+                });
+                document.getElementById("totalOrders").value = count;
                 document.getElementById("totalSales").value = dataAll.map(e => +e.price).reduce((acc, ele) => acc + ele);
             })
 
