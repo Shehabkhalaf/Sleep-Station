@@ -14,10 +14,6 @@ buttonSubmit.addEventListener('click', function (event) {
     const formData = new FormData();
     formData.append('email',email.value);
     formData.append('password',password.value)
-    formData.append('password',password.value)
-    formData.append('password',password.value)
-    formData.append('password',password.value)
-
 
     fetch('http://127.0.0.1:8000/api/user/login', {
         method: 'POST',
@@ -39,5 +35,3 @@ buttonSubmit.addEventListener('click', function (event) {
 
 
 new WOW().init();
-
-
