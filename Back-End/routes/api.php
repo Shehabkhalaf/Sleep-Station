@@ -74,14 +74,14 @@ Route::prefix('user')->group(function () {
         Route::post('/email/verification-notification', 'sendVerification')->middleware('auth:sanctum');
         Route::get('/email/verify/{id}/{hash}', 'verify')->middleware('auth:sanctum')->name('verification.verify');
     });
-    //Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
         ###############User Controller#################
         Route::controller(UserUserController::class)->group(function () {
             Route::get('home', 'index');
-            Route::get('products', 'allProducts');
+            Route::get('products', 'allProducts')->withoutMiddleware(['auth:sanctum']);;
             Route::post('update', 'updateData');
-            Route::post('Contact_Us', 'contactUs')->withoutMiddleware(['auth:sanctum', 'verified']);
-            Route::get('show_product/{id}', 'showProduct');
+            Route::post('Contact_Us', 'contactUs')->withoutMiddleware(['auth:sanctum']);
+            Route::get('show_product/{id}', 'showProduct')->withoutMiddleware(['auth:sanctum']);;
         });
         ###############Order Controller################
         Route::controller(OrderController::class)->group(function () {
@@ -90,7 +90,7 @@ Route::prefix('user')->group(function () {
         });
         ##############Offer Controller#################
         Route::controller(UserOfferController::class)->group(function () {
-            Route::get('all_offers', 'allOffers');
+            Route::get('all_offers', 'allOffers')->withoutMiddleware(['auth:sanctum']);;
         });
-    //});
+    });
 });
