@@ -1,9 +1,5 @@
-let name = document.getElementById('name');
 let email = document.getElementById('email');
-let phone = document.getElementById('phone');
 let password = document.getElementById('password');
-let conPassword = document.getElementById('conPassword');
-let form = document.getElementById('submit');
 let buttonSubmit = document.getElementById('buttonSubmit');
 
 
@@ -11,26 +7,28 @@ let buttonSubmit = document.getElementById('buttonSubmit');
 
 buttonSubmit.addEventListener('click', function (event) {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append('email',email.value);
-    formData.append('password',password.value)
-
-    fetch('http://127.0.0.1:8000/api/user/login', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            // if (data.success) {
-            //     // Do something else after successful login
-            // } else {
-            //     // status.textContent = 'Login failed. Please try again.';
-            // }
+    if (
+        email.value.trim() &&
+        password.value.trim() 
+    ) {
+        const formData = new FormData();
+        formData.append('email', email.value)
+        formData.append('password', password.value)
+        fetch('http://127.0.0.1:8000/api/user/login', {
+            method: 'POST',
+            body: formData
         })
-        .catch(error => {
-            status.textContent = 'An error occurred. Please try again later.';
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.status) {
+                    localStorage.setItem("userData", JSON.stringify(data.data));
+                    window.location.href = 'products.html'
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 });
 
 

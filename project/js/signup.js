@@ -4,40 +4,40 @@ let phone = document.getElementById('phone');
 let password = document.getElementById('password');
 let address = document.getElementById('address');
 let conPassword = document.getElementById('conPassword');
-let form = document.getElementById('submit');
 let buttonSubmit = document.getElementById('buttonSubmit');
-
-
 
 
 buttonSubmit.addEventListener('click', function (event) {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append('name',name.value);
-    formData.append('email',email.value)
-    formData.append('phone',phone.value)
-    formData.append('password',password.value)
-    formData.append('address',address.value)
-    formData.append('password',password.value)
-
-
-
-    fetch('http://127.0.0.1:8000/api/user/register', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            // if (data.success) {
-            //     // Do something else after successful login
-            // } else {
-            //     // status.textContent = 'Login failed. Please try again.';
-            // }
+    if (
+        name.value.trim() &&
+        email.value.trim() &&
+        phone.value.trim() &&
+        password.value.trim() &&
+        address.value.trim() &&
+        password.value.trim() === conPassword.value.trim()
+    ) {
+        const formData = new FormData();
+        formData.append('name', name.value);
+        formData.append('email', email.value)
+        formData.append('phone', phone.value)
+        formData.append('password', password.value)
+        formData.append('address', address.value)
+        fetch('http://127.0.0.1:8000/api/user/register', {
+            method: 'POST',
+            body: formData
         })
-        .catch(error => {
-            status.textContent = 'An error occurred. Please try again later.';
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.status) {
+                    localStorage.setItem("userData", JSON.stringify(data.data));
+                    window.location.href = 'products.html'
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 });
 
 
