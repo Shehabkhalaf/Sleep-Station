@@ -2,6 +2,7 @@ let name = document.getElementById('name');
 let email = document.getElementById('email');
 let phone = document.getElementById('phone');
 let password = document.getElementById('password');
+let address = document.getElementById('address');
 let conPassword = document.getElementById('conPassword');
 let form = document.getElementById('submit');
 let buttonSubmit = document.getElementById('buttonSubmit');
@@ -12,14 +13,16 @@ let buttonSubmit = document.getElementById('buttonSubmit');
 buttonSubmit.addEventListener('click', function (event) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('email',email.value);
+    formData.append('name',name.value);
+    formData.append('email',email.value)
+    formData.append('phone',phone.value)
     formData.append('password',password.value)
-    formData.append('password',password.value)
-    formData.append('password',password.value)
+    formData.append('address',address.value)
     formData.append('password',password.value)
 
 
-    fetch('http://127.0.0.1:8000/api/user/login', {
+
+    fetch('http://127.0.0.1:8000/api/user/register', {
         method: 'POST',
         body: formData
     })
