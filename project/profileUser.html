@@ -254,7 +254,6 @@
         }).then(res => res.json())
             .then(data => {
                 let dataAll = data.data;
-                document.getElementById("phone").value = data[0].phone;
                 document.getElementById("totalOrders").value = dataAll.lenght;
                 document.getElementById("totalSales").value = dataAll.map(e => +e.price).reduce((acc, ele) => acc + ele);
             })
