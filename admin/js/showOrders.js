@@ -3,52 +3,59 @@ let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/delivered_orders").then(
+fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
     (result) => result.json()
 ).then(
     (dataApi) => {
         dataAll = dataApi.data;
         // Call Function DataShow [TARGET: Add Data In Dom]
-        showUsers(dataAll)
-        // ADD Count Users 
+        showOrders(dataAll)
+        // ADD Count Orders 
         document.getElementById("numberOfUsers").innerHTML = dataAll.count;
-        // Search User
+        // Search Order
         document.getElementById("search").addEventListener("input", (e) => {
-            searchProduct(dataAll, e.target.value);
+            searchOrders(dataAll, e.target.value);
         })
 
         // Cancel Seacrh
         iconSearch.addEventListener("click", (e) => {
             search.value = "";
-            showProducts(dataAll)
+            showOrders(dataAll)
         })
     }
 )
 
 
 
-// // Show Products
-function showUsers(data) {
+// // Show Orders
+function showOrders(data) {
     bodyTable.innerHTML = ''
-    // Add Product In Dom
-    data.users.forEach((order, index) => {
+    // Add Order In Dom
+    data.forEach((order, index) => {
         let tr = document.createElement("tr");
         tr.innerHTML = `
-                        <td scope="col">${order.name}</td>
-                        <td scope="col">${order.email}</td>
-                        <td scope="col">${order.phone}</td>
-                        <td scope="col">${order.address}</td>
-                        <td scope="col">${order.address}</td>
+                        <td scope="col">${order.order_id}</td>
+                        <td scope="col">${order.user}</td>
+                        <td scope="col">
+                        <ul>
+                        ${product.price.map((price) => `
+                        <li>${price}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
+                        <td scope="col">${order.price}</td>
+                        <td scope="col">${order.ordered_at}</td>
                 `
         bodyTable.append(tr)
     });
 }
 
 // In Case User Writing In Input Search
-function searchProduct(dataAll, value) {
+function searchOrders(dataAll, value) {
     bodyTable.innerHTML = ''
     if (value === '') {
-        showUsers(dataAll);
+        showOrders(dataAll);
     } else {
         dataAll.users.forEach((user, index) => {
             if (user.name.toUpperCase().includes(value.toUpperCase())) {

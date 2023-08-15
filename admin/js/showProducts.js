@@ -44,7 +44,7 @@ function showProducts(data) {
                         ${product.price.map((price) => `
                         <li>${price}</li>
                         `
-        ).join(" ")}
+                        ).join(" ")}
                         </ul>
                         </td>
                         <td scope="col">
