@@ -3,13 +3,13 @@ let showMessages = document.getElementById("showMessages");
 
 // Call Product 
 function callData() {
-    fetch(`http://127.0.0.1:8000/api/admin/show_product`)
+    fetch(`http://127.0.0.1:8000/api/admin/all_messages`)
         .then((res) => res.json())
         .then((dataAPi) => {
             let dataALL = dataAPi.data.messages;
             showMessages.innerHTML = ''
             // In Case Fount Or Not fount
-            if (dataALL === []) {
+            if (dataAPi.data.count === 0) {
                 showMessages.innerHTML = `
                     <h5>There are no messages</h5>
                     `
