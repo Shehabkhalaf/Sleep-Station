@@ -30,7 +30,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $updated = $user->save();
         if ($updated) {
-            return $this->JsonResponse(201, 'Updated', $user->id);
+            return $this->JsonResponse(201, 'Updated', $user);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
