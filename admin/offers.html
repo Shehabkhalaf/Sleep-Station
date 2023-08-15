@@ -8,10 +8,8 @@
     <title>Sleep Station</title>
     <!--Bootstrap css file-->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css.map">
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/draggableList.css">
     <!-- File Css Main -->
     <link rel="stylesheet" href="./css/main.css">
     <!-- File Css Partner -->
@@ -29,16 +27,19 @@
                     <div class="dash">
                         <img src="./images/logo/logo.png" class="ps-3 pt-3 pb-3 img-fluid" alt="">
                         <ul>
-                            <li><a href="./index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+                            <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
                             <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
                             <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
                             <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
                                     Products</a></li>
+                                    <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
+                                    </li>
                             <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
                             </li>
-                            <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
+                            <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
+                            </li>
                             <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-                            <li><a class="active" href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
+                            <li><a  class="active" href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
                             <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
                                     Messages</a>
                             </li>
@@ -60,23 +61,19 @@
                                     <div class="navbar-nav">
                                         <div class="dash smallScreen">
                                             <ul>
-                                                <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a>
-                                                </li>
-                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i>
+                                                <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
+                                                <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
+                                                <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
                                                         Products</a></li>
-                                                <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i>
-                                                        Add Products</a></li>
-                                                <li><a href="./updateProduct.html"><i
-                                                            class="fa-solid fa-cart-arrow-down"></i> Update Products</a>
+                                                        <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
+                                                        </li>
+                                                <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
                                                 </li>
-                                                <li><a href="./addCategory.html"><i
-                                                            class="fa-solid fa-lines-leaning"></i> Add Category</a></li>
-                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i>
-                                                        Orders</a></li>
-                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a>
+                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
                                                 </li>
-                                                <li><a class="active" href="./offers.html"><i
-                                                            class="fa-solid fa-gifts"></i> Offers</a></li>
+                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
+                                                <li><a  class="active" href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
                                                 <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
                                                         Messages</a>
                                                 </li>
@@ -89,13 +86,13 @@
                         <div class="addCategory pt-5 ps-md-5">
                             <div class="container overflow-hidden">
                                 <div class="title">
-                                    <h1 class="mb-5">Add Category</h1>
+                                    <h1 class="mb-5">Add Promo Code</h1>
                                 </div>
                                 <form id="submit">
                                     <div class="row align-items-center">
                                         <div class="col-lg-5">
                                             <div class="mb-3">
-                                                <label for="promo" class="form-label">Name Category
+                                                <label for="promo" class="form-label">Promo Name
                                                 </label>
                                                 <input type="text" class="form-control" placeholder="e.g sleep125."
                                                     id="promo" required>
@@ -130,7 +127,7 @@
                                 </form>
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <div class="showData">
+                                        <div class="showData overflow-auto">
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
