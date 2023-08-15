@@ -1,14 +1,7 @@
-import {setData as setData , getData as getData} from "./localStorage.js";
-
 // Play Counter Animation And Scroll Down
 let btnn = document.querySelector(".scroll");
 let section = document.querySelector(".about");
 let y = document.querySelectorAll(".num");
-let links = document.querySelectorAll(".nav-link");
-let sectionAbout = document.querySelector("#about");
-let sectionProducts = document.querySelector("#products");
-let sectionContact = document.querySelector("#contact");
-let sectionHome = document.querySelector("#home");
 
 let started = !1;
 let start = !1;
@@ -41,45 +34,38 @@ window.onscroll = function () {
     btnn.onclick = function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
-    
-    if (window.scrollY >= sectionHome.offsetTop  - 500) {
-        links.forEach(link=>link.classList.remove("active"));
-        links[0].classList.add("active")
-    }
-    if (window.scrollY >= sectionAbout.offsetTop  - 500) {
-        links.forEach(link=>link.classList.remove("active"));
-        links[1].classList.add("active")
-    }
-    if (window.scrollY >= sectionProducts.offsetTop - 500){
-        links.forEach(link=>link.classList.remove("active"));
-        links[2].classList.add("active")
-    }
-    if (window.scrollY >= sectionContact.offsetTop - 500){
-        links.forEach(link=>link.classList.remove("active"));
-        links[3].classList.add("active")
-    }
 
 };
 
 
+let email = document.getElementById("email"),
+    phone = document.getElementById("phone"),
+    message = document.getElementById("message"),
+    name = document.getElementById("name");
 
-// GET Elements
-let count = document.getElementById("count");
-let formPromoCode = document.getElementById("formPromoCode")
 
-// Create Variable Storage Data From Local Storage
-let listItems = getData();
 
-// Default Form Contact
-formPromoCode.addEventListener("submit", (e) => {
-    e.preventDefault();
+document.getElementById('submitButton').addEventListener('click', () => {
+    document.getElementById('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', name.value);
+        formData.append('email', email.value);
+        formData.append('phone', phone.value);
+        formData.append('message', message.value);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/api/user/Contact_Us', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Done');
+            } else {
+                console.log('Failed');
+            }
+        };
+        xhr.send(formData);
+    });
 })
 
 
-// Counter Cart
-count.innerHTML = listItems.length
 
-
-
-
-
+new WOW().init();
