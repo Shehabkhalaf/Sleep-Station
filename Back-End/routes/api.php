@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
     ##########/*Product Module*/##########
     Route::controller(ProductController::class)->group(function () {
         Route::post('add_product', 'store');
-        Route::get('all_products', 'getCategoriesWithProducts');
+        Route::get('all_products', 'allProducts');
         Route::get('show_product/{id}', 'showProductWithCategory');
         Route::post('update_product', 'updateProduct');
         Route::post('delete_product', 'deleteProduct');

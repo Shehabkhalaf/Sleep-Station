@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddProductRequest;
+use App\Http\Resources\AllProductsResource;
 use App\Http\Resources\ProductsResource;
 use App\Http\Resources\ShowProduct;
 use App\Models\Category;
@@ -133,5 +134,11 @@ class ProductController extends Controller
         } else {
             return $this->JsonResponse(500, 'Something went wrong', $deleted);
         }
+    }
+    public function allProducts()
+    {
+        $products = Product::all();
+        $all_products = AllProductsResource::collection($products);
+        return $this->JsonResponse(200, 'All Products are here', $all_products);
     }
 }
