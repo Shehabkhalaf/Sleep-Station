@@ -48,3 +48,6 @@ function showMessages(data) {
         })
     })
 }
+
+
+callData();
