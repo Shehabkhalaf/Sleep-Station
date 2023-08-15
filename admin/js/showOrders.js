@@ -38,8 +38,8 @@ function showOrders(data) {
                         <td scope="col">${order.user}</td>
                         <td scope="col">
                         <ul>
-                        ${product.price.map((price) => `
-                        <li>${price}</li>
+                        ${product.details.map((details) => `
+                        <li>${details}</li>
                         `
                         ).join(" ")}
                         </ul>
