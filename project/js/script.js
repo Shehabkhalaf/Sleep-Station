@@ -47,7 +47,6 @@ let email = document.getElementById("email"),
 
 document.getElementById('submitButton').addEventListener('click', () => {
     document.getElementById('form').addEventListener('submit', function (e) {
-        e.preventDefault();
         const formData = new FormData();
         formData.append('name', name.value);
         formData.append('email', email.value);
