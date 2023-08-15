@@ -11,19 +11,19 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     use ApiResponse;
-    public function undeliveredOrders()
+    public function cashOrders()
     {
         $orders = AdminOrders::collection(AdminOrder::where('paid', 'cash')->get());
         return $this->JsonResponse(200, '', $orders);
     }
-    public function deliverOrder($id)
+    public function deliverOrder(Request $request)
     {
-        $order = AdminOrder::find($id);
-        $order->status = 'delivered';
+        $order = AdminOrder::find($request->id);
+        $order->paid = 'paid';
         $delivered = $order->save();
         return $delivered ? $this->JsonResponse(200, 'Order Delivered', $order) : $this->JsonResponse(500, 'Nothing happened');
     }
-    public function deliveredOrders()
+    public function paidOrders()
     {
         $orders = AdminOrders::collection(AdminOrder::where('paid', 'paid')->get());
         return $this->JsonResponse(200, 'Delivered Orders', $orders);
