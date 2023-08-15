@@ -22,7 +22,7 @@ class AdminOrders extends JsonResource
             'price' => $this->total_price,
             'paid_method' => $this->paid,
             'promocode' => $this->promocode,
-            'ordered_at' => $this->created_at
+            'ordered_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s')
         ];
     }
 }
