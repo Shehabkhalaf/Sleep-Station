@@ -26,11 +26,3 @@ submit.addEventListener('submit', function (e) {
 
 
 
-// fetch("http://127.0.0.1:8000/api/admin/all_categories").then(
-//     (result) => result.json()
-// ).then(
-//     (dataApi) => {
-//         dataAll = dataApi.data;
-//         console.log(dataApi)
-//     }
-// )
