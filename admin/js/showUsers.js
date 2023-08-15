@@ -9,7 +9,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
     (dataApi) => {
         dataAll = dataApi.data;
         // Call Function DataShow [TARGET: Add Data In Dom]
-        showUsers(dataAll)
+        showProducts(dataAll)
         // ADD Count Users 
         document.getElementById("numberOfUsers").innerHTML = dataAll.count;
         // Search User
@@ -27,7 +27,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
 
 
 // // Show Products
-function showUsers(data) {
+function showProducts(data) {
     bodyTable.innerHTML = ''
     // Add Product In Dom
     data.users.forEach((user, index) => {
@@ -46,7 +46,7 @@ function showUsers(data) {
 function searchProduct(dataAll, value) {
     bodyTable.innerHTML = ''
     if (value === '') {
-        showUsers(dataAll);
+        showProducts(dataAll);
     } else {
         dataAll.users.forEach((user, index) => {
             if (user.name.toUpperCase().includes(value.toUpperCase())) {

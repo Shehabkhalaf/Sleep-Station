@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    
+
     <div class="admin">
         <div class="container-fluid">
             <div class="row">
@@ -32,6 +32,8 @@
                             <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
                             <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
                                     Products</a></li>
+                                    <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
+                                    </li>
                             <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
                             </li>
                             <li><a class="active" href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
@@ -67,6 +69,8 @@
                                                         Add Products</a></li>
                                                 <li><a href="./updateProduct.html"><i
                                                             class="fa-solid fa-cart-arrow-down"></i> Update Products</a>
+                                                </li>
+                                                <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
                                                 </li>
                                                 <li><a href="./addCategory.html"><i
                                                             class="fa-solid fa-lines-leaning"></i> Add Category</a></li>
@@ -104,7 +108,7 @@
                                         <button class="close" id="iconSearch"><i class="fa-solid fa-xmark"></i></button>
                                     </div>
                                     <div>
-                                        <p class="numberOfUsers">Number Of Orders : <span id="numberOfUsers">20</span>
+                                        <p class="numberOfUsers">Number Of Orders : <span id="numberOfUsers"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -113,8 +117,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Order_id</th>
+                                                <th scope="col">User (INF)</th>
                                                 <th scope="col">Order_details</th>
                                                 <th scope="col">price</th>
+                                                <th scope="col">Date</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bodyTable">
