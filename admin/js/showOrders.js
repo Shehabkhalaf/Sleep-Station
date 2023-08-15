@@ -38,7 +38,7 @@ function showOrders(data) {
                         <td scope="col">${order.user}</td>
                         <td scope="col">
                         <ul>
-                        ${product.details.map((details) => `
+                        ${order.details.map((details) => `
                         <li>${details}</li>
                         `
                         ).join(" ")}
