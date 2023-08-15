@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 ########################/*Admin Module*/##########################
-Route::get('admin/dachboard', [AccessController::class, 'permitted'])->middleware('admin.access');
+Route::post('admin/login', [AccessController::class, 'login']);
 Route::prefix('admin')->group(function () {
     Route::controller(ContactUsController::class)->group(function () {
         Route::get('all_messages', 'allMessages');
