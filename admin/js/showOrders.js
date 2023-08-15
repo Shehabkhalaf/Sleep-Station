@@ -57,8 +57,8 @@ function searchOrders(dataAll, value) {
     if (value === '') {
         showOrders(dataAll);
     } else {
-        dataAll.users.forEach((user, index) => {
-            if (user.name.toUpperCase().includes(value.toUpperCase())) {
+        dataAll.forEach((order, index) => {
+            if (order.toUpperCase().includes(value.toUpperCase())) {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
                             <td scope="col">${user.name}</td>
