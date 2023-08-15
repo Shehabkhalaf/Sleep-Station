@@ -33,7 +33,7 @@ Route::post('admin/login', [AccessController::class, 'login']);
 Route::prefix('admin')->group(function () {
     Route::controller(ContactUsController::class)->group(function () {
         Route::get('all_messages', 'allMessages');
-        Route::get('reply_message/{id}', 'replyMessage');
+        Route::post('delete_message', 'deleteMessage');
     });
     ##########/*Category Module*/##########
     ROute::controller(CategoryController::class)->group(function () {
