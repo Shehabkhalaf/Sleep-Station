@@ -83,7 +83,7 @@ function searchProduct(dataAll, value) {
         showProducts(dataAll);
     } else {
         dataAll.forEach((product, index) => {
-            if (product.name.toUpperCase().includes(value.toUpperCase())) {
+            if (product.product_name.toUpperCase().includes(value.toUpperCase())) {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
                 <td scope="col">${product.product_name}</td>
