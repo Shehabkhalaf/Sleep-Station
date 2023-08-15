@@ -58,14 +58,22 @@ function searchOrders(dataAll, value) {
         showOrders(dataAll);
     } else {
         dataAll.forEach((order, index) => {
-            if (order.toUpperCase().includes(value.toUpperCase())) {
+            if (order.user.toUpperCase().includes(value.toUpperCase())) {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
-                            <td scope="col">${user.name}</td>
-                            <td scope="col">${user.email}</td>
-                            <td scope="col">${user.phone}</td>
-                            <td scope="col">${user.address}</td>
-                    `
+                <td scope="col">${order.order_id}</td>
+                <td scope="col">${order.user}</td>
+                <td scope="col">
+                <ul>
+                ${product.price.map((price) => `
+                <li>${price}</li>
+                `
+                ).join(" ")}
+                </ul>
+                </td>
+                <td scope="col">${order.price}</td>
+                <td scope="col">${order.ordered_at}</td>
+                `
                 bodyTable.append(tr)
             }
         });
