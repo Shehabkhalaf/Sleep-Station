@@ -3,13 +3,13 @@ let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/all_users").then(
+fetch("http://127.0.0.1:8000/api/admin/all_products").then(
     (result) => result.json()
 ).then(
     (dataApi) => {
         dataAll = dataApi.data;
         // Call Function DataShow [TARGET: Add Data In Dom]
-        showUsers(dataAll)
+        showProducts(dataAll)
         // ADD Count Users 
         document.getElementById("numberOfUsers").innerHTML = dataAll.count;
         // Search User
@@ -27,16 +27,48 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
 
 
 // // Show Products
-function showUsers(data) {
+function showProducts(data) {
     bodyTable.innerHTML = ''
     // Add Product In Dom
-    data.users.forEach((user, index) => {
+    data.forEach((product, index) => {
         let tr = document.createElement("tr");
         tr.innerHTML = `
-                        <td scope="col">${user.name}</td>
-                        <td scope="col">${user.email}</td>
-                        <td scope="col">${user.phone}</td>
-                        <td scope="col">${user.address}</td>
+                        <td scope="col">${product.product_name}</td>
+                        <td scope="col">${product.category_name}</td>
+                        <td scope="col">${product.description}</td>
+                        <td scope="col">${product.stock}</td>
+                        <td scope="col">
+                        <ul>
+                        ${product.price.map((price) => `
+                        <li>${price}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
+                        <td scope="col">
+                        <ul>
+                        ${product.discount.map((discount) => `
+                        <li>${discount}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
+                        <td scope="col">
+                        <ul>
+                        ${product.size.map((size) => `
+                        <li>${size}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
+                        <td scope="col">
+                        <ul>
+                        ${product.color.map((color) => `
+                        <li>${color.split("|")[1]}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
                 `
         bodyTable.append(tr)
     });
@@ -46,17 +78,49 @@ function showUsers(data) {
 function searchProduct(dataAll, value) {
     bodyTable.innerHTML = ''
     if (value === '') {
-        showUsers(dataAll);
+        showProducts(dataAll);
     } else {
-        dataAll.users.forEach((user, index) => {
-            if (user.name.toUpperCase().includes(value.toUpperCase())) {
+        dataAll.forEach((product, index) => {
+            if (product.name.toUpperCase().includes(value.toUpperCase())) {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
-                            <td scope="col">${user.name}</td>
-                            <td scope="col">${user.email}</td>
-                            <td scope="col">${user.phone}</td>
-                            <td scope="col">${user.address}</td>
-                    `
+                <td scope="col">${product.product_name}</td>
+                <td scope="col">${product.category_name}</td>
+                <td scope="col">${product.description}</td>
+                <td scope="col">${product.stock}</td>
+                <td scope="col">
+                <ul>
+                ${product.price.map((price) => `
+                <li>${price}</li>
+                `
+                ).join(" ")}
+                </ul>
+                </td>
+                <td scope="col">
+                <ul>
+                ${product.discount.map((discount) => `
+                <li>${discount}</li>
+                `
+                ).join(" ")}
+                </ul>
+                </td>
+                <td scope="col">
+                <ul>
+                ${product.size.map((size) => `
+                <li>${size}</li>
+                `
+                ).join(" ")}
+                </ul>
+                </td>
+                <td scope="col">
+                <ul>
+                ${product.color.map((color) => `
+                <li>${color.split("|")[1]}</li>
+                `
+                ).join(" ")}
+                </ul>
+                </td>
+        `
                 bodyTable.append(tr)
             }
         });

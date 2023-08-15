@@ -3,7 +3,7 @@ let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/all_users").then(
+fetch("http://127.0.0.1:8000/api/admin/delivered_orders").then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -16,6 +16,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
         document.getElementById("search").addEventListener("input", (e) => {
             searchProduct(dataAll, e.target.value);
         })
+
         // Cancel Seacrh
         iconSearch.addEventListener("click", (e) => {
             search.value = "";
@@ -30,13 +31,14 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
 function showUsers(data) {
     bodyTable.innerHTML = ''
     // Add Product In Dom
-    data.users.forEach((user, index) => {
+    data.users.forEach((order, index) => {
         let tr = document.createElement("tr");
         tr.innerHTML = `
-                        <td scope="col">${user.name}</td>
-                        <td scope="col">${user.email}</td>
-                        <td scope="col">${user.phone}</td>
-                        <td scope="col">${user.address}</td>
+                        <td scope="col">${order.name}</td>
+                        <td scope="col">${order.email}</td>
+                        <td scope="col">${order.phone}</td>
+                        <td scope="col">${order.address}</td>
+                        <td scope="col">${order.address}</td>
                 `
         bodyTable.append(tr)
     });
