@@ -25,7 +25,7 @@ function callData() {
             let tr = document.createElement("tr");
             tr.innerHTML = `
                         <td scope="col">${user.category_name}</td>
-                        <td scope="col">${user.nam_of_products}</td>
+                        <td scope="col">${user.num_of_products}</td>
                 `
             bodyTable.append(tr)
         });
