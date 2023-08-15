@@ -5,7 +5,7 @@ let dataUser = JSON.parse(localStorage.getItem("userData"));
 // Get Elements
 document.getElementById("name").value = dataUser.name;
 document.getElementById("email").value = dataUser.email;
-document.getElementById("location").value = dataUser.location;
+document.getElementById("location").value = dataUser.address;
 document.getElementById("phone").value = dataUser.phone;
 
 // Call DATA From Api
