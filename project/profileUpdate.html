@@ -239,6 +239,7 @@
         phoneInput.value = dataUser.phone;
         document.getElementById("updateData").addEventListener("click", () => {
             const formData = new FormData();
+            formData.append('token', dataUser.token);
             formData.append('name', nameInput.value);
             formData.append('phone', phoneInput.value)
             formData.append('address', locationInput.value)
