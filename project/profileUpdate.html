@@ -245,6 +245,9 @@
             formData.append('address', locationInput.value)
             fetch('http://127.0.0.1:8000/api/user/update', {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${dataUser.token}`
+                },
                 body: formData
             })
                 .then(response => response.json())
