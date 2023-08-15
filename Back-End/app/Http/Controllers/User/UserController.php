@@ -24,14 +24,13 @@ class UserController extends Controller
     }
     public function updateData(Request $request)
     {
-        $user = auth()->user();
-        $user = User::find($user->id);
-        $user->name = $request->input('name');
-        $user->address = $request->input('location');
-        $user->phone = $request->input('phone');
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
         $updated = $user->save();
         if ($updated) {
-            return $this->JsonResponse(201, 'Updated', $user);
+            return $this->JsonResponse(201, 'Updated', $user->id);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
