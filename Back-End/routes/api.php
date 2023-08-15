@@ -47,7 +47,7 @@ Route::prefix('admin')->group(function () {
         Route::get('all_products', 'getCategoriesWithProducts');
         Route::get('show_product/{id}', 'showProductWithCategory');
         Route::post('update_product', 'updateProduct');
-        Route::get('delete_product/{id}', 'deleteProduct');
+        Route::get('delete_product', 'deleteProduct');
     });
     #########/*Offers Module*/#########
     Route::controller(OfferController::class)->group(function () {
