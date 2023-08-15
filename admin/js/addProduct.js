@@ -32,7 +32,7 @@ addColor.addEventListener('click', function (e) {
         tr.setAttribute("id", countIndex);
         tr.innerHTML = `
                     <td scope="col">${colorName.value}</td>
-                    <td scope="col">${colorInput.value}</td>
+                    <td scope="col"  style="background-color:${colorInput.value};"></td>
                     <td scope="col">
                         <button class="deleteColor delete me-2" data-colorId=${countIndex}>delete</button>
                     </td>
@@ -94,7 +94,88 @@ fileInput.addEventListener("change", (e) => {
     console.log(listImages)
 })
 
+// ADD Categories
+fetch("http://127.0.0.1:8000/api/admin/all_categories").then(
+    (result) => result.json()
+).then(
+    (dataApi) => {
+        dataAll = dataApi.data;
+        categories.innerHTML = `
+        <option selected>Categories</option>
+        ${dataAll.map((category) => `
+        <option value=${category.category_id}>${category.Mathcategory_name}</option>
+        `
+        ).join(" ")}
+    `
+    }
+)
+
+
+
+
+// Send DATA
+document.getElementById('submitButton').addEventListener('click', () => {
+    submit.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', productName.value);
+        formData.append('description', description.value);
+        formData.append('discount', JSON.stringify(listDiscount));
+        formData.append('price', JSON.stringify(listPrice));
+        formData.append('size', JSON.stringify(listSize));
+        formData.append('stock', stock.value);
+        formData.append('color', JSON.stringify(listColor));
+        formData.append('category_id', categoryValue);
+        listImages.forEach((img, index) => {
+            formData.append(`image${index + 1}`, img);
+        })
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_product', true);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.log('فشل تحميل الصورة.');
+            }
+        };
+        xhr.send(formData);
+    });
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add Event Listner
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -166,21 +247,12 @@ function dragDrop() {
 function swapItems(dragStartIndex, dragEndIndex) {
     const itemOne = listItems[dragStartIndex].querySelector(".draggable");
     const itemTwo = listItems[dragEndIndex].querySelector(".draggable");
-    listItems[dragStartIndex].appendChild(itemTwo);
+    listItems[dragStar4tIndex].appendChild(itemTwo);
     listItems[dragEndIndex].appendChild(itemOne);
+    draggableList.innerHTML = ''
+    createList();
 }
 
-function checkOrder() {
-    listItems.forEach((listItem, index) => {
-        const personName = listItem.querySelector(".draggable").innerText.trim();
-        if (personName !== listImages[index]) {
-            listItem.classList.add("wrong");
-        } else {
-            listItem.classList.add("right");
-            listItem.classList.remove("wrong");
-        }
-    })
-}
 
 
 function addEventListeners() {
@@ -200,35 +272,5 @@ function addEventListeners() {
 }
 
 
-document.getElementById('submitButton').addEventListener('click', () => {
-    submit.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('title', productName.value);
-        formData.append('description', description.value);
-        formData.append('discount', JSON.stringify(listDiscount));
-        formData.append('price', JSON.stringify(listPrice));
-        formData.append('size', JSON.stringify(listSize));
-        formData.append('stock', stock.value);
-        formData.append('color', JSON.stringify(listColor));
-        formData.append('category_id', categoryValue);
-        listImages.forEach((img,index)=>{
-            formData.append(`image${index + 1}`, img);
-        })
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_product', true);
-
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            } else {
-                console.log('فشل تحميل الصورة.');
-            }
-        };
-        xhr.send(formData);
-    });
-})
 
 
-// category_id

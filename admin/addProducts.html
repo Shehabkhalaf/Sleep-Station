@@ -8,9 +8,9 @@
     <title>Sleep Station</title>
     <!--Bootstrap css file-->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css.map">
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
+    <!-- File Css DraggableList -->
     <link rel="stylesheet" href="./css/draggableList.css">
     <!-- File Css Main -->
     <link rel="stylesheet" href="./css/main.css">
@@ -39,10 +39,12 @@
                             <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
                             <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
                             <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
+                            <li><a href="./messages.html"><i class="fa-solid fa-message"></i> Messages</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-9 nonePadding d-flex justify-content-between flex-column">
+                <div class="col-lg-10 col-md-9 nonePadding d-flex justify-content-between flex-column height-100">
                     <div class="product">
                         <nav class="navbar navbar-expand-lg d-md-none">
                             <div class="container-fluid pt-2">
@@ -73,6 +75,9 @@
                                                 <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a>
                                                 </li>
                                                 <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a>
+                                                </li>
+                                                <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
+                                                        Messages</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -175,8 +180,8 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-1">
                                                     <label for="colorName" class="form-label">NameColor</label>
-                                                    <input type="text" class="form-control"
-                                                        id="colorName" placeholder="Name Color..." title="Choose your color">
+                                                    <input type="text" class="form-control" id="colorName"
+                                                        placeholder="Name Color..." title="Choose your color">
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <button type="button" id="addColor" class="buttonAdd">Add
@@ -199,10 +204,6 @@
                                             <div class="mb-3">
                                                 <select class="form-select" id="categories"
                                                     aria-label="Default select example" required>
-                                                    <option selected>Categories</option>
-                                                    <option value="1">Linen</option>
-                                                    <option value="2">Mattress Toper</option>
-                                                    <option value="3">Towels</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -228,15 +229,10 @@
             </div>
         </div>
     </div>
-
-
-    <!-- File Js Sweet alert -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- File Js Food -->
-    <script src="./js/add.js"></script>
-
+    <script src="./js/addProduct.js"></script>
 
 </body>
 

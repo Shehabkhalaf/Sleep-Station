@@ -1,20 +1,22 @@
-
-
+// Get Elements
 let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
-
+// Call DATA From API
 fetch("http://127.0.0.1:8000/api/admin/all_users").then(
     (result) => result.json()
 ).then(
     (dataApi) => {
         dataAll = dataApi.data;
+        // Call Function DataShow [TARGET: Add Data In Dom]
         showUsers(dataAll)
+        // ADD Count Users 
         document.getElementById("numberOfUsers").innerHTML = dataAll.count;
+        // Search User
         document.getElementById("search").addEventListener("input", (e) => {
             searchProduct(dataAll, e.target.value);
         })
-
+        // Cancel Seacrh
         iconSearch.addEventListener("click", (e) => {
             search.value = "";
             showProducts(dataAll)
@@ -40,7 +42,7 @@ function showUsers(data) {
     });
 }
 
-
+// In Case User Writing In Input Search
 function searchProduct(dataAll, value) {
     bodyTable.innerHTML = ''
     if (value === '') {
