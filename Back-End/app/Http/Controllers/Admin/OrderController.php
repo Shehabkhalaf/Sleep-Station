@@ -13,7 +13,7 @@ class OrderController extends Controller
     use ApiResponse;
     public function undeliveredOrders()
     {
-        $orders = AdminOrders::collection(AdminOrder::where('status', 'no')->get());
+        $orders = AdminOrders::collection(AdminOrder::where('paid', 'cash')->get());
         return $this->JsonResponse(200, '', $orders);
     }
     public function deliverOrder($id)
@@ -21,11 +21,11 @@ class OrderController extends Controller
         $order = AdminOrder::find($id);
         $order->status = 'delivered';
         $delivered = $order->save();
-        return $delivered ? $this->JsonResponse(200, 'Order Delivered', $order) : $this->JsonResponse(500, 'Nothinf happened');
+        return $delivered ? $this->JsonResponse(200, 'Order Delivered', $order) : $this->JsonResponse(500, 'Nothing happened');
     }
     public function deliveredOrders()
     {
-        $orders = AdminOrders::collection(AdminOrder::where('status', 'delivered')->get());
+        $orders = AdminOrders::collection(AdminOrder::where('paid', 'paid')->get());
         return $this->JsonResponse(200, 'Delivered Orders', $orders);
     }
 }

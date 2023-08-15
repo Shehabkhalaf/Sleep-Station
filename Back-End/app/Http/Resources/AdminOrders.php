@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,7 +21,8 @@ class AdminOrders extends JsonResource
             'details' => json_decode($this->order_details),
             'price' => $this->total_price,
             'paid_method' => $this->paid,
-            'promocode' => $this->promocode
+            'promocode' => $this->promocode,
+            'ordered_at' => $this->created_at
         ];
     }
 }
