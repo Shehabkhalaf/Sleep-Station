@@ -34,8 +34,8 @@ function showMessagess(data) {
         <h5>Message : <span>${message.message}</span></h5>
         <Button class="answered" id=${message.id}>answered</Button>        
         `
+        showMessages.append(div);
     });
-    showMessages.append(div);
 
     // DELETE message
     document.querySelectorAll(".answered").forEach(element => {
