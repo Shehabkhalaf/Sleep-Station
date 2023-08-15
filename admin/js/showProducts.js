@@ -66,7 +66,7 @@ function showProducts(data) {
                         <td scope="col">
                         <ul>
                         ${product.color.map((color) => `
-                        <li>${color.split("|")[1]}</li>
+                        <li>${color.split("|")[0]}</li>
                         `
         ).join(" ")}
                         </ul>
