@@ -6,7 +6,7 @@ function callData() {
     fetch(`http://127.0.0.1:8000/api/admin/show_product`)
         .then((res) => res.json())
         .then((dataAPi) => {
-            let dataALL = dataAPi.messages;
+            let dataALL = dataAPi.data.messages;
             showMessages.innerHTML = ''
             // In Case Fount Or Not fount
             if (dataALL === []) {
