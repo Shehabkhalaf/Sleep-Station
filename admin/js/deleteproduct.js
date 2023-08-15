@@ -28,6 +28,7 @@ buttonSearch.addEventListener('click', () => {
                     const xhr = new XMLHttpRequest();
                     xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_product`, true);
                     xhr.send(formData);
+                    showProduct.innerHTML = ''
                 })
             }
         })
