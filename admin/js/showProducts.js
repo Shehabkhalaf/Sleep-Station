@@ -11,7 +11,9 @@ fetch("http://127.0.0.1:8000/api/admin/all_products").then(
         // Call Function DataShow [TARGET: Add Data In Dom]
         showProducts(dataAll)
         // ADD Count Users 
-        document.getElementById("numberOfUsers").innerHTML = dataAll.count;
+        let counter = 0
+        dataAll.forEach(e => counter++);
+        document.getElementById("numberOfUsers").innerHTML = counter;
         // Search User
         document.getElementById("search").addEventListener("input", (e) => {
             searchProduct(dataAll, e.target.value);
@@ -42,7 +44,7 @@ function showProducts(data) {
                         ${product.price.map((price) => `
                         <li>${price}</li>
                         `
-                        ).join(" ")}
+        ).join(" ")}
                         </ul>
                         </td>
                         <td scope="col">
@@ -50,7 +52,7 @@ function showProducts(data) {
                         ${product.discount.map((discount) => `
                         <li>${discount}</li>
                         `
-                        ).join(" ")}
+        ).join(" ")}
                         </ul>
                         </td>
                         <td scope="col">
@@ -58,7 +60,7 @@ function showProducts(data) {
                         ${product.size.map((size) => `
                         <li>${size}</li>
                         `
-                        ).join(" ")}
+        ).join(" ")}
                         </ul>
                         </td>
                         <td scope="col">
@@ -66,7 +68,7 @@ function showProducts(data) {
                         ${product.color.map((color) => `
                         <li>${color.split("|")[1]}</li>
                         `
-                        ).join(" ")}
+        ).join(" ")}
                         </ul>
                         </td>
                 `
