@@ -254,7 +254,8 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 201) {
-                        localStorage.setItem("userData", JSON.stringify(data.data));
+                        let token = dataUser.token;
+                        localStorage.setItem("userData", JSON.stringify({ token , ...data.data}));
                         window.location.reload();
                     }
                 })
