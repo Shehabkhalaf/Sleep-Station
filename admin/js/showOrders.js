@@ -11,7 +11,9 @@ fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
         // Call Function DataShow [TARGET: Add Data In Dom]
         showOrders(dataAll)
         // ADD Count Orders 
-        document.getElementById("numberOfUsers").innerHTML = dataAll.count;
+        let counter = 0
+        dataAll.forEach(e => counter++);
+        document.getElementById("numberOfUsers").innerHTML = counter;
         // Search Order
         document.getElementById("search").addEventListener("input", (e) => {
             searchOrders(dataAll, e.target.value);
@@ -65,8 +67,8 @@ function searchOrders(dataAll, value) {
                 <td scope="col">${order.user}</td>
                 <td scope="col">
                 <ul>
-                ${product.price.map((price) => `
-                <li>${price}</li>
+                ${order.details.map((details) => `
+                <li>${details}</li>
                 `
                 ).join(" ")}
                 </ul>
