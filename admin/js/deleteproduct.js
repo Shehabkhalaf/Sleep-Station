@@ -12,8 +12,8 @@ buttonSearch.addEventListener('click', () => {
             // In Case Fount Or Not fount
             if (data.status === 404) {
                 showProduct.innerHTML = `
-        <h1 class="text-center" style="color: red;">NOT FOUNT !</h1>
-        `
+                    <h1 class="text-center" style="color: red;">NOT FOUNT !</h1>
+                    `
             } else {
                 showProduct.innerHTML = `
                     <h3 style = "color: var(--primary-color);" > Product Id: <span style="color: #333;">${data.data.product_id}</span> </h3>
@@ -28,7 +28,9 @@ buttonSearch.addEventListener('click', () => {
                     const xhr = new XMLHttpRequest();
                     xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_product`, true);
                     xhr.send(formData);
-                    showProduct.innerHTML = ''
+                    showProduct.innerHTML = `
+                    <h1 class="text-center" style="color: red;">DElETE !</h1>
+                    `
                 })
             }
         })
