@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoriesResource;
 use App\Models\Category;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -22,16 +23,8 @@ class CategoryController extends Controller
     }
     public function allCategories()
     {
-        $categories = Category::all();
-        $data = [
-            'count' => $categories->count(),
-            'categories' => $categories
-        ];
-        if ($data['count'] != 0) {
-            return $this->JsonResponse(200, 'All categories are here', $categories);
-        } else {
-            return $this->JsonResponse(500, 'No avialble categories', $data);
-        }
+        $categories = Category::with('products')->get();
+        return $this->JsonResponse(200, 'Here are the categories', CategoriesResource::collection($categories));
     }
     public function updateStatus(Request $request, $id)
     {
