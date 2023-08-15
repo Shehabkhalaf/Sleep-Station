@@ -67,8 +67,12 @@ class ProductController extends Controller
     public function showProductWithCategory($id)
     {
         $product = Product::find($id);
-        $product = new ShowProduct($product);
-        return $this->JsonResponse(200, 'The product is here', $product);
+        if ($product) {
+            $product = new ShowProduct($product);
+            return $this->JsonResponse(200, 'The product is here', $product);
+        } else {
+            return $this->JsonResponse(404, 'Not found');
+        }
     }
     public function updateProduct(Request $addProductRequest)
     {
