@@ -5,7 +5,7 @@ let showProduct = document.getElementById("showProduct");
 
 // Call Product 
 buttonSearch.addEventListener('click', () => {
-    fetch(`http://127.0.0.1:8000/api/admin/show_product/${buttonSearch.value}`)
+    fetch(`http://127.0.0.1:8000/api/admin/show_product/${inputSearch.value}`)
         .then((res) => res.json())
         .then((data) => {
             showProduct.innerHTML = ''
