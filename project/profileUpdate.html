@@ -237,7 +237,8 @@
         emailInput.value = dataUser.email;
         locationInput.value = dataUser.location;
         phoneInput.value = dataUser.phone;
-        document.getElementById("updateData").addEventListener("click", () => {
+        document.getElementById("updateData").addEventListener("click", (event) => {
+            event.preventDefault()
             const formData = new FormData();
             formData.append('token', dataUser.token);
             formData.append('name', nameInput.value);
