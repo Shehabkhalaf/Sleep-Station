@@ -15,13 +15,13 @@ function callData() {
                     `
             } else {
                 // Call Function ShowMessages 
-                showMessages(dataALL);
+                showMessagess(dataALL);
             }
         })
 }
 
 // ADD Messages In Dom
-function showMessages(data) {
+function showMessagess(data) {
     data.forEach(message => {
         // Create Div
         let div = document.createElement('div');
