@@ -29,7 +29,6 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->address = $request->input('location');
         $user->phone = $request->input('phone');
-        $user->password = $request->input('password');
         $updated = $user->save();
         if ($updated) {
             return $this->JsonResponse(201, 'Updated', $user);
