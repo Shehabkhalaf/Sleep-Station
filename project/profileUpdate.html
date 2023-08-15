@@ -235,10 +235,10 @@
         let dataUser = JSON.parse(localStorage.getItem("userData"));
         nameInput.value = dataUser.name;
         emailInput.value = dataUser.email;
-        locationInput.value = dataUser.location;
+        locationInput.value = dataUser.address;
         phoneInput.value = dataUser.phone;
         document.getElementById("updateData").addEventListener("click", (event) => {
-            event.preventDefault()
+            event.preventDefault();
             const formData = new FormData();
             formData.append('token', dataUser.token);
             formData.append('name', nameInput.value);
