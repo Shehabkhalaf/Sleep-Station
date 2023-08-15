@@ -60,9 +60,9 @@ Route::prefix('admin')->group(function () {
     Route::get('all_users', [UserController::class, 'allUsers']);
     #########/*Orders Module*/#########
     Route::controller(AdminOrderController::class)->group(function () {
-        Route::get('undelivered_orders', 'undeliveredOrders');
-        Route::get('deliver_order/{id}', 'deliverOrder');
-        Route::get('delivered_orders', 'deliveredOrders');
+        Route::get('cash_orders', 'cashOrders');
+        Route::post('deliver_order/{id}', 'deliverOrder');
+        Route::get('paid_orders', 'paidOrders');
     });
 });
 
