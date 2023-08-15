@@ -5,7 +5,6 @@ let showProduct = document.getElementById("showProduct");
 
 // Call Product 
 buttonSearch.addEventListener('click', () => {
-    console.log(inputSearch.value)
    fetch(`http://127.0.0.1:8000/api/admin/show_product/${+inputSearch.value}`)
         .then((res) => res.json())
         .then((data) => {
@@ -24,8 +23,10 @@ buttonSearch.addEventListener('click', () => {
             `
                 // DELETE product
                 document.getElementById("buttonDelete").addEventListener("click", (e) => {
+                    const formData = new FormData();
+                    formData.append('id' , data.data.product_id);
                     const xhr = new XMLHttpRequest();
-                    xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_product/${data.data.product_id}`, true);
+                    xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_product`, true);
                     xhr.send(formData);
                 })
             }
