@@ -29,8 +29,12 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $updated = $user->save();
+        $data['name'] = $user->name;
+        $data['email'] = $user->email;
+        $data['phone'] = $user->phone;
+        $data['address'] = $user->address;
         if ($updated) {
-            return $this->JsonResponse(201, 'Updated', $user);
+            return $this->JsonResponse(201, 'Updated', $data);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
