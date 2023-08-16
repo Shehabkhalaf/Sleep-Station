@@ -4,14 +4,14 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 
 
 console.log(products)
-let listItems = products.map(element => {element.title + "," + element.size + "," + element.color  + "," + element.discount });
+let listItems = products.map(element => element.title + "," + element.size + "," + element.color  + "," + element.discount );
 let productss =[];
 
 products.forEach(element => {
     productss.push({"product_id" : 2  ,"amount" : element.quantity })
 });
 
-let totalPrice = products.map(element =>element.discount).reduce((acc, ele) => acc + ele);
+let totalPrice = products.map(element =>element.discount).reduce((acc, ele) => +acc + +ele);
 
 console.log(JSON.stringify(listItems))
 
