@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\user\AuthController;
 use App\Http\Controllers\User\OfferController as UserOfferController;
 use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\PaymobController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -71,8 +72,11 @@ Route::prefix('user')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::post('register', 'register');
         Route::post('login', 'login');
-        Route::post('/email/verification-notification', 'sendVerification')->middleware('auth:sanctum');
-        Route::get('/email/verify/{id}/{hash}', 'verify')->middleware('auth:sanctum')->name('verification.verify');
+    });
+    ###################/*Paymob Module*/########################
+    Route::controller(PaymobController::class)->group(function () {
+        Route::post('state', 'processedCallback');
+        Route::post('pay_details', 'payDetails');
     });
     Route::middleware(['auth:sanctum'])->group(function () {
         ###############User Controller#################
