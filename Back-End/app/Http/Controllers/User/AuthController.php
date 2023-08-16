@@ -38,7 +38,7 @@ class AuthController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
-            $data['location'] = $user->address;
+            $data['address'] = $user->address;
             return $this->JsonResponse(200, 'You are logged in', $data);
         } else {
             return $this->JsonResponse(401, 'Must register before logging', null);
