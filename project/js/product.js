@@ -63,6 +63,8 @@ function addProduct(data) {
             </button>
         </div>
     `
+    let countColor = 0;
+    data.color.forEach(e=>countColor++);
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
             <h2 class="mt-5">${data.product_name}</h2>
@@ -90,9 +92,9 @@ function addProduct(data) {
                 </div>
                 <div class="color mt-2 d-flex">
                     <span>color:</span>
-                    <span id="chooseColor">${data.color.lenght > 0 ? data.color[0] : "white"}</span>
+                    <span id="chooseColor">${countColor > 0 ? data.color[0] : "white"}</span>
                 </div>
-                ${data.color.lenght > 0 ?
+                ${countColor > 0 ?
             `<ul class="mt-2 colors d-flex align-items-center">
                     ${data.color.map((colorType, index) => ` <li ${index === 0 ? `class="active" ` : ""}
                         id="${colorType.split("|")[1]}" style="background-color: ${colorType.split("|")[0]} ;"></li>
