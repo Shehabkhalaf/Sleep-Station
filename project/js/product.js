@@ -67,7 +67,7 @@ function addProduct(data) {
         </div>
     `
     let countColor = 0;
-    data.color.forEach(e=>countColor++);
+    data.color.forEach(e => countColor++);
     detailsContainer.innerHTML = `
             <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
             <h2 class="mt-5">${data.product_name}</h2>
@@ -156,6 +156,7 @@ function addToCard(title, size, discount, quantity, color = "white") {
     listItems.push(newPrduct);
     // Add Object In Local Storage
     setDataLocal(listItems);
+    document.getElementById("count").innerHTML = listItems.length;
 }
 
 
