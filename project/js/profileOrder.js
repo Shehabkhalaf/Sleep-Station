@@ -1,6 +1,10 @@
 new WOW().init();
 // Get Data from Local Storage
 let dataUser = JSON.parse(localStorage.getItem("userData"));
+let products = JSON.parse(localStorage.getItem("products"));
+
+
+document.getElementById("count").innerHTML = products.lenght;
 
 // Call DATA From Api
 fetch(`http://127.0.0.1:8000/api/user/all_orders`, {

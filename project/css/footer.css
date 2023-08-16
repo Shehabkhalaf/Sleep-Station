@@ -4,9 +4,6 @@ footer {
     opacity: 1 !important;
 }
 
-footer .part-1 img {
-    min-width: 250px;
-}
 
 footer h3 {
     color: white;
@@ -130,6 +127,12 @@ footer .linkedin {
 
 footer .instagram {
     background-color: #fd1d1d;
+}
+
+.footer p {
+    color: #ffffff94;
+    border-top: 1px solid #77777752;
+    padding-top: 18px;
 }
 
 /* end footer */
