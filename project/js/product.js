@@ -97,7 +97,7 @@ function addProduct(data) {
                 ${countColor > 0 ?
             `<ul class="mt-2 colors d-flex align-items-center">
                     ${data.color.map((colorType, index) => ` <li ${index === 0 ? `class="active" ` : ""}
-                        id="${colorType.split("|")[1]}" style="background-color: ${colorType.split("|")[0]} ;"></li>
+                        id="${colorType.split("|")[0]}" style="background-color: ${colorType.split("|")[1]} ;"></li>
                     `).join(" ")}
                 </ul>`
             : ""}
