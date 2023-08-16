@@ -50,7 +50,7 @@ function createProduct(product) {
             let totalPrice = document.getElementById("totalPrice");
             let total = listItems.map(e => +e.quantity * +e.discount).reduce((acc, ele) => acc + ele);
             totalPrice.innerHTML = "EGP " + total;
-            console.log(footerTable[1].querySelector(".totalPrice"))
+            console.log(footerTable)
             footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
         })
     })
