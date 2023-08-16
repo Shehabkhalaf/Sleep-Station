@@ -1,5 +1,5 @@
 let checkOutButton = document.getElementById("checkOut");
-
+let footerTable = document.querySelectorAll(".footerNone");
 // Storage Data
 let listItems = getDataLocal();
 
