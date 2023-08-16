@@ -1,5 +1,5 @@
 let checkOutButton = document.getElementById("checkOut");
-let footerTable = document.querySelectorAll(".footerNone");
+let footerTable = document.querySelectorAll(".tablefooternone");
 // Storage Data
 let listItems = getDataLocal();
 
@@ -88,6 +88,7 @@ let totalPrice = document.getElementById("totalPrice");
 let total = listItems.map(e => +e.quantity * +e.discount);
 total = total.length === 0 ? 0 : total.reduce((acc, ele) => acc + ele);
 if (total > 0) {
+    footerTable.forEach(e => console.log(e))
     footerTable.forEach(e => e.classList.remove("tablefooternone"));
     checkOutButton.classList.remove("checkNone");
     footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
