@@ -92,7 +92,7 @@ function addProduct(data) {
                 </div>
                 <div class="color mt-2 d-flex">
                     <span>color:</span>
-                    <span id="chooseColor">${countColor > 0 ? data.color[0] : "white"}</span>
+                    <span id="chooseColor">${countColor > 0 ? data.color[0].split("|")[0] : "white"}</span>
                 </div>
                 ${countColor > 0 ?
             `<ul class="mt-2 colors d-flex align-items-center">
