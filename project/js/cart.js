@@ -51,8 +51,7 @@ function createProduct(product) {
             let totalPrice = document.getElementById("subtotal");
             let total = listItems.map(e => +e.quantity * +e.discount).reduce((acc, ele) => acc + ele);
             totalPrice.innerHTML = "EGP " + total;
-            console.log(footerTable[1].querySelector(".totalPrice"))
-            footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
+            document.getElementById("totalPrice").innerHTML = "EGP " + (total + 60);
         })
     })
 
