@@ -1,5 +1,6 @@
 let checkOutButton = document.getElementById("checkOut");
 let footerTable = document.querySelectorAll(".tablefooternone");
+
 // Storage Data
 let listItems = getDataLocal();
 
@@ -47,11 +48,10 @@ function createProduct(product) {
                 }
             })
             setDataLocal(listItems)
-            let totalPrice = document.getElementById("totalPrice");
+            let totalPrice = document.getElementById("subtotal");
             let total = listItems.map(e => +e.quantity * +e.discount).reduce((acc, ele) => acc + ele);
             totalPrice.innerHTML = "EGP " + total;
-            console.log(footerTable[1].querySelector(".totalPrice"))
-            footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
+            document.getElementById("totalPrice").innerHTML = "EGP " + (total + 60);
         })
     })
 
@@ -66,7 +66,7 @@ function createProduct(product) {
                 }
             })
             setDataLocal(listItems);
-            let totalPrice = document.getElementById("totalPrice");
+            let totalPrice = document.getElementById("subtotal");
             if (listItems.length === 0) {
                 totalPrice.innerHTML = "EGP " + "0";
                 footerTable.forEach(e => e.classList.add("tablefooternone"))
@@ -75,7 +75,7 @@ function createProduct(product) {
             } else {
                 let total = listItems.map(e => +e.quantity * +e.discount).reduce((acc, ele) => acc + ele);
                 totalPrice.innerHTML = "EGP " + total;
-                footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
+                document.getElementById("totalPrice").innerHTML = "EGP " + (total + 60);
                 checkOutButton.classList.remove("checkNone");
             }
 
@@ -86,14 +86,14 @@ function createProduct(product) {
 
 CreateProducts()
 
-let totalPrice = document.getElementById("totalPrice");
+let totalPrice = document.getElementById("subtotal");
 let total = listItems.map(e => +e.quantity * +e.discount);
 total = total.length === 0 ? 0 : total.reduce((acc, ele) => acc + ele);
 if (total > 0) {
     footerTable.forEach(e => console.log(e))
     footerTable.forEach(e => e.classList.remove("tablefooternone"));
     checkOutButton.classList.remove("checkNone");
-    footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
+    document.getElementById("totalPrice").innerHTML = "EGP " + (total + 60);
 } else {
     checkOutButton.classList.add("checkNone");
     footerTable.forEach(e => e.classList.add("tablefooternone"))
