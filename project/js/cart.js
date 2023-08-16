@@ -26,6 +26,7 @@ function createProduct(product) {
     let tr = document.createElement("tr");
     // Add Attributes [Id]
     tr.setAttribute("id", product.id);
+    tr.setAttribute("class", "mb-3");
     // Content Element
     tr.innerHTML = `
     <td>${product.title}, ${product.size}  ${product.color === "none" ? "" : ",color: "+product.color}</td>
@@ -82,3 +83,16 @@ function createProduct(product) {
 }
 
 CreateProducts()
+
+let totalPrice = document.getElementById("totalPrice");
+let total = listItems.map(e => +e.quantity * +e.discount);
+total = total.length === 0 ? 0 : total.reduce((acc, ele) => acc + ele);
+if (total > 0) {
+    footerTable.forEach(e => e.classList.remove("tablefooternone"));
+    checkOutButton.classList.remove("checkNone");
+    footerTable[1].querySelector(".totalPrice").innerHTML = "EGP " + (total + 60);
+} else {
+    checkOutButton.classList.add("checkNone");
+    footerTable.forEach(e => e.classList.add("tablefooternone"))
+}
+totalPrice.innerHTML = "EGP " + total;
