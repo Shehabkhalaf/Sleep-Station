@@ -4,7 +4,7 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 
 
 console.log(products)
-let listItems = products.map(element => {element.title , element.size , element.color , element.discount });
+let listItems = products.map(element => {element.title + "," + element.size + "," + element.color  + "," + element.discount });
 let productss =[];
 
 products.forEach(element => {
