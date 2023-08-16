@@ -1,6 +1,9 @@
 new WOW().init();
 // Get Data From Localstorage
 let dataUser = JSON.parse(localStorage.getItem("userData"));
+let products = JSON.parse(localStorage.getItem("products"));
+
+document.getElementById("count").innerHTML = products === null ? 0 : products.length;
 
 // Get Elements
 document.getElementById("name").value = dataUser.name;

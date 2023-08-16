@@ -8,6 +8,10 @@ let boxesProducts = document.getElementById("boxes");
 let iconSearch = document.getElementById("iconSearch");
 
 
+let products = JSON.parse(localStorage.getItem("products"));
+
+document.getElementById("count").innerHTML = products === null ? 0 : products.length;
+
 
 
 // Call Date

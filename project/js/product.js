@@ -4,6 +4,9 @@ const URL = 'http://127.0.0.1:8000';
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
+let products = JSON.parse(localStorage.getItem("products"));
+
+document.getElementById("count").innerHTML = products === null ? 0 : products.length;
 
 // URL API
 const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;

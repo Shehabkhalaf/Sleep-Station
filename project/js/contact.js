@@ -1,4 +1,8 @@
 
+let products = JSON.parse(localStorage.getItem("products"));
+
+document.getElementById("count").innerHTML = products === null ? 0 : products.length;
+
 
 let email = document.getElementById("email"),
     phone = document.getElementById("phone"),
