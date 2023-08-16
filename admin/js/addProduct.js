@@ -103,7 +103,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_categories").then(
         categories.innerHTML = `
         <option selected>Categories</option>
         ${dataAll.map((category) => `
-        <option value=${category.id}>${category.title}</option>
+        <option value=${category.category_id}>${category.category_name}</option>
         `
         ).join(" ")}
     `
