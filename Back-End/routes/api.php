@@ -75,7 +75,7 @@ Route::prefix('user')->group(function () {
     });
     ###################/*Paymob Module*/########################
     Route::controller(PaymobController::class)->group(function () {
-        Route::post('state', 'processedCallback');
+        Route::get('state', 'responseCallback');
         Route::post('pay_details', 'payDetails');
     });
     Route::middleware(['auth:sanctum'])->group(function () {

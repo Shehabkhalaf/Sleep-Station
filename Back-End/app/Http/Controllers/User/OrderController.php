@@ -31,6 +31,7 @@ class OrderController extends Controller
         $order->total_price = $request->total_price;
         $order->paid = $request->paid_method;
         $order->promocode = $request->has('promocode') ? $request->promocode : 'nothing';
+        $UserOrdered = $order->save();
         $products = $request->products;
         foreach ($products as $product) {
             $product_id = $product['product_id'];
@@ -38,7 +39,6 @@ class OrderController extends Controller
             $product_data->stock = ($product_data->stock) - ($product['amount']);
             $product_data->save();
         }
-        $UserOrdered = $order->save();
         $adminOrder = new AdminOrder;
         $adminOrder->user_data = $user_data;
         $adminOrder->order_details = $request->order_details;
