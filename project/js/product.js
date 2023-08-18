@@ -6,7 +6,7 @@ const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
 let products = JSON.parse(localStorage.getItem("products"));
 
-document.getElementById("count").innerHTML = products === null ? 0 : products.length;
+document.getElementById("count").innerHTML = productsLocal === null ? 0 : productsLocal.length;
 
 // URL API
 const urlApi = `http://127.0.0.1:8000/api/user/show_product/${productId}`;

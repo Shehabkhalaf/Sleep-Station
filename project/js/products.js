@@ -10,7 +10,7 @@ let iconSearch = document.getElementById("iconSearch");
 
 let products = JSON.parse(localStorage.getItem("products"));
 
-document.getElementById("count").innerHTML = products === null ? 0 : products.length;
+document.getElementById("count").innerHTML = productsLocal === null ? 0 : productsLocal.length;
 
 
 
