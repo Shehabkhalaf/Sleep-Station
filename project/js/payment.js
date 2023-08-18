@@ -12,7 +12,7 @@ let listItems = productsLocal.map(element => element.title + "," + element.size 
 let productss = [];
 
 productsLocal.forEach(element => {
-    var product = new Product(3, element.quantity);
+    var product = new Product(1, 3);
     productss.push(product);
 });
 
@@ -33,6 +33,7 @@ var jsonData = JSON.stringify(data);
 fetch('http://127.0.0.1:8000/api/user/make_order', {
     method: 'POST',
     headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': `Bearer ${userData.token}`
     },
     body: jsonData
