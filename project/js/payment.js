@@ -3,11 +3,17 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 
 
 
+function Product(id, mount) {
+    this.product_id = id;
+    this.amount = mount;
+}
+
 let listItems = products.map(element => element.title + "," + element.size + "," + element.color  + "," + element.discount );
 let productss =[];
 
 products.forEach(element => {
-    productss.push({product_id : 3  , amount : element.quantity })
+    var product = new Product(3,  element.quantity);
+    productss.push(product);
 });
 
 let totalPrice = products.map(element =>element.discount).reduce((acc, ele) => +acc + +ele);
