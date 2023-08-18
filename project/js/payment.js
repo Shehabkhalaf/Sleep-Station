@@ -7,7 +7,7 @@ let listItems = products.map(element => element.title + "," + element.size + ","
 let productss =[];
 
 products.forEach(element => {
-    productss.push({product_id : 2  ,amount : element.quantity })
+    productss.push({product_id : 3  , amount : element.quantity })
 });
 
 let totalPrice = products.map(element =>element.discount).reduce((acc, ele) => +acc + +ele);
