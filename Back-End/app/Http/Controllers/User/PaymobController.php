@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PaymobController extends Controller
 {
     use ApiResponse;
-    public function processedCallback(Request $request)
+    public function responseCallback(Request $request)
     {
         $string = $request;
         $json = strstr($string, '{');
@@ -35,11 +35,15 @@ class PaymobController extends Controller
     public function payDetails(Request $request)
     {
         $order_id = $request->order_id;
-        $paymob = Paymob::find($order_id);
-        if ($paymob) {
-            return $this->JsonResponse(200, 'Here is the order details', $paymob);
+        $paymob = Paymob::where('order_id', '=', $order_id)->first();
+        if ($paymob->finished == 'false' && $paymob->pending == 'false') {
+            $paymob->finished = 'true';
+            $paymob->save();
+            $data['success'] = $paymob->success;
+            $data['amount_cents'] = $paymob->amount_cents;
+            return $this->JsonResponse(200, 'Here is the order details', $data);
         } else {
-            return $this->JsonResponse(402, 'No content');
+            return $this->JsonResponse(402, 'Order not found');
         }
     }
 }
