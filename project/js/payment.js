@@ -28,6 +28,7 @@ let data = {
     paid_method: "cash"
 };
 
+
 var jsonData = JSON.stringify(data);
 
 fetch('http://127.0.0.1:8000/api/user/make_order', {
@@ -41,7 +42,6 @@ fetch('http://127.0.0.1:8000/api/user/make_order', {
     .then(response => response.json())
     .then(data => {
         if (data.status) {
-            localStorage.setItem("userData", JSON.stringify(data.data));
             window.location.href = 'products.html'
         }
     })
