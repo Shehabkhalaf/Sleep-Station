@@ -130,9 +130,8 @@ document.getElementById('submitButton').addEventListener('click', () => {
         formData.append('stock', stock.value);
         formData.append('color', JSON.stringify(listColor));
         formData.append('category_id', categoryValue);
-        listImages.forEach((img, index) => {
-            formData.append(`image${index + 1}`, img);
-        })
+        formData.append('images', JSON.stringify(listImages));
+
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_product', true);
