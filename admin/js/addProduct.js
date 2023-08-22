@@ -181,7 +181,7 @@ function createList() {
             li.innerHTML = `
             <span class="number" > ${index + 1}</span>
                 <div class="draggable" draggable="true">
-                <img src=${URL.createObjectURL(person)} alt="" width="150" height='150px'>
+                <img src=${person} alt="" width="150" height='150px'>
                 </div>
         `
             // Push li in List items
