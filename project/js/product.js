@@ -196,7 +196,7 @@ function addProducts(product) {
                 <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
                     <div class="overflow-hidden">
                         <div class="image overflow-hidden" id="card" data-id="${element.id}">
-                            <img src=$${element.images[0]} class="card-img-top">
+                            <img src=${element.images[0]} class="card-img-top">
                         </div>
                         <div class="card-body">
                             <div class="title mb-2">
