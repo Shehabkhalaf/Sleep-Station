@@ -1,5 +1,3 @@
-const URL = 'http://127.0.0.1:8000';
-
 // Get Product_id and Category_id From LocalStorage
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
@@ -50,7 +48,7 @@ function addProduct(data) {
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
             ${data.image.map((img, index) => ` <div ${index === 0 ? `class="carousel-item active" ` : "class=carousel-item"}>
-                <img src="${URL}${img}" class="d-block" alt="..." />
+                <img src="${img}" class="d-block" alt="..." />
             </div>
             `).join(" ")}
             </div>
@@ -66,6 +64,7 @@ function addProduct(data) {
             </button>
         </div>
     `
+    
     let countColor = 0;
     data.color.forEach(e => countColor++);
     detailsContainer.innerHTML = `
