@@ -88,8 +88,8 @@ andSizeAndPrice.addEventListener('click', function (e) {
 
 addImage.addEventListener('click', function (e) {
     // Add To List
-    listImages.push(fileInput.target.value);
-    fileInput.target.value = '';
+    listImages.push(fileInput.value);
+    fileInput.value = '';
     draggableList.innerHTML = ''
     createList();
 })
