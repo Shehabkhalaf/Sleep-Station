@@ -23,20 +23,19 @@
     <div class="admin">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-2 col-md-2 part-1 nonePadding bigScreen">
+                <div class="col-lg-2 col-md-2 part-1 nonePadding bigScreen sidebar">
                     <div class="dash ">
                         <img src="./images/logo/logo.png" class="ps-3 pt-3 pb-3 img-fluid" alt="">
                         <ul>
-                            <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+                            <li><a href="./dashboard.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
                             <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
                             <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
-                            <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
-                                    Products</a></li>
-                                    <li><a class="active"  href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
-                                    </li>
+                            <li><a class="active" href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete
+                                    Products</a>
+                            </li>
                             <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
                             </li>
-                            <li><a  href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
+                            <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
                             </li>
                             <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
                             <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
@@ -61,19 +60,25 @@
                                     <div class="navbar-nav">
                                         <div class="dash smallScreen">
                                             <ul>
-                                                <li><a href="index.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
-                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
-                                                <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
-                                                <li><a href="./updateProduct.html"><i class="fa-solid fa-cart-arrow-down"></i> Update
+                                                <li><a href="./dashboard.html"><i class="fa-solid fa-tv"></i> Dashboard</a>
+                                                </li>
+                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i>
                                                         Products</a></li>
-                                                        <li><a class="active"  href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
-                                                        </li>
-                                                <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
+                                                <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i>
+                                                        Add Products</a></li>
+                                                <li><a class="active" href="./deleteProduct.html"><i
+                                                            class="fa-solid fa-trash"></i> Delete Products</a>
                                                 </li>
-                                                <li><a  href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
+                                                <li><a href="./addCategory.html"><i
+                                                            class="fa-solid fa-lines-leaning"></i> Add Category</a>
                                                 </li>
-                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-                                                <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
+                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i>
+                                                        Orders</a>
+                                                </li>
+                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a>
+                                                </li>
+                                                <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a>
+                                                </li>
                                                 <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
                                                         Messages</a>
                                                 </li>
@@ -89,16 +94,16 @@
                                     <h1>Delete Product</h1>
                                     <div aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="./index.html">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="./dashboard.html">Dashboard</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Delete Product</li>
                                         </ol>
                                     </div>
                                 </div>
                                 <div
                                     class="d-flex justify-content-between align-items-center flex-column flex-md-row pb-2">
-                                    <div class="d-flex mb-2">
-                                        <input type="text" class="" id="searchProduct">
-                                        <button id="buttonSearch">Search Product</button>
+                                    <div class="d-flex mb-2 search">
+                                        <input type="text" class="form-control" id="searchProduct" style="width: calc(100% - 170px);" placeholder="Enter Product ID">
+                                        <button class="buttonSearch" id="buttonSearch">Search Product</button>
                                     </div>
                                 </div>
                                 <div class="showUsers" id="showProduct">
@@ -119,7 +124,7 @@
     </div>
     <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <!-- File Js Orders -->
+    <!-- File Js Delete Product -->
     <script src="./js/deleteproduct.js"></script>
 </body>
 

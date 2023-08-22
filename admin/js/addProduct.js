@@ -3,7 +3,7 @@ let productName = document.getElementById("productname"),
     description = document.getElementById("description"),
     price = document.getElementById("price"),
     submit = document.getElementById("submit"),
-    fileInput = document.querySelector('input[type="file"]'),
+    fileInput = document.querySelector('input[type="url"]'),
     draggableList = document.getElementById("draggable-list"),
     size = document.getElementById("size"),
     discount = document.getElementById("discount"),
@@ -12,6 +12,7 @@ let productName = document.getElementById("productname"),
     colors = document.getElementById("colors"),
     colorName = document.getElementById("colorName"),
     addColor = document.getElementById("addColor"),
+    addImage = document.getElementById("addImage"),
     stock = document.getElementById("stock"),
     categories = document.getElementById("categories"),
     colorInput = document.getElementById("color");
@@ -84,14 +85,16 @@ andSizeAndPrice.addEventListener('click', function (e) {
     }
 })
 
-
-fileInput.addEventListener("change", (e) => {
+addImage.addEventListener('click', function (e) {
     // Add To List
-    listImages.push(fileInput.files[0]);
-    e.target.value = '';
+    listImages.push(fileInput.target.value);
+    fileInput.target.value = '';
     draggableList.innerHTML = ''
     createList();
-    console.log(listImages)
+})
+
+fileInput.addEventListener("change", (e) => {
+
 })
 
 // ADD Categories
@@ -146,36 +149,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Add Event Listner
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

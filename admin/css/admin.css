@@ -1,3 +1,24 @@
+:root {
+    --ground-color:rgb(27, 38, 53);
+}
+
+
+.admin {
+    background-color: #eff7fa;
+}
+
+.sidebar {
+    background-color: #FFFFFF;
+}
+
+
+.order {
+    padding:15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 7%) !important;
+    background-color:#FFFFFF;
+}
+
 .height-100 {
     min-height: 100vh;
 }
@@ -16,7 +37,7 @@
     text-decoration: none;
     display: block;
     margin: 20px 15px;
-    color: #999;
+    color:#999;
     transition: 0.5s;
 }
 
@@ -42,6 +63,42 @@
 .admin .row .nonePadding {
     padding: 0;
 }
+
+.rejected {
+    background-color: red;
+    padding: 10px;
+    width: 100px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin:0px 10px;
+    transition:0.5s;
+}
+
+.rejected:hover {
+    background-color: transparent;
+    color: red;
+}
+
+
+.accept {
+    background-color: #00ff00;
+    padding: 10px;
+    width: 100px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #00ff00;
+    border-radius: 10px;
+    margin:0px 10px;
+    transition:0.5s;
+}
+
+.accept:hover {
+    background-color: transparent;
+    color: #00ff00;
+}
+
 
 .admin nav {
     background-color: var(--primary-color);
@@ -142,42 +199,44 @@
     width: 60px;
 }
 
-.admin .dashBoard {
-    background-color: #f8f9fe;
-}
+
 
 .admin .dashBoard .box {
-    background-color: #fff;
-    padding: 15px 25px;
-    border-radius: 20px;
+    background-color:#FFFFFF;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 7%) !important;
 }
 
-.admin .dashBoard .box .icon {
-    background-color: red;
-    width: 50px;
-    height: 50px;
+
+.admin .latestProducts {
+    background-color: var(--nav-color);
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 7%) !important;
+    background-color:#FFFFFF;
+
+}
+
+.admin .latestProducts .icon {
+    width: 30px;
+    height: 30px;
+    transition: 0.5s;
     position: relative;
-    color: white;
     border-radius: 50%;
+    cursor: pointer;
+}
+.admin .latestProducts .icon:hover {
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
-
-.admin .dashBoard .box .icon i {
+.admin .latestProducts .icon i {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 20px;
 }
 
-.admin .dashBoard .box h5 {
-    color: var(--grey-color);
-}
-
-.admin .dashBoard p {
-    font-weight: 700;
-    margin-left: 10px;
-}
 
 .admin .search .close {
     border-top-right-radius: 5px;
@@ -318,4 +377,14 @@
 
 .message h5 span {
     color:#333;
+}
+
+.buttonSearch {
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

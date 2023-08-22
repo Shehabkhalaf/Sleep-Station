@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Station</title>
+    <!--Bootstrap css file-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- Font AweSome -->
+    <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
+    <!-- File Css Main -->
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- File Css Partner -->
+    <link rel="stylesheet" href="./css/admin.css">
+    <!-- File Css Footer Dash -->
+    <link rel="stylesheet" href="./css/footerDash.css">
+</head>
+
+<body>
+
+    <div class="admin">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 part-1 nonePadding bigScreen sidebar">
+                    <div class="dash">
+                        <img src="./images/logo/logo.png" class="ps-3 pt-3 pb-3 img-fluid" alt="">
+                        <ul>
+                            <li><a class="active" href="./dashboard.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+                            <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
+                            <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
+                            <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete Products</a>
+                            </li>
+                            <li><a href="./addCategory.html"><i class="fa-solid fa-lines-leaning"></i> Add Category</a>
+                            </li>
+                            <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
+                            </li>
+                            <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a></li>
+                            <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a></li>
+                            <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
+                                    Messages</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-9 nonePadding d-flex justify-content-between flex-column height-100 ">
+                    <div class="product">
+                        <nav class="navbar navbar-expand-lg d-md-none">
+                            <div class="container-fluid pt-2">
+                                <div class="navbar-brand"><img src="./images/logo/logo.png"
+                                        class="ps-3 pt-3 pb-3 img-fluid" alt=""></div>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <i class="fa-solid fa-bars"></i>
+                                </button>
+                                <div class="collapse navbar-collapse p-1" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                        <div class="dash smallScreen">
+                                            <ul>
+                                                <li><a class="active" href="./dashboard.html"><i class="fa-solid fa-tv"></i>
+                                                        Dashboard</a>
+                                                </li>
+                                                <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i>
+                                                        Products</a></li>
+                                                <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i>
+                                                        Add Products</a></li>
+                                                <li><a href="./deleteProduct.html"><i class="fa-solid fa-trash"></i>
+                                                        Delete Products</a>
+                                                </li>
+                                                <li><a href="./addCategory.html"><i
+                                                            class="fa-solid fa-lines-leaning"></i> Add Category</a>
+                                                </li>
+                                                <li><a href="./orders.html"><i class="fa-solid fa-truck-fast"></i>
+                                                        Orders</a>
+                                                </li>
+                                                <li><a href="./users.html"><i class="fa-solid fa-users"></i> Users</a>
+                                                </li>
+                                                <li><a href="./offers.html"><i class="fa-solid fa-gifts"></i> Offers</a>
+                                                </li>
+                                                <li><a href="./messages.html"><i class="fa-solid fa-message"></i>
+                                                        Messages</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="pt-5 ps-md-5">
+                            <div class="container overflow-hidden">
+                                <div class="title">
+                                    <h1>Dashboard</h1>
+                                    <p>Welcome back, Admin! We've missed you. 👋</p>
+                                </div>
+                                <div class="show dashBoard">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="box">
+                                                <p>Total Earnings</p>
+                                                <h3>$ 24.300</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="box">
+                                                <p>Total Orders</p>
+                                                <h3>20</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="box">
+                                                <p>Total Users</p>
+                                                <h3>5</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="box">
+                                                <p>Total Products</p>
+                                                <h3>60</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-8 mt-4">
+                                        <div class="latestProducts overflow-auto">
+                                            <div class="d-flex justify-content-between align-items-center p-2">
+                                                <h4 class="mb-0">Latest products</h4>
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </div>
+                                            </div>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Product Name</th>
+                                                        <th scope="col">category name </th>
+                                                        <th scope="col">Stock</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">Discount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="bodyTable">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 mt-4">
+                                        <div class="cashOrders">
+                                            <div class="title show">
+                                                <h2>Pending Orders</h2>
+                                            </div>
+                                            <div class="listOrders">
+                                                <div class="order">
+                                                    <div>
+                                                        <h4>User information</h4>
+                                                        <p class="show">name:shehab khalaf<br>email:shehab@gmail.com<br>phone:011481646465<br>location:18-elnasr st</p>
+                                                    </div>
+                                                    <h4>Order Details</h4>
+                                                    <div class="row show">
+                                                        <div class="col-lg-4 mt-3 mt-md-0">
+                                                            <div>
+                                                                <h3>Order : 1</h3>
+                                                                <p class="mb-1">Product Name : <span>Pillow</span></p>
+                                                                <p class="mb-1">Product Size : <span>100*50cm</span></p>
+                                                                <p class="mb-1">Product Price Total : <span>250EGB</span></p>
+                                                                <p class="mb-1">Product Qu : <span>20</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 mt-3 mt-3">
+                                                            <div>
+                                                                <h3>Order : 2</h3>
+                                                                <p class="mb-1">Product Name : <span>Pillow</span></p>
+                                                                <p class="mb-1">Product Size : <span>100*50cm</span></p>
+                                                                <p class="mb-1">Product Price Total : <span>250EGB</span></p>
+                                                                <p class="mb-1">Product Qu : <span>20</span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="buttons mt-2 d-block ms-auto" style="width: fit-content;">
+                                                        <button class="accept">Accept</button>
+                                                        <button class="rejected">rejected</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="pb-3 pt-3">
+                        <div class="container d-flex justify-content-end align-items-center">
+                            <div class="div">
+                                ©2023 - 24 <a href="#">Sleep Station</a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- File Js Bootstrap -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- File Js Message -->
+
+</body>
+
+</html>
