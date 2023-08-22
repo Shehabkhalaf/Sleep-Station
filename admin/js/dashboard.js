@@ -37,4 +37,55 @@ fetch("http://127.0.0.1:8000/api/admin/all_products").then(
 )
 
 
+let bodyTable = document.getElementById("bodyTable");
 
+
+fetch("http://127.0.0.1:8000/api/admin/all_products").then(
+    (result) => result.json()
+).then(
+    (dataApi) => {
+        dataAll = dataApi.data;
+        // Call Function DataShow [TARGET: Add Data In Dom]
+        let dataReverse = dataAll.reverse();
+        dataReverse = dataReverse.map((element,index) => {
+            if(index < 4) {
+                return element;
+            }
+        })
+        console.log(dataReverse)
+        showProducts(dataReverse)
+    }
+)
+
+
+
+// // Show Products
+function showProducts(data) {
+    bodyTable.innerHTML = ''
+    // Add Product In Dom
+    data.forEach((product, index) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+                        <td scope="col">${product.product_name}</td>
+                        <td scope="col">${product.category_name}</td>
+                        <td scope="col">${product.stock}</td>
+                        <td scope="col">
+                        <ul>
+                        ${product.price.map((price) => `
+                        <li>${price}</li>
+                        `
+                        ).join(" ")}
+                        </ul>
+                        </td>
+                        <td scope="col">
+                        <ul>
+                        ${product.discount.map((discount) => `
+                        <li>${discount}</li>
+                        `
+        ).join(" ")}
+                        </ul>
+                        </td>
+                `
+        bodyTable.append(tr)
+    });
+}
