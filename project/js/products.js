@@ -1,4 +1,3 @@
-const URL = 'http://127.0.0.1:8000';
 // URL API
 const urlApi = "http://127.0.0.1:8000/api/user/products";
 
@@ -8,7 +7,7 @@ let boxesProducts = document.getElementById("boxes");
 let iconSearch = document.getElementById("iconSearch");
 
 
-let products = JSON.parse(localStorage.getItem("products"));
+let productsLocal = JSON.parse(localStorage.getItem("products"));
 
 document.getElementById("count").innerHTML = productsLocal === null ? 0 : productsLocal.length;
 
@@ -103,7 +102,7 @@ function addProduct(product) {
                 <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
                     <div class="overflow-hidden">
                         <div class="image overflow-hidden" id="card" data-id="${element.id}">
-                            <img src=${URL}${element.images[0]} class="card-img-top">
+                            <img src=${element.images[0]} class="card-img-top">
                         </div>
                         <div class="card-body">
                             <div class="title mb-2">
