@@ -86,6 +86,7 @@ function searchProduct(dataAll, value) {
             if (product.product_name.toUpperCase().includes(value.toUpperCase())) {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
+                <td scope="col">${product.product_id}</td>
                 <td scope="col">${product.product_name}</td>
                 <td scope="col">${product.category_name}</td>
                 <td scope="col">${product.description}</td>
