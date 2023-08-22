@@ -15,10 +15,10 @@ class ShowProduct extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $imagePaths = explode('|', $this->image);
+        /*$imagePaths = explode('|', $this->image);
         $imageUrls = array_map(function ($imagePath) {
             return Storage::url($imagePath);
-        }, $imagePaths);
+        }, $imagePaths);*/
         return [
             'product_id' => $this->id,
             'category_id' => $this->category->id,
@@ -28,7 +28,7 @@ class ShowProduct extends JsonResource
             'color' => json_decode($this->color, true),
             'discount' => json_decode($this->discount),
             'stock' => $this->stock,
-            'image' => $imageUrls,
+            'image' => json_decode($this->image),
             'size' =>  json_decode($this->size, true),
             'price' =>  json_decode($this->price, true)
         ];
