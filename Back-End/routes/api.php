@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\user\AuthController;
+use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\OfferController as UserOfferController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\PaymobController;

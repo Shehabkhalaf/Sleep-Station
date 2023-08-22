@@ -25,7 +25,7 @@ class ProductController extends Controller
         $product->color = $addProductRequest->input('color');
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
-        $paths = [];
+        /*$paths = [];
         if ($addProductRequest->hasFile('image1')) {
             $imageName = $addProductRequest->file('image');
             $path = $addProductRequest->file('image1')->store('public/products');
@@ -47,7 +47,8 @@ class ProductController extends Controller
             $path = $addProductRequest->file('image5')->store('public/products');
             $paths[] = $path;
         }
-        $product->image = implode('|', $paths);
+        $product->image = implode('|', $paths);*/
+        $product->image = $addProductRequest->input('images');
         $size = $addProductRequest->input('size');
         $product->size = $size;
         $price =  $addProductRequest->input('price');
@@ -78,7 +79,7 @@ class ProductController extends Controller
     public function updateProduct(Request $addProductRequest)
     {
         $product = Product::find($addProductRequest->id);
-        $images = explode('|', $product->image);
+        /*$images = explode('|', $product->image);
         foreach ($images as $image) {
             Storage::delete($image);
         }
@@ -109,7 +110,8 @@ class ProductController extends Controller
             $path = $addProductRequest->file('image5')->store('public/products');
             $paths[] = $path;
         }
-        $product->image = implode('|', $paths);
+        $product->image = implode('|', $paths);*/
+        $product->image = $addProductRequest->input('images');
         $size = $addProductRequest->input('size');
         $product->size = $size;
         $price =  $addProductRequest->input('price');

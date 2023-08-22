@@ -22,10 +22,10 @@ class ProductsResource extends JsonResource
             'status' => $this->status,
             'category_id' => $this->id,
             'products' => $this->products->map(function ($product) {
-                $imagePaths = explode('|', $product->image); // Explode the concatenated string
+                /*$imagePaths = explode('|', $product->image); // Explode the concatenated string
                 $imageUrls = array_map(function ($imagePath) {
                     return Storage::url($imagePath);
-                }, $imagePaths);
+                }, $imagePaths);*/
                 return [
                     'product_id' => $product->id,
                     'category_id' => $this->id,
@@ -34,7 +34,7 @@ class ProductsResource extends JsonResource
                     'color' => json_decode($product->color),
                     'discount' => json_decode($product->discount),
                     'stock' => $product->stock,
-                    'images' => $imageUrls, // Use the array of image URLs
+                    'images' => json_decode($product->image),
                     'price' => json_decode($product->price),
                     'size' => json_decode($product->size),
                 ];
