@@ -2,7 +2,9 @@
 const productDetails = JSON.parse(localStorage.getItem("productDetails"));
 const productId = +productDetails.product_id;
 const categoryId = +productDetails.category_id;
-let products = JSON.parse(localStorage.getItem("products"));
+
+
+let productsLocal = JSON.parse(localStorage.getItem("products"));
 
 document.getElementById("count").innerHTML = productsLocal === null ? 0 : productsLocal.length;
 
