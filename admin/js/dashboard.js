@@ -52,7 +52,6 @@ fetch("http://127.0.0.1:8000/api/admin/all_products").then(
                 return element;
             }
         })
-        console.log(dataReverse)
         showProducts(dataReverse)
     }
 )
@@ -102,7 +101,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
             let div = document.createElement('div');
             div.setAttribute("class", "order" );
             div.setAttribute("id", element.id );
-            let arr = ele.split(',');
+            let arr = element.details.split(',');
             console.log(arr)
             div.innerHTML =
                 `  
