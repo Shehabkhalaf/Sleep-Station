@@ -12,7 +12,7 @@ let listItems = productsLocal.map(element => element.title + "," + element.size 
 let productss = [];
 
 productsLocal.forEach(element => {
-    var product = new Product(1, 3);
+    var product = new Product(element.productId , element.quantity);
     productss.push(product);
 });
 

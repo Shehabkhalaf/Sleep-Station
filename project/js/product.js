@@ -152,7 +152,7 @@ function addProduct(data) {
 function addToCard(title, size, discount, quantity, color = "white") {
     let id = listItems.length === 0 ? 0 : listItems[listItems.length - 1].id + 1;
     // Create Object Task Store Text and Place
-    const newPrduct = { title, size, discount, quantity, id, color };
+    const newPrduct = { productId , title, size, discount, quantity, id, color };
     listItems = getDataLocal();
     listItems.push(newPrduct);
     // Add Object In Local Storage
