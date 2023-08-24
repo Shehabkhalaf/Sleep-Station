@@ -100,7 +100,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
         dataAll.forEach(element => {
             let div = document.createElement('div');
             div.setAttribute("class", "order");
-            div.setAttribute("id", element.id);
+            div.setAttribute("id", element.order_id);
             let arr = element.details[0].split(',');
             console.log(arr)
             div.innerHTML =
@@ -127,8 +127,8 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 ).join(" ")}
                 </div>
                 <div class="buttons mt-2 d-block ms-auto" style="width: fit-content;">
-                    <button class="accept" data-idAccept=${element.id} >Accept</button>
-                    <button class="rejected" data-idRejected=${element.id}>rejected</button>
+                    <button class="accept" data-idAccept=${element.order_id} >Accept</button>
+                    <button class="rejected" data-idRejected=${element.order_id}>rejected</button>
                 </div>
             `
             listOrders.append(div)
