@@ -1,17 +1,22 @@
-// Total Orders
-fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
-    (result) => result.json()
-).then(
-    (dataApi) => {
-        dataAll = dataApi.data;
-        let count = 0;
-        dataAll.forEach(element => count++);
-        document.getElementById('totalOrders').innerHTML = count;
-        let totalPrice = count === 0 ? 0 : dataAll.map(element => +element.price).reduce((acc, ele) => acc + ele);
-        document.getElementById('totalPrice').innerHTML = '$' + totalPrice;
-    }
-)
 
+
+function totalOrder() {
+    // Total Orders
+    fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
+        (result) => result.json()
+    ).then(
+        (dataApi) => {
+            dataAll = dataApi.data;
+            let count = 0;
+            dataAll.forEach(element => count++);
+            document.getElementById('totalOrders').innerHTML = count;
+            let totalPrice = count === 0 ? 0 : dataAll.map(element => +element.price).reduce((acc, ele) => acc + ele);
+            document.getElementById('totalPrice').innerHTML = '$' + totalPrice;
+        }
+    )
+}
+
+totalOrder();
 
 // Total Users
 fetch("http://127.0.0.1:8000/api/admin/all_users").then(
@@ -142,6 +147,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 xhr.open('POST', 'http://127.0.0.1:8000/api/admin/accept_order', true);
                 xhr.send(formData);
                 document.getElementById(id).remove();
+                totalOrder();
             })
         })
 
@@ -154,6 +160,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 xhr.open('POST', 'http://127.0.0.1:8000/api/admin/reject_order', true);
                 xhr.send(formData);
                 document.getElementById(id).remove();
+                totalOrder();
             })
         })
 
