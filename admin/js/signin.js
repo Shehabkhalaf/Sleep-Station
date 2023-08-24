@@ -14,14 +14,13 @@ buttonSubmit.addEventListener('click', function (event) {
         const formData = new FormData();
         formData.append('email', email.value)
         formData.append('password', password.value)
-        fetch('http://127.0.0.1:8000/api/user/login', {
+        fetch('http://127.0.0.1:8000/api/admin/login', {
             method: 'POST',
             body: formData
         })
             .then(response => response.json())
             .then(data => {
                 if (data.status) {
-                    localStorage.setItem("userData", JSON.stringify(data.data));
                     window.location.href = 'dashboard.html'
                 }
             })
