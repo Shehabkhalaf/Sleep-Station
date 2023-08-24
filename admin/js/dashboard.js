@@ -98,7 +98,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
         dataAll = dataApi.data;
         let listOrders = document.getElementById("listOrders");
 
-        data.forEach(element => {
+        dataAll.forEach(element => {
             let div = document.createElement('div');
             div.setAttribute("class", "order" );
             div.setAttribute("id", element.id );
