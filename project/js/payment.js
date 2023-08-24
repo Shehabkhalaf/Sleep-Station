@@ -8,7 +8,7 @@ function Product(id, mount) {
     this.amount = mount;
 }
 
-let listItems = productsLocal.map(element => element.title + "," + element.size + "," + element.color + "," + element.discount);
+let listItems = productsLocal.map(element => element.title + "," + element.size + "," + element.color + "," + element.discount + "," + element.quantity);
 let productss = [];
 
 productsLocal.forEach(element => {

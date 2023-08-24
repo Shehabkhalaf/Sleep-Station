@@ -120,7 +120,6 @@ fetch("http://127.0.0.1:8000/api/admin/all_categories").then(
 // Send DATA
 document.getElementById('submitButton').addEventListener('click', () => {
     submit.addEventListener('submit', function (e) {
-        e.preventDefault();
         const formData = new FormData();
         formData.append('title', productName.value);
         formData.append('description', description.value);
