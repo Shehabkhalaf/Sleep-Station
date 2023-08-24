@@ -132,6 +132,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                     <button class="rejected" data-idRejected=${element.id}>rejected</button>
                 </div>
             `
+            listOrders.append(div)
         });
         document.querySelectorAll('.accept').forEach(element=>{
             element.addEventListener('click',()=>{
