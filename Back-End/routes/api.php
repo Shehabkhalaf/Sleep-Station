@@ -62,7 +62,8 @@ Route::prefix('admin')->group(function () {
     #########/*Orders Module*/#########
     Route::controller(AdminOrderController::class)->group(function () {
         Route::get('cash_orders', 'cashOrders');
-        Route::post('deliver_order/{id}', 'deliverOrder');
+        Route::post('accept_order', 'acceptOrder');
+        Route::post('reject_order', 'rehjectOrder');
         Route::get('paid_orders', 'paidOrders');
     });
 });

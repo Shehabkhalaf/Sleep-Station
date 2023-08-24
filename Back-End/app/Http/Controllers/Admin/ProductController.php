@@ -127,9 +127,9 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
         $images = explode('|', $product->image);
-        foreach ($images as $image) {
+        /*foreach ($images as $image) {
             Storage::delete($image);
-        }
+        }*/
         $deleted = Product::destroy($request->id);
         if ($deleted) {
             return $this->JsonResponse(200, 'Deleted success fully');
