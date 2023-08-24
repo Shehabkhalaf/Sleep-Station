@@ -99,8 +99,8 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
 
         dataAll.forEach(element => {
             let div = document.createElement('div');
-            div.setAttribute("class", "order" );
-            div.setAttribute("id", element.id );
+            div.setAttribute("class", "order");
+            div.setAttribute("id", element.id);
             let arr = element.details[0].split(',');
             console.log(arr)
             div.innerHTML =
@@ -111,7 +111,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 </div>
                 <h4>Order Details</h4>
                 <div class="row show">
-                ${element.details.map((ele, index) => {
+                ${element.details.map((ele, index) =>
                     `
                     <div class="col-lg-4 mt-3 mt-md-0">
                         <div>
@@ -124,7 +124,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                         </div>
                     </div>
                     `
-                }).join(" ")}
+                ).join(" ")}
                 </div>
                 <div class="buttons mt-2 d-block ms-auto" style="width: fit-content;">
                     <button class="accept" data-idAccept=${element.id} >Accept</button>
@@ -133,8 +133,8 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
             `
             listOrders.append(div)
         });
-        document.querySelectorAll('.accept').forEach(element=>{
-            element.addEventListener('click',()=>{
+        document.querySelectorAll('.accept').forEach(element => {
+            element.addEventListener('click', () => {
                 let id = element.getAttribute("data-idAccept");
                 const formData = new FormData();
                 formData.append('id', id);
