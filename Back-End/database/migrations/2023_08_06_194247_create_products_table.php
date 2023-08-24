@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('color');
             $table->string('discount')->default(0.0);
             $table->integer('stock')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image',1000)->nullable();
             $table->text('size')->nullable();
             $table->string('price');
 
