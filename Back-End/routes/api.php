@@ -63,7 +63,7 @@ Route::prefix('admin')->group(function () {
     Route::controller(AdminOrderController::class)->group(function () {
         Route::get('cash_orders', 'cashOrders');
         Route::post('accept_order', 'acceptOrder');
-        Route::post('reject_order', 'rehjectOrder');
+        Route::post('reject_order', 'rejectOrder');
         Route::get('paid_orders', 'paidOrders');
     });
 });
