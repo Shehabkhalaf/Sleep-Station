@@ -1,3 +1,9 @@
+const log = JSON.parse(localStorage.getItem("log"));
+
+if(log !== true) {
+    window.location.href = 'index.html'
+}
+
 // Call Data
 let nameCategory = document.getElementById("nameCategory");
 let bodyTable = document.getElementById("tableBody");

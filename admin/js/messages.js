@@ -1,3 +1,9 @@
+const log = JSON.parse(localStorage.getItem("log"));
+
+if(log !== true) {
+    window.location.href = 'index.html'
+}
+
 // Get Element
 let showMessages = document.getElementById("showMessages");
 

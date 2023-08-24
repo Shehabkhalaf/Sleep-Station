@@ -1,3 +1,9 @@
+const log = JSON.parse(localStorage.getItem("log"));
+
+if(log !== true) {
+    window.location.href = 'index.html'
+}
+
 // Get Element
 let inputSearch = document.getElementById("searchProduct");
 let buttonSearch = document.getElementById("buttonSearch");

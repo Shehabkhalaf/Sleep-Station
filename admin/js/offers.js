@@ -1,3 +1,9 @@
+const log = JSON.parse(localStorage.getItem("log"));
+
+if(log !== true) {
+    window.location.href = 'index.html'
+}
+
 // Get Elements
 let promo = document.getElementById("promo");
 let startDate = document.getElementById("startDate");
