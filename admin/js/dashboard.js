@@ -1,7 +1,7 @@
 const log = JSON.parse(localStorage.getItem("log"));
 
 if(log !== true) {
-    window.location.href = 'dashboard.html'
+    window.location.href = 'index.html'
 }
 
 
