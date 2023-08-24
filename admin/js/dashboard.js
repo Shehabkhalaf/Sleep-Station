@@ -112,16 +112,15 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 <h4>Order Details</h4>
                 <div class="row show">
                 ${element.details.map((ele, index) => {
-                    let arr = ele.split(',');
                     `
                     <div class="col-lg-4 mt-3 mt-md-0">
                         <div>
                             <h3>Order : ${index + 1}</h3>
-                            <p class="mb-1">Product Name : <span>${arr[0]}</span></p>
-                            <p class="mb-1">Product Size : <span>${arr[1]}</span></p>
-                            <p class="mb-1">Product  Color : <span>${arr[2]}</span></p>
-                            <p class="mb-1">Product  Total : <span>${arr[3]}</span></p>
-                            <p class="mb-1">Product Quantity : <span>${arr[4]}</span></p>
+                            <p class="mb-1">Product Name : <span>${ele.split(',')[0]}</span></p>
+                            <p class="mb-1">Product Size : <span>${ele.split(',')[1]}</span></p>
+                            <p class="mb-1">Product  Color : <span>${ele.split(',')[2]}</span></p>
+                            <p class="mb-1">Product  Total : <span>${ele.split(',')[3]}</span></p>
+                            <p class="mb-1">Product Quantity : <span>${ele.split(',')[4]}</span></p>
                         </div>
                     </div>
                     `
