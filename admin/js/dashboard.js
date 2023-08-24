@@ -101,7 +101,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
             let div = document.createElement('div');
             div.setAttribute("class", "order" );
             div.setAttribute("id", element.id );
-            let arr = element.details.split(',');
+            let arr = element.details[0].split(',');
             console.log(arr)
             div.innerHTML =
                 `  
