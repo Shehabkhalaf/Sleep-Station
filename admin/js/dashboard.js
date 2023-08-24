@@ -112,7 +112,7 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 <h4>Order Details</h4>
                 <div class="row show">
                 ${element.details.map((ele, index) => {
-                    let arr = ele.splice(',');
+                    let arr = ele.split(',');
                     `
                     <div class="col-lg-4 mt-3 mt-md-0">
                         <div>
