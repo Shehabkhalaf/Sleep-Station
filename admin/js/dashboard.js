@@ -144,5 +144,18 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
                 document.getElementById(id).remove();
             })
         })
+
+        document.querySelectorAll('.rejected').forEach(element => {
+            element.addEventListener('click', () => {
+                let id = element.getAttribute("data-idRejected");
+                const formData = new FormData();
+                formData.append('id', id);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://127.0.0.1:8000/api/admin/reject_order', true);
+                xhr.send(formData);
+                document.getElementById(id).remove();
+            })
+        })
+
     }
 )
