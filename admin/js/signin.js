@@ -21,6 +21,7 @@ buttonSubmit.addEventListener('click', function (event) {
             .then(response => response.json())
             .then(data => {
                 if (data.status) {
+                    localStorage.setItem("log", JSON.stringify(true));
                     window.location.href = 'dashboard.html'
                 }
             })
