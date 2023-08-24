@@ -22,7 +22,7 @@ class OrderController extends Controller
         $order = AdminOrder::find($request->id);
         $order->paid = 'paid';
         $delivered = $order->save();
-        return $delivered ? $this->JsonResponse(200, 'Order Delivered', $order) : $this->JsonResponse(500, 'Nothing happened');
+        return $delivered ? $this->JsonResponse(200, 'Order Accepted', $order) : $this->JsonResponse(500, 'Nothing happened');
     }
     public function rejectOrder(Request $request)
     {
