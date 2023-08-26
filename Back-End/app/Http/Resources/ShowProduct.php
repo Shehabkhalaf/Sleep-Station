@@ -15,10 +15,6 @@ class ShowProduct extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        /*$imagePaths = explode('|', $this->image);
-        $imageUrls = array_map(function ($imagePath) {
-            return Storage::url($imagePath);
-        }, $imagePaths);*/
         return [
             'product_id' => $this->id,
             'category_id' => $this->category->id,
@@ -30,7 +26,11 @@ class ShowProduct extends JsonResource
             'stock' => $this->stock,
             'image' => json_decode($this->image),
             'size' =>  json_decode($this->size, true),
-            'price' =>  json_decode($this->price, true)
+            'price' =>  json_decode($this->price, true),
+            'arabic_name' => $this->arabic_product->title,
+            'arabic_color' => json_decode($this->arabic_product->color),
+            'arabic-description' => $this->arabic_product->description,
+            'arabic_name_category'=>$this->arabic_product->arabic_category->title
         ];
     }
 }

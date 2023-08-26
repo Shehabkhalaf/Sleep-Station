@@ -4,6 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ArabicProductsResource;
+use App\Http\Resources\ShowArabicProductResource;
+use App\Models\ArabicCategory;
+use App\Models\ArabicProduct;
 use App\Models\Message;
 use App\Models\User;
 use App\Traits\ApiResponse;
@@ -17,8 +21,13 @@ class UserController extends Controller
         $user = auth()->user();
         return $this->JsonResponse(200, 'Worked', $user);
     }
-    public function allProducts()
+    public function allProducts(Request $request)
     {
+        if ($request->lang == 'ar') {
+            $categories = ArabicCategory::with('arabic_products')->get();
+            $arabic_products = ArabicProductsResource::collection($categories);
+            return $this->JsonResponse(200, 'المنتجات جاهزة', $arabic_products);
+        }
         $product = new ProductController;
         return $product->getCategoriesWithProducts();
     }
@@ -39,11 +48,17 @@ class UserController extends Controller
             return $this->JsonResponse(500, 'Error');
         }
     }
-    public function showProduct($id)
+    public function showProduct(Request $request, $id)
     {
-        $product = new ProductController;
-        $prodcut_data = $product->showProductWithCategory($id);
-        return $prodcut_data;
+        if ($request->lang == 'ar') {
+            $arabic_product = ArabicProduct::find($id);
+            $arabic_product = new ShowArabicProductResource($arabic_product);
+            return $this->JsonResponse(200, 'المنتج هنا', $arabic_product);
+        } else {
+            $product = new ProductController;
+            $prodcut_data = $product->showProductWithCategory($id);
+            return $prodcut_data;
+        }
     }
     public function contactUs(Request $request)
     {

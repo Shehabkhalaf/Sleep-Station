@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoriesResource extends JsonResource
+class ArabicCategoruResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,9 @@ class CategoriesResource extends JsonResource
     {
         return [
             'category_name' => $this->title,
-            'arabic_category_name' => $this->arabic_category->title,
             'category_id' => $this->id,
             'status' => $this->status,
-            'num_of_products' => count($this->products),
+            'num_of_products' => count($this->arabic_products)
         ];
     }
 }

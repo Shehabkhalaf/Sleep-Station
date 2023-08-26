@@ -25,6 +25,10 @@ class AllProductsResource extends JsonResource
             'stock' => $this->stock,
             'price' => json_decode($this->price),
             'size' => json_decode($this->size),
+            'arabic_name'=>$this->arabic_product->title,
+            'arabic_color'=>json_decode($this->arabic_product->color),
+            'arabic-description'=>$this->arabic_product->description,
+            'arabic_cat_name'=>$this->arabic_product->arabic_category->title
         ];
     }
 }

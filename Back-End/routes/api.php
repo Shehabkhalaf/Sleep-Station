@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
     ROute::controller(CategoryController::class)->group(function () {
         Route::post('add_category', 'addCategory');
         Route::get('all_categories', 'allCategories');
-        Route::post('update_category/{id}', 'updateStatus');
+        Route::post('delete_category', 'deleteCategory');
     });
     ##########/*Product Module*/##########
     Route::controller(ProductController::class)->group(function () {

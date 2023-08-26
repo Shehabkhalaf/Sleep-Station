@@ -7,17 +7,18 @@ use App\Http\Requests\AddProductRequest;
 use App\Http\Resources\AllProductsResource;
 use App\Http\Resources\ProductsResource;
 use App\Http\Resources\ShowProduct;
+use App\Models\ArabicProduct;
 use App\Models\Category;
 use App\Models\Product;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     use ApiResponse;
     public function store(AddProductRequest $addProductRequest)
     {
+        /*Add English Product*/
         $product = new Product;
         $product->category_id = $addProductRequest->input('category_id');
         $product->title = $addProductRequest->input('title');
@@ -25,37 +26,23 @@ class ProductController extends Controller
         $product->color = $addProductRequest->input('color');
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
-        /*$paths = [];
-        if ($addProductRequest->hasFile('image1')) {
-            $imageName = $addProductRequest->file('image');
-            $path = $addProductRequest->file('image1')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image2')) {
-            $path = $addProductRequest->file('image2')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image3')) {
-            $path = $addProductRequest->file('image3')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image4')) {
-            $path = $addProductRequest->file('image4')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image5')) {
-            $path = $addProductRequest->file('image5')->store('public/products');
-            $paths[] = $path;
-        }
-        $product->image = implode('|', $paths);*/
         $product->image = $addProductRequest->input('images');
         $size = $addProductRequest->input('size');
         $product->size = $size;
         $price =  $addProductRequest->input('price');
         $product->price = $price;
-        $stored = $product->save();
-        if ($stored) {
-            return $this->JsonResponse(201, 'Added success fully', $product);
+        $EnglishAdded = $product->save();
+        /*Add Arabic Product*/
+        $ArabicProduct = new ArabicProduct;
+        $ArabicCategory = Category::find($product->category_id)->arabic_category;
+        $ArabicProduct->arabic_category_id = $ArabicCategory->id;
+        $ArabicProduct->product_id = $product->id;
+        $ArabicProduct->title = $addProductRequest->input('arabic_title');
+        $ArabicProduct->description = $addProductRequest->input('arabic_description');
+        $ArabicProduct->color = $addProductRequest->input('arabic_color');
+        $ArabicAdded = $ArabicProduct->save();
+        if ($EnglishAdded && $ArabicAdded) {
+            return $this->JsonResponse(201, 'Added successfully', [$product, $ArabicProduct]);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
@@ -78,47 +65,27 @@ class ProductController extends Controller
     }
     public function updateProduct(Request $addProductRequest)
     {
+        /**English Product*/
         $product = Product::find($addProductRequest->id);
-        /*$images = explode('|', $product->image);
-        foreach ($images as $image) {
-            Storage::delete($image);
-        }
         $product->title = $addProductRequest->input('title');
         $product->description = $addProductRequest->input('description');
         $product->color = $addProductRequest->input('color');
         $product->discount = $addProductRequest->input('discount');
         $product->stock = $addProductRequest->input('stock');
-        $paths = [];
-        if ($addProductRequest->hasFile('image1')) {
-            $imageName = $addProductRequest->file('image');
-            $path = $addProductRequest->file('image1')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image2')) {
-            $path = $addProductRequest->file('image2')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image3')) {
-            $path = $addProductRequest->file('image3')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image4')) {
-            $path = $addProductRequest->file('image4')->store('public/products');
-            $paths[] = $path;
-        }
-        if ($addProductRequest->hasFile('image5')) {
-            $path = $addProductRequest->file('image5')->store('public/products');
-            $paths[] = $path;
-        }
-        $product->image = implode('|', $paths);*/
         $product->image = $addProductRequest->input('images');
         $size = $addProductRequest->input('size');
         $product->size = $size;
         $price =  $addProductRequest->input('price');
         $product->price = $price;
-        $stored = $product->save();
-        if ($stored) {
-            return $this->JsonResponse(201, 'Added success fully', $product);
+        $EnglishUpdated = $product->save();
+        /*Arabic Product*/
+        $ArabicProduct = ArabicProduct::where('product_id', $product->id)->get();
+        $ArabicProduct->title = $addProductRequest->input('arabic_title');
+        $ArabicProduct->description = $addProductRequest->input('arabic_description');
+        $ArabicProduct->color = $addProductRequest->input('arabic_color');
+        $ArabicUpdated = $ArabicProduct->save();
+        if ($EnglishUpdated && $ArabicUpdated) {
+            return $this->JsonResponse(201, 'Updated successfully', $product);
         } else {
             return $this->JsonResponse(500, 'Error');
         }
@@ -126,10 +93,6 @@ class ProductController extends Controller
     public function deleteProduct(Request $request)
     {
         $product = Product::find($request->id);
-        $images = explode('|', $product->image);
-        /*foreach ($images as $image) {
-            Storage::delete($image);
-        }*/
         $deleted = Product::destroy($request->id);
         if ($deleted) {
             return $this->JsonResponse(200, 'Deleted success fully');
