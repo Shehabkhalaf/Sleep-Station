@@ -1,15 +1,12 @@
-const log = JSON.parse(localStorage.getItem("log"));
-
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const GET_ALL_USERS = "http://127.0.0.1:8000/api/admin/all_users";
 
 // Get Elements
 let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/all_users").then(
+fetch(GET_ALL_USERS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -29,8 +26,6 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
         })
     }
 )
-
-
 
 // // Show Products
 function showProducts(data) {
@@ -68,4 +63,11 @@ function searchProduct(dataAll, value) {
         });
     }
 }
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }
 

@@ -1,15 +1,13 @@
-const log = JSON.parse(localStorage.getItem("log"));
 
-if(log !== true) {
-    window.location.href = 'index.html'
-}
-
+// URL API
+const GET_ALL_MESSAGES = `http://127.0.0.1:8000/api/admin/all_messages`;
+const DELETE_MESSAGE = `http://127.0.0.1:8000/api/admin/delete_message`;
 // Get Element
 let showMessages = document.getElementById("showMessages");
 
 // Call Product 
 function callData() {
-    fetch(`http://127.0.0.1:8000/api/admin/all_messages`)
+    fetch(GET_ALL_MESSAGES)
         .then((res) => res.json())
         .then((dataAPi) => {
             let dataALL = dataAPi.data.messages;
@@ -49,7 +47,7 @@ function showMessagess(data) {
             const formData = new FormData();
             formData.append('id', element.getAttribute("id"));
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_message`, true);
+            xhr.open('POST', DELETE_MESSAGE , true);
             xhr.send(formData);
             callData();
         })
@@ -58,3 +56,11 @@ function showMessagess(data) {
 
 
 callData();
+
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }

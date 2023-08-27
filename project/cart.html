@@ -59,12 +59,13 @@
                 </table>
                 <form class="row g-3 justify-content-center mt-3" id="formPromoCode">
                     <div class="col-lg-3">
-                        <label for="inputPassword2" class="visually-hidden">Promo code</label>
-                        <input type="text" class="form-control" id="inputPassword2" placeholder="Promo code">
+                        <label for="promo" class="visually-hidden">Promo code</label>
+                        <input type="text" class="form-control" id="promo" placeholder="Promo code" required>
                     </div>
                     <div class="col-lg-2">
                         <button type="submit" class="btn btn-primary">Apply</button>
                     </div>
+                    <p id="errorPromo" style="color: red; font-weight: 600; margin-top: 10px; text-align: center;"></p>
                 </form>
                 <div class="button mt-4">
                     <a href="./payment.html" class="buttonStyle check checkNone mx-auto mb-3" id="checkOut">Check Out <i
