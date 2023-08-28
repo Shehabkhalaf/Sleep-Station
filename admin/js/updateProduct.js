@@ -29,6 +29,13 @@ let productName = document.getElementById("productname"),
     buttonSearch = document.getElementById("buttonSearch");
 
 
+let listColor = [];
+let listColorArabic = [];
+let listSize = [];
+let listPrice = [];
+let listDiscount = [];
+let listImages = [];
+
 
 // ADD Categories
 buttonSearch.addEventListener('click', () => {
@@ -49,6 +56,70 @@ function showProduct(data) {
     productnameArabic.value = data.arabic_name;
     descriptionArabic.value = data.arabic_description;
     description.value = data.description;
+    stock.value = data.stock;
+    listImages = data.image;
+    createList();
+    data.price.forEach((element, index) => {
+        listSize.push(data.size[index]);
+        listPrice.push(data.price[index]);
+        listDiscount.push(data.discount[index]);
+
+        let tr = document.createElement("tr");
+        tr.setAttribute("id", index);
+        tr.innerHTML = `
+                        <td scope="col">${data.size[index]}</td>
+                        <td scope="col">${data.price[index]}</td>
+                        <td scope="col">${data.discount[index]}</td>
+                        <td scope="col">
+                            <button class="delete deletePrice me-2" data-id=${index}>delete</button>
+                        </td>
+                `
+        tablePrice.append(tr)
+        document.querySelectorAll('.deletePrice').forEach((element, index) => {
+            element.addEventListener('click', () => {
+                document.getElementById(element.getAttribute("data-id")).remove();
+                listSize = listSize.filter((value, i) => i !== index);
+                listPrice = listPrice.filter((value, i) => i !== index);
+                listDiscount = listDiscount.filter((value, i) => i !== index);
+            })
+        })
+    })
+    data.color.forEach((element, index) => {
+
+        listColor.push(element.split("|")[1] + " | " + element.split("|")[0]);
+        listColorArabic.push(data.arabic_color[index].split("|")[1] + " | " + data.arabic_color[index].split("|")[0]);
+
+        let tr = document.createElement("tr");
+        tr.setAttribute("id", index);
+        tr.innerHTML = `
+                    <td scope="col">${element.split("|")[0]}</td>
+                    <td scope="col">${data.arabic_color[index].split("|")[0]}</td>
+                    <td scope="col"  style="background-color:${element.split("|")[0]};"></td>
+                    <td scope="col">
+                        <button class="deleteColor delete me-2" data-colorId=${index}>delete</button>
+                    </td>
+            `
+        colors.append(tr)
+        document.querySelectorAll('.deleteColor').forEach((element, index) => {
+            element.addEventListener('click', () => {
+                document.getElementById(element.getAttribute("data-colorId")).remove();
+                listColor = listColor.filter((value, i) => i !== index);
+                listColorArabic = listColorArabic.filter((value, i) => i !== index);
+            })
+        })
+    })
+    document.getElementById("nameCate").value = data.category_name;
+    fetch(GET_DATA_CATEGORY).then(
+        (result) => result.json()
+    ).then(
+        (dataApi) => {
+            dataAll = dataApi.data.forEach((element) => {
+                if (element.category_name === data.category_name) {
+                    categoryValue = element.category_name;
+                }
+            });
+        }
+    )
 }
 
 
@@ -63,10 +134,22 @@ let categoryValue;
 
 categories.addEventListener("change", (e) => {
     categoryValue = e.target.value;
+
+    fetch(GET_DATA_CATEGORY).then(
+        (result) => result.json()
+    ).then(
+        (dataApi) => {
+            dataAll = dataApi.data.forEach((element) => {
+                if (element.category_id === e.target.value) {
+                    document.getElementById("nameCate").value = element.category_name;
+
+                }
+            });
+        }
+    )
+
 });
 
-let listColor = [];
-let listColorArabic = [];
 
 
 addColor.addEventListener('click', function (e) {
@@ -99,9 +182,7 @@ addColor.addEventListener('click', function (e) {
 })
 
 
-let listSize = [];
-let listPrice = [];
-let listDiscount = [];
+
 
 let countIndex = 0;
 
@@ -194,7 +275,6 @@ document.getElementById('submitButton').addEventListener('click', () => {
 
 
 
-const listImages = [];
 
 
 // Storage List Items
