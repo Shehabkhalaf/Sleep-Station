@@ -1,15 +1,13 @@
-const log = JSON.parse(localStorage.getItem("log"));
 
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const GET_ALL_PRODUCTS = "http://127.0.0.1:8000/api/admin/all_products";
 
 // Get Elements
 let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/all_products").then(
+fetch(GET_ALL_PRODUCTS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -32,9 +30,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_products").then(
     }
 )
 
-
-
-// // Show Products
+// Show Products
 function showProducts(data) {
     bodyTable.innerHTML = ''
     // Add Product In Dom
@@ -137,3 +133,8 @@ function searchProduct(dataAll, value) {
     }
 }
 
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }

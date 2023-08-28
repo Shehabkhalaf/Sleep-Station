@@ -1,15 +1,13 @@
-const log = JSON.parse(localStorage.getItem("log"));
 
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const GET_ALL_ORDERS = "http://127.0.0.1:8000/api/admin/paid_orders";
 
 // Get Elements
 let iconSearch = document.getElementById("iconSearch");
 let bodyTable = document.getElementById("bodyTable");
 
 // Call DATA From API
-fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
+fetch(GET_ALL_ORDERS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -33,9 +31,7 @@ fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
     }
 )
 
-
-
-// // Show Orders
+// Show Orders
 function showOrders(data) {
     bodyTable.innerHTML = ''
     // Add Order In Dom
@@ -87,4 +83,12 @@ function searchOrders(dataAll, value) {
         });
     }
 }
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }
+
 

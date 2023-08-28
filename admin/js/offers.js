@@ -1,8 +1,8 @@
-const log = JSON.parse(localStorage.getItem("log"));
 
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const GET_ALL_OFFERS = "http://127.0.0.1:8000/api/admin/all_offers";
+const ADD_OFFERS = 'http://127.0.0.1:8000/api/admin/add_offer';
+
 
 // Get Elements
 let promo = document.getElementById("promo");
@@ -14,7 +14,7 @@ let bodyTable = document.getElementById("bodyTable");
 // Create Function Call DATA from Api
 function callData() {
     // Call DATA From Api
-    fetch("http://127.0.0.1:8000/api/admin/all_offers").then(
+    fetch(GET_ALL_OFFERS).then(
         (result) => result.json()
     ).then(
         (dataApi) => {
@@ -42,7 +42,7 @@ function callData() {
 
 }
 
-// Call Function calData
+// Call Function callData
 callData();
 
 
@@ -56,15 +56,21 @@ submit.addEventListener('submit', function (e) {
     formData.append('discount', discount.value);
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_offer', true);
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log('Done');
-        } else {
-            console.log('faild');
-        }
-    };
+    xhr.open('POST', ADD_OFFERS , true);
     xhr.send(formData);
     callData();
+    promo.value = '';
+    startDate.value = '';
+    endDate.value = '';
+    discount.value = '';
 });
+
+
+
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }

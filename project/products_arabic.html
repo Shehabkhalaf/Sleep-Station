@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -13,13 +13,15 @@
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
     <!-- Header css file -->
-    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/english/header.css">
     <!-- Footer css file -->
-    <link rel="stylesheet" href="./css/footer.css">
-    <!-- userHome css file -->
-    <link rel="stylesheet" href="./css/userHome.css">
+    <link rel="stylesheet" href="./css/english/footer.css">
+    <!-- Contact css file -->
+    <link rel="stylesheet" href="./css/english/userHome.css">
     <!-- Main css file -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/english/main.css">
+    <!-- Main Arabic css file -->
+    <link rel="stylesheet" href="./css/arabic/styleArabic.css">
 </head>
 
 <body>
@@ -27,15 +29,16 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky" id="nav">
     </nav>
     <!-- End Header -->
+    <!-- start landing Contact -->
     <!-- start landing about -->
     <div class="landing-product overflow-hidden pb-5 d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="text wow animate__fadeInUp" data-wow-duration="2s">
-                <h1 class="mb-3">Our Products</h1>
+                <h1 class="mb-3">منتجاتنا</h1>
                 <div aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Our Products</li>
+                        <li class="breadcrumb-item"><a href="./home_arabic.html">الرئيسية</a></li>
+                        <li class="breadcrumb-item" aria-current="page">منتجاتنا</li>
                     </ol>
                 </div>
             </div>
@@ -48,13 +51,13 @@
             <div class="row pt-2 pb-5">
                 <div class="col-lg-3 col-md-3">
                     <div class="search d-flex mb-2">
-                        <input class="form-control" type="text" id="search" placeholder="Search Products">
+                        <input class="form-control" type="text" id="search" placeholder="البحث عن المنتجات">
                         <button class="close" id="iconSearch">X</button>
                     </div>
-                    <h5 class="titleFilter">Categories</h5>
+                    <h5 class="titleFilter">فئات</h5>
                     <div id="categories">
                     </div>
-                    <button class="apply" id="apply">Apply</button>
+                    <button class="apply" id="apply">تطبيق</button>
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="boxes row products" id="boxes">
@@ -66,27 +69,27 @@
     <!-- End Products -->
     <!-- Button Scroll UP And Button Whatts App -->
     <button class="btn btn-primary rounded-pill scroll" id="buttonScroll"><i class="fa-solid
-        fa-angles-up"></i></button>
+            fa-angles-up"></i></button>
     <a class="whatts" href="https://wa.me/+2001017159471"><i class="fa-brands fa-whatsapp"></i></a>
     <!-- Button Scroll UP And Button Whatts App -->
-    <!-- Start Footer -->
+    <!-- start footer -->
     <footer class="pb-5">
         <div class="part position-relative">
             <div class="container">
-                <div class="row pb-2">
+                <div class="row">
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-1 mt-5">
-                            <a href="./products.html"><img src="./images/logo/logo.png" alt=""></a>
-                            <p class="text-white-50 pe-1 mt-3">Sleep Station Is One Shop Where You Can Find The Best Bed
-                                Linen, Bedding, Mattress, Towels, Bean Bags & More.....</p>
+                            <a href="./index.html"><img src="./images/logo/logo.png" alt=""></a>
+                            <p class="text-white-50 pe-1 mt-3">Sleep Station هي متجر واحد حيث يمكنك العثور على أفضل
+                                بياضات ومفروشات ومراتب ومناشف وأكياس فول والمزيد .....</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-2 mt-5">
-                            <h3>Address</h3>
+                            <h3>تواصل معنا</h3>
                             <ul class="mt-4">
                                 <li class="phone">
-                                    <a href="https://wa.me/+2001017159471">
+                                    <a dir="ltr" href="https://wa.me/+2001017159471">
                                         +20 01017159471
                                     </a>
                                 </li>
@@ -100,19 +103,19 @@
                     </div>
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-3 mt-5">
-                            <h3>Quick Links</h3>
+                            <h3>تصفح الموقع</h3>
                             <ul class="pt-3">
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./products.html">Products</a></li>
-                                <li><a href="./contact.html">Contact Us</a></li>
+                                <li><a href="./home_arabic.html">الرئيسية</a></li>
+                                <li><a href="/productsArabic.html">منتجات</a></li>
+                                <li><a href="./contact_arabic.html">تواصل معنا</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 p-sm-3">
                         <div class="part-4 mt-5">
-                            <h3>Call us</h3>
-                            <p class="text-white-50 pe-5">Contact us via e-mail or phone, we are waiting for your call
-                                or message</p>
+                            <h3>اتصل بنا</h3>
+                            <p class="text-white-50">تواصل معنا عبر البريد الإلكتروني أو الهاتف ، نحن في انتظار مكالمتك
+                                أو رسالتك</p>
                             <div class="email-call mt-2 mb-2">
                                 <a href="mailto:Sales@Sleepstation-Eg.Com?subject=&body=">
                                     Sales@Sleepstation-Eg.Com
@@ -138,18 +141,20 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <p>Copyright @ SignalDev group 2023</p>
+                    <p style="text-align: end;">Copyright @ SignalDev group 2023</p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- End Footer -->
+    <!-- end footer  -->
+    <!-- CDN Sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- File Js Wow -->
     <script src="./js/wow.min.js"></script>
     <!-- File Js Contact -->
-    <script src="./js/products.js"></script>
+    <script src="./js/english/products.js"></script>
     <script>
         new WOW().init();
         let buttonScroll = document.getElementById("buttonScroll");
@@ -163,9 +168,7 @@
                 window.scrollTo({ top: 0, behavior: "smooth" });
             };
         }
-
     </script>
-
 </body>
 
 </html>

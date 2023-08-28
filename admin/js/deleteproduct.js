@@ -1,8 +1,6 @@
-const log = JSON.parse(localStorage.getItem("log"));
-
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const SHOW_PRODUCT = "http://127.0.0.1:8000/api/admin/show_product/"
+const DELTE_PRODUCT = `http://127.0.0.1:8000/api/admin/delete_product`;
 
 // Get Element
 let inputSearch = document.getElementById("searchProduct");
@@ -11,7 +9,7 @@ let showProduct = document.getElementById("showProduct");
 
 // Call Product 
 buttonSearch.addEventListener('click', () => {
-   fetch(`http://127.0.0.1:8000/api/admin/show_product/${+inputSearch.value}`)
+   fetch(`${SHOW_PRODUCT}${+inputSearch.value}`)
         .then((res) => res.json())
         .then((data) => {
             showProduct.innerHTML = ''
@@ -32,7 +30,7 @@ buttonSearch.addEventListener('click', () => {
                     const formData = new FormData();
                     formData.append('id' , data.data.product_id);
                     const xhr = new XMLHttpRequest();
-                    xhr.open('POST', `http://127.0.0.1:8000/api/admin/delete_product`, true);
+                    xhr.open('POST', DELTE_PRODUCT , true);
                     xhr.send(formData);
                     showProduct.innerHTML = `
                     <h1 class="text-center" style="color: red;">DElETE !</h1>
@@ -42,3 +40,10 @@ buttonSearch.addEventListener('click', () => {
         })
         
 })
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }

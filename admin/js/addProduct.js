@@ -1,8 +1,6 @@
-const log = JSON.parse(localStorage.getItem("log"));
-
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const ADD_PRODUCT = 'http://127.0.0.1:8000/api/admin/add_product';
+const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
 
 // Get Elements Form 
 let productName = document.getElementById("productname"),
@@ -105,7 +103,7 @@ fileInput.addEventListener("change", (e) => {
 })
 
 // ADD Categories
-fetch("http://127.0.0.1:8000/api/admin/all_categories").then(
+fetch(GET_DATA_CATEGORY).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -136,18 +134,8 @@ document.getElementById('submitButton').addEventListener('click', () => {
         formData.append('color', JSON.stringify(listColor));
         formData.append('category_id', categoryValue);
         formData.append('images', JSON.stringify(listImages));
-
-
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8000/api/admin/add_product', true);
-
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            } else {
-                console.log('فشل تحميل الصورة.');
-            }
-        };
+        xhr.open('POST', ADD_PRODUCT, true);
         xhr.send(formData);
     });
 })

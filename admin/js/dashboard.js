@@ -1,13 +1,13 @@
-const log = JSON.parse(localStorage.getItem("log"));
-
-if(log !== true) {
-    window.location.href = 'index.html'
-}
+// URL API
+const GET_ALL_ORDERS = "http://127.0.0.1:8000/api/admin/paid_orders";
+const GET_ALL_USERS = "http://127.0.0.1:8000/api/admin/all_users";
+const GET_ALL_PRODUCTS = "http://127.0.0.1:8000/api/admin/all_products";
+const CASH_ORDERS = "http://127.0.0.1:8000/api/admin/cash_orders";
 
 
 function totalOrder() {
     // Total Orders
-    fetch("http://127.0.0.1:8000/api/admin/paid_orders").then(
+    fetch(GET_ALL_ORDERS).then(
         (result) => result.json()
     ).then(
         (dataApi) => {
@@ -24,7 +24,7 @@ function totalOrder() {
 totalOrder();
 
 // Total Users
-fetch("http://127.0.0.1:8000/api/admin/all_users").then(
+fetch(GET_ALL_USERS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -35,7 +35,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_users").then(
 
 
 // Total Products
-fetch("http://127.0.0.1:8000/api/admin/all_products").then(
+fetch(GET_ALL_PRODUCTS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -50,7 +50,7 @@ fetch("http://127.0.0.1:8000/api/admin/all_products").then(
 let bodyTable = document.getElementById("bodyTable");
 
 
-fetch("http://127.0.0.1:8000/api/admin/all_products").then(
+fetch(GET_ALL_PRODUCTS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -100,7 +100,7 @@ function showProducts(data) {
 }
 
 
-fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
+fetch(CASH_ORDERS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
@@ -171,3 +171,10 @@ fetch("http://127.0.0.1:8000/api/admin/cash_orders").then(
 
     }
 )
+
+
+// const log = JSON.parse(localStorage.getItem("log"));
+
+// if(log !== true) {
+//     window.location.href = 'index.html'
+// }
