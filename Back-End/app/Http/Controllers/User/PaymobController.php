@@ -13,20 +13,20 @@ class PaymobController extends Controller
     use ApiResponse;
     public function responseCallback(Request $request)
     {
-        $string = $request;
-        $json = strstr($string, '{');
-        $json = json_decode($json);
-        $order_id = $json->obj->order->id;
-        $trasction_id = $json->obj->id;
-        $pending = $json->obj->pending;
-        $success = $json->obj->success;
+        $order_id = $request->order;
+        $trasction_id = $request->id;
+        $pending = $request->pending;
+        $success = $request->success;
+        $amount_cents = $request->amount_cents;
         $paymob = new Paymob;
         $paymob->order_id = $order_id;
         $paymob->transction_id = $trasction_id;
         $paymob->success = $success;
         $paymob->pending = $pending;
+        $paymob->amount_cents = $amount_cents;
         $saved = $paymob->save();
         if ($saved) {
+            $order_id = $order_id * (100 / 500);
             return redirect('http://127.0.0.1:5501/payment.html?order_id=' . $order_id);
         } else {
             return abort(404);
