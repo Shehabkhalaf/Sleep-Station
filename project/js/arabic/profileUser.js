@@ -2,6 +2,7 @@
 // URL API
 const GET_ALL_ORDERS = `http://127.0.0.1:8000/api/user/all_orders`;
 
+
 // WOW Js
 new WOW().init();
 

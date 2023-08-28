@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="./css/english/payment.css">
     <!-- Main css file -->
     <link rel="stylesheet" href="./css/english/main.css">
+    <!-- Main Arabic css file -->
+    <link rel="stylesheet" href="./css/arabic/styleArabic.css">
 
 </head>
 
@@ -31,15 +33,15 @@
             <div class="container">
                 <div class="row  d-flex justify-content-center align-items-center">
                     <div class="col-lg-6 col-md-10 col-sm-12">
-                        <h2 class="text-center m-5">Select the payment method</h2>
-                        <h3>Choose the payment method</h3>
+                        <h2 class="text-center m-5">حدد طريقة الدفع</h2>
+                        <h3>اختر طريقة الدفع</h3>
                         <div class="form">
                             <div class="form-check">
                                 <input class="form-check-input radio" type="radio" name="exampleRadios"
                                     id="exampleRadios1" value="paid" checked>
                                 <label class="form-check-label d-flex justify-content-between align-items-center"
                                     for="exampleRadios1">
-                                    <span>Card Payment</span>
+                                    <span>بطاقة الائتمان</span>
                                     <img src="./images/cashless-payment.png" alt="">
                                 </label>
                             </div>
@@ -48,7 +50,7 @@
                                     id="exampleRadios2" value="cash">
                                 <label class="form-check-label d-flex justify-content-between align-items-center"
                                     for="exampleRadios2">
-                                    <span>Cash</span>
+                                    <span>نقدي</span>
                                     <img src="./images/cash-on-delivery (1).png" alt="">
                                 </label>
                             </div>
@@ -57,13 +59,13 @@
                                     id="exampleRadios3" value="paid">
                                 <label class="form-check-label d-flex justify-content-between align-items-center"
                                     for="exampleRadios3">
-                                    <span>Valu</span>
+                                    <span>فاليو</span>
                                     <img src="./images/valu-seeklogo.com-1.png" width="40px" alt="">
                                 </label>
                             </div>
                         </div>
-                        <button class="buttonStyle check" id="checkoutFinal">Check Out <i
-                                class="fa-solid fa-right-long"></i></button>
+                        <button class="buttonStyle check" id="checkoutFinal">الدفع <i
+                                class="fa-solid fa-left-long"></i></button>
                     </div>
                 </div>
             </div>
@@ -73,8 +75,8 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- File Js Wow -->
     <script src="./js/wow.min.js"></script>
-    <!-- File Js Payment -->
-    <script src="./js/english/payment.js"></script>
+    <!-- File Js Cart -->
+    <script src="./js/arabic/cart.js"></script>
     <script>
         new WOW().init();
     </script>

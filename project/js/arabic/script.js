@@ -169,7 +169,7 @@ const header2 = `
                 <a class="nav-link" href="./contact_arabic.html">تواصل معنا</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./contact_arabic.html">حسابي</a>
+                <a class="nav-link" href="./profile_user_arabic.html">حسابي</a>
             </li>
         </ul>
         <div class="btn-group mb-3 bigNone" role="group">

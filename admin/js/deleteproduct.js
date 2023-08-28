@@ -9,7 +9,7 @@ let showProduct = document.getElementById("showProduct");
 
 // Call Product 
 buttonSearch.addEventListener('click', () => {
-   fetch(`${SHOW_PRODUCT}${+inputSearch.value}`)
+    fetch(`${SHOW_PRODUCT}${+inputSearch.value}`)
         .then((res) => res.json())
         .then((data) => {
             showProduct.innerHTML = ''
@@ -27,18 +27,34 @@ buttonSearch.addEventListener('click', () => {
             `
                 // DELETE product
                 document.getElementById("buttonDelete").addEventListener("click", (e) => {
-                    const formData = new FormData();
-                    formData.append('id' , data.data.product_id);
-                    const xhr = new XMLHttpRequest();
-                    xhr.open('POST', DELTE_PRODUCT , true);
-                    xhr.send(formData);
-                    showProduct.innerHTML = `
-                    <h1 class="text-center" style="color: red;">DElETE !</h1>
-                    `
+                    swal({
+                        title: "Are you sure you want to delete this Product ?",
+                        text: "",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                swal("This product  have been deleted", {
+                                    icon: "success",
+                                });
+                                const formData = new FormData();
+                                formData.append('id', data.data.product_id);
+                                const xhr = new XMLHttpRequest();
+                                xhr.open('POST', DELTE_PRODUCT, true);
+                                xhr.send(formData);
+                                showProduct.innerHTML = '';
+                                
+                            } else {
+                                swal("The deletion command has been undone");
+                            }
+                        });
+
                 })
             }
         })
-        
+
 })
 
 

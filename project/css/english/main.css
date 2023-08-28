@@ -228,3 +228,7 @@ body {
 .breadcrumb a {
   color: var(--primary-color);
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #f7feff;
+}
