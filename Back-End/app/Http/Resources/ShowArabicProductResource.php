@@ -15,7 +15,8 @@ class ShowArabicProductResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'product_id' => $this->id,
+            'product_id' => $this->product->id,
+//            'arabic_product_id' => $this->id,
             'category_id' => $this->arabic_category->id,
             'product_name' => $this->title,
             'category_name' => $this->arabic_category->title,

@@ -29,7 +29,7 @@ class ShowProduct extends JsonResource
             'price' =>  json_decode($this->price, true),
             'arabic_name' => $this->arabic_product->title,
             'arabic_color' => json_decode($this->arabic_product->color),
-            'arabic-description' => $this->arabic_product->description,
+            'arabic_description' => $this->arabic_product->description,
             'arabic_name_category'=>$this->arabic_product->arabic_category->title
         ];
     }

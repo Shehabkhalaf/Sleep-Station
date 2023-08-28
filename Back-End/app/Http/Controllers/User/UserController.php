@@ -51,7 +51,7 @@ class UserController extends Controller
     public function showProduct(Request $request, $id)
     {
         if ($request->lang == 'ar') {
-            $arabic_product = ArabicProduct::find($id);
+            $arabic_product = ArabicProduct::where('product_id', $id)->first();
             $arabic_product = new ShowArabicProductResource($arabic_product);
             return $this->JsonResponse(200, 'المنتج هنا', $arabic_product);
         } else {
