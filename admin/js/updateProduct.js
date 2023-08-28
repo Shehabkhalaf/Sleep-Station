@@ -1,6 +1,8 @@
 // URL API
 const ADD_PRODUCT = 'http://127.0.0.1:8000/api/admin/add_product';
 const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
+const Get_PRODUCT = 'http://127.0.0.1:8000/api/admin/show_product/'
+
 
 // Get Elements Form 
 let productName = document.getElementById("productname"),
@@ -22,7 +24,40 @@ let productName = document.getElementById("productname"),
     addImage = document.getElementById("addImage"),
     stock = document.getElementById("stock"),
     categories = document.getElementById("categories"),
-    colorInput = document.getElementById("color");
+    colorInput = document.getElementById("color"),
+    inputSearch = document.getElementById("searchProduct"),
+    buttonSearch = document.getElementById("buttonSearch");
+
+
+
+// ADD Categories
+buttonSearch.addEventListener('click', () => {
+    fetch(`${Get_PRODUCT}${inputSearch.value}`).then(
+        (result) => result.json()
+    ).then(
+        (dataApi) => {
+            if (dataApi.status === 200) {
+                showProduct(dataApi.data);
+            }
+        }
+    )
+})
+
+
+function showProduct(data) {
+    productName.value = data.product_name;
+    productnameArabic.value = data.arabic_name;
+    descriptionArabic.value = data.arabic_description;
+    description.value = data.description;
+}
+
+
+
+
+
+
+
+
 
 let categoryValue;
 
@@ -38,7 +73,6 @@ addColor.addEventListener('click', function (e) {
     if (colorName.value.trim() && colorInput.value.trim() && colorNameArabic.value.trim()) {
         listColor.push(colorName.value + " | " + colorInput.value);
         listColorArabic.push(colorNameArabic.value + " | " + colorInput.value);
-
 
         let tr = document.createElement("tr");
         tr.setAttribute("id", countIndex);
