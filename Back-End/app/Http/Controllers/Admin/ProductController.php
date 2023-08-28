@@ -79,7 +79,7 @@ class ProductController extends Controller
         $product->price = $price;
         $EnglishUpdated = $product->save();
         /*Arabic Product*/
-        $ArabicProduct = ArabicProduct::where('product_id', $product->id)->get();
+        $ArabicProduct = ArabicProduct::where('product_id', $product->id)->first();
         $ArabicProduct->title = $addProductRequest->input('arabic_title');
         $ArabicProduct->description = $addProductRequest->input('arabic_description');
         $ArabicProduct->color = $addProductRequest->input('arabic_color');
