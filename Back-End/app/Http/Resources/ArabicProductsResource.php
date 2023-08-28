@@ -20,7 +20,8 @@ class ArabicProductsResource extends JsonResource
             'category_id' => $this->id,
             'products' => $this->arabic_products->map(function ($arabic_product) {
                 return [
-                    'product_id' => $arabic_product->id,
+                    'product_id' => $arabic_product->product->id,
+//                    'arabic_product_id' => $arabic_product->id,
                     'category_id' => $this->id,
                     'product_name' => $arabic_product->title,
                     'description' => $arabic_product->description,
