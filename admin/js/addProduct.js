@@ -4,7 +4,9 @@ const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
 
 // Get Elements Form 
 let productName = document.getElementById("productname"),
+    productnameArabic = document.getElementById("productnameArabic"),
     description = document.getElementById("description"),
+    descriptionArabic = document.getElementById("descriptionArabic"),
     price = document.getElementById("price"),
     submit = document.getElementById("submit"),
     fileInput = document.querySelector('input[type="url"]'),
@@ -15,6 +17,7 @@ let productName = document.getElementById("productname"),
     andSizeAndPrice = document.getElementById("andSizeAndPrice"),
     colors = document.getElementById("colors"),
     colorName = document.getElementById("colorName"),
+    colorNameArabic = document.getElementById("colorNameArabic"),
     addColor = document.getElementById("addColor"),
     addImage = document.getElementById("addImage"),
     stock = document.getElementById("stock"),
@@ -28,15 +31,20 @@ categories.addEventListener("change", (e) => {
 });
 
 let listColor = [];
+let listColorArabic = [];
+
 
 addColor.addEventListener('click', function (e) {
-    if (colorName.value.trim() && colorInput.value.trim()) {
+    if (colorName.value.trim() && colorInput.value.trim() && colorNameArabic.value.trim()) {
         listColor.push(colorName.value + " | " + colorInput.value);
+        listColorArabic.push(colorNameArabic.value + " | " + colorInput.value);
+
 
         let tr = document.createElement("tr");
         tr.setAttribute("id", countIndex);
         tr.innerHTML = `
                     <td scope="col">${colorName.value}</td>
+                    <td scope="col">${colorNameArabic.value}</td>
                     <td scope="col"  style="background-color:${colorInput.value};"></td>
                     <td scope="col">
                         <button class="deleteColor delete me-2" data-colorId=${countIndex}>delete</button>
@@ -48,8 +56,11 @@ addColor.addEventListener('click', function (e) {
             element.addEventListener('click', () => {
                 document.getElementById(element.getAttribute("data-colorId")).remove();
                 listColor = listColor.filter((value, i) => i !== index);
+                listColorArabic = listColorArabic.filter((value, i) => i !== index);
             })
         })
+        colorName.value = '';
+        colorNameArabic.value = '';
     }
 })
 
@@ -86,6 +97,10 @@ andSizeAndPrice.addEventListener('click', function (e) {
                 listDiscount = listDiscount.filter((value, i) => i !== index);
             })
         })
+
+        size.value = '';
+        price.value = '';
+        discount.value = '';
     }
 })
 
@@ -98,9 +113,7 @@ addImage.addEventListener('click', function (e) {
     createList();
 })
 
-fileInput.addEventListener("change", (e) => {
 
-})
 
 // ADD Categories
 fetch(GET_DATA_CATEGORY).then(
@@ -127,11 +140,14 @@ document.getElementById('submitButton').addEventListener('click', () => {
         const formData = new FormData();
         formData.append('title', productName.value);
         formData.append('description', description.value);
+        formData.append('arabic_title', productnameArabic.value);
+        formData.append('arabic_description', descriptionArabic.value);
         formData.append('discount', JSON.stringify(listDiscount));
         formData.append('price', JSON.stringify(listPrice));
         formData.append('size', JSON.stringify(listSize));
         formData.append('stock', stock.value);
         formData.append('color', JSON.stringify(listColor));
+        formData.append('arabic_color', JSON.stringify(listColorArabic));
         formData.append('category_id', categoryValue);
         formData.append('images', JSON.stringify(listImages));
         const xhr = new XMLHttpRequest();
@@ -175,7 +191,6 @@ function createList() {
             // Add li in draggable List
             draggableList.appendChild(li)
         });
-    addEventListeners();
 }
 
 

@@ -30,6 +30,9 @@
                             <li><a href="./dashboard.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
                             <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
                             <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i> Add Products</a></li>
+                            <li><a href="./updateProduct.html"><i class="fa-solid fa-screwdriver-wrench"></i> Update
+                                    Product</a></li>
+
                             <li><a class="active" href="./deleteProduct.html"><i class="fa-solid fa-trash"></i> Delete
                                     Products</a>
                             </li>
@@ -60,12 +63,17 @@
                                     <div class="navbar-nav">
                                         <div class="dash smallScreen">
                                             <ul>
-                                                <li><a href="./dashboard.html"><i class="fa-solid fa-tv"></i> Dashboard</a>
+                                                <li><a href="./dashboard.html"><i class="fa-solid fa-tv"></i>
+                                                        Dashboard</a>
                                                 </li>
                                                 <li><a href="./products.html"><i class="fa-solid fa-bag-shopping"></i>
                                                         Products</a></li>
                                                 <li><a href="./addProducts.html"><i class="fa-solid fa-cart-plus"></i>
                                                         Add Products</a></li>
+                                                <li><a href="./updateProduct.html"><i
+                                                            class="fa-solid fa-screwdriver-wrench"></i> Update
+                                                        Product</a></li>
+
                                                 <li><a class="active" href="./deleteProduct.html"><i
                                                             class="fa-solid fa-trash"></i> Delete Products</a>
                                                 </li>
@@ -102,7 +110,8 @@
                                 <div
                                     class="d-flex justify-content-between align-items-center flex-column flex-md-row pb-2">
                                     <div class="d-flex mb-2 search">
-                                        <input type="text" class="form-control" id="searchProduct" style="width: calc(100% - 170px);" placeholder="Enter Product ID">
+                                        <input type="text" class="form-control" id="searchProduct"
+                                            style="width: calc(100% - 170px);" placeholder="Enter Product ID">
                                         <button class="buttonSearch" id="buttonSearch">Search Product</button>
                                     </div>
                                 </div>
@@ -122,6 +131,8 @@
             </div>
         </div>
     </div>
+    <!-- CDN Sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- File Js Bootstrap -->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- File Js Delete Product -->

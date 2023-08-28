@@ -456,3 +456,7 @@ body {
 }
 
 
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #f7feff;
+}

@@ -74,9 +74,9 @@ const header2 = `
             <img src="./images/language-icon/egypt.png"> AR
         </button>
         <ul class="dropdown-menu">
-            <li class="arabic"> <a href="./home_arabic.html"><img src="./images/language-icon/egypt.png">
+            <li class="arabic"> <a href="./contact_arabic.html"><img src="./images/language-icon/egypt.png">
                     AR</a></li>
-            <li> <a href="./index.html"><img src="./images/language-icon/united-states-of-america.png">
+            <li> <a href="./contact.html"><img src="./images/language-icon/united-states-of-america.png">
                     EN</a></li>
         </ul>
     </div>
@@ -97,7 +97,7 @@ const header2 = `
                 <a class="nav-link active" href="./contact_arabic.html">تواصل معنا</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./contact_arabic.html">حسابي</a>
+                <a class="nav-link" href="./profile_user_arabic.html">حسابي</a>
             </li>
         </ul>
         <div class="btn-group mb-3 bigNone" role="group">
@@ -106,7 +106,7 @@ const header2 = `
                 <img src="./images/language-icon/egypt.png"> AR
             </button>
             <ul class="dropdown-menu">
-                <li class="arabic"> <a href="./contact.html"><img src="./images/language-icon/egypt.png">
+                <li class="arabic"> <a href="./contact_arabic.html"><img src="./images/language-icon/egypt.png">
                         AR</a></li>
                 <li> <a href="./contact.html"><img src="./images/language-icon/united-states-of-america.png">
                         EN</a></li>

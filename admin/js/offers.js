@@ -58,6 +58,7 @@ submit.addEventListener('submit', function (e) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', ADD_OFFERS , true);
     xhr.send(formData);
+    swal("Promo code added successfully", "", "success");
     callData();
     promo.value = '';
     startDate.value = '';
