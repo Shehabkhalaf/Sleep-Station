@@ -17,17 +17,6 @@ const header1 = `
             <img src="./images/logo/logo.png" alt="">
         </a>
     </div>
-    <div class="btn-group mb-3 smallNone" role="group">
-        <button type="button" class="language dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="./images/language-icon/egypt.png"> AR
-        </button>
-        <ul class="dropdown-menu">
-            <li class="arabic"> <a href="./contact_arabic.html"><img src="./images/language-icon/egypt.png">
-                    AR</a></li>
-            <li> <a href="./contact.html"><img src="./images/language-icon/united-states-of-america.png">
-                    EN</a></li>
-        </ul>
-    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -45,18 +34,6 @@ const header1 = `
                 <a class="nav-link " href="./contact_arabic.html">تواصل معنا</a>
             </li>
         </ul>
-        <div class="btn-group mb-3 bigNone" role="group">
-            <button type="button" class="language dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <img src="./images/language-icon/egypt.png"> AR
-            </button>
-            <ul class="dropdown-menu">
-                <li class="arabic"> <a href="./products_arabic.html"><img src="./images/language-icon/egypt.png">
-                        AR</a></li>
-                <li> <a href="./products.html"><img src="./images/language-icon/united-states-of-america.png">
-                        EN</a></li>
-            </ul>
-        </div>
         <a href="./cart_arabic.html" class="icon" id="cartIcon">
             <span class="count" id="count">0</span>
             <i class="fa-solid fa-cart-plus"></i>
@@ -77,12 +54,6 @@ const header2 = `
         <button type="button" class="language dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="./images/language-icon/egypt.png"> AR
         </button>
-        <ul class="dropdown-menu">
-            <li class="arabic"> <a href="./products_arabic.html"><img src="./images/language-icon/egypt.png">
-                    AR</a></li>
-            <li> <a href="./products.html"><img src="./images/language-icon/united-states-of-america.png">
-                    EN</a></li>
-        </ul>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -109,12 +80,6 @@ const header2 = `
                 aria-expanded="false">
                 <img src="./images/language-icon/egypt.png"> AR
             </button>
-            <ul class="dropdown-menu">
-                <li class="arabic"> <a href="./products_arabic.html"><img src="./images/language-icon/egypt.png">
-                        AR</a></li>
-                <li> <a href="./products.html"><img src="./images/language-icon/united-states-of-america.png">
-                        EN</a></li>
-            </ul>
         </div>
         <a href="./cart_arabic.html" class="icon" id="cartIcon">
             <span class="count" id="count">0</span>
@@ -193,22 +158,22 @@ function addProduct(data) {
     let countColor = 0;
     data.color.forEach(e => countColor++);
     detailsContainer.innerHTML = `
-            <a href="./products.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-left"></i> Back To All Products</a>
+            <a href="./products_arabic.html" class="buttonStyleBack" id="back-btnn"><i class="fa-solid fa-arrow-right"></i>العودة إلى جميع المنتجات</a>
             <h2 class="mt-5">${data.product_name}</h2>
-            <p class="price" id="discountP">EGP ${data.discount[0]} <del id="priceDel">EGP
+            <p class="price" id="discountP">ج.م ${data.discount[0]} <del id="priceDel">ج.م
                     ${data.price[0]}</del></p>
             <div class="description">${data.description}</div>
             <div class="form">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="qty">
-                            <label for="">Quantity</label>
+                            <label for="">كمية</label>
                             <input type="number" min="1" id="quantity" value="1">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="select">
-                            <label for="">size</label>
+                            <label for="">حجم</label>
                             <select class="form-select" id="selected" aria-label="Default select example">
                                 ${data.size.map((sizetype, index) => `<option value="${index}">${sizetype}
                                 </option>
@@ -218,8 +183,8 @@ function addProduct(data) {
                     </div>
                 </div>
                 <div class="color mt-2 d-flex">
-                    <span>color:</span>
-                    <span id="chooseColor">${countColor > 0 ? data.color[0].split("|")[0] : "white"}</span>
+                    <span>لون:</span>
+                    <span id="chooseColor">${countColor > 0 ? data.color[0].split("|")[0] : "أبيض"}</span>
                 </div>
                 ${countColor > 0 ?
             `<ul class="mt-2 colors d-flex align-items-center">
@@ -229,7 +194,7 @@ function addProduct(data) {
                 </ul>`
             : ""}
             </div>
-            <button class="buttonStyle add-card mt-5" id="addCardd">Add To Cart <i
+            <button class="buttonStyle add-card mt-5" id="addCardd">أضف إلى السلة <i
                     class="fa-solid fa-cart-shopping"></i></button>
             <div class="icon">
                 <img src="images/icon.avif" class="img-size img-fluid">
@@ -241,13 +206,13 @@ function addProduct(data) {
     let quantity = document.getElementById("quantity");
     quantity.addEventListener("change", (number) => {
         if (number.target.value > 0) {
-            document.getElementById("discountP").innerHTML = "EGP " + (+number.target.value * data.discount[0]) + `<del id="priceDel">EGP ${+number.target.value * data.price[0]}</del>`;
+            document.getElementById("discountP").innerHTML = "ج.م " + (+number.target.value * data.discount[0]) + `<del id="priceDel">ح.م ${+number.target.value * data.price[0]}</del>`;
         }
     })
 
     let selected = document.getElementById("selected");
     selected.addEventListener("change", (select) => {
-        document.getElementById("discountP").innerHTML = "EGP " + (+quantity.value * data.discount[+selected.value]) + `<del id="priceDel">EGP ${+quantity.value * data.price[+selected.value]}</del>`;
+        document.getElementById("discountP").innerHTML = "ج.م " + (+quantity.value * data.discount[+selected.value]) + `<del id="priceDel">ج.م ${+quantity.value * data.price[+selected.value]}</del>`;
     })
 
 
