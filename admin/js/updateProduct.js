@@ -1,5 +1,5 @@
 // URL API
-const ADD_PRODUCT = 'http://127.0.0.1:8000/api/admin/add_product';
+const UPDATE_PRODUCT = 'http://127.0.0.1:8000/api/admin/update_product';
 const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
 const Get_PRODUCT = 'http://127.0.0.1:8000/api/admin/show_product/'
 
@@ -35,7 +35,9 @@ let listSize = [];
 let listPrice = [];
 let listDiscount = [];
 let listImages = [];
+let categoryValue;
 
+let countIndex = 0;
 
 // ADD Categories
 buttonSearch.addEventListener('click', () => {
@@ -44,7 +46,10 @@ buttonSearch.addEventListener('click', () => {
     ).then(
         (dataApi) => {
             if (dataApi.status === 200) {
+                document.getElementById('error').innerHTML = ''
                 showProduct(dataApi.data);
+            }else {
+                document.getElementById('error').innerHTML = 'NOT FOUND !'
             }
         }
     )
@@ -65,16 +70,17 @@ function showProduct(data) {
         listDiscount.push(data.discount[index]);
 
         let tr = document.createElement("tr");
-        tr.setAttribute("id", index);
+        tr.setAttribute("id", countIndex);
         tr.innerHTML = `
                         <td scope="col">${data.size[index]}</td>
                         <td scope="col">${data.price[index]}</td>
                         <td scope="col">${data.discount[index]}</td>
                         <td scope="col">
-                            <button class="delete deletePrice me-2" data-id=${index}>delete</button>
+                            <button class="delete deletePrice me-2" data-id=${countIndex}>delete</button>
                         </td>
                 `
         tablePrice.append(tr)
+        countIndex++;
         document.querySelectorAll('.deletePrice').forEach((element, index) => {
             element.addEventListener('click', () => {
                 document.getElementById(element.getAttribute("data-id")).remove();
@@ -90,16 +96,17 @@ function showProduct(data) {
         listColorArabic.push(data.arabic_color[index].split("|")[1] + " | " + data.arabic_color[index].split("|")[0]);
 
         let tr = document.createElement("tr");
-        tr.setAttribute("id", index);
+        tr.setAttribute("id", countIndex);
         tr.innerHTML = `
                     <td scope="col">${element.split("|")[0]}</td>
                     <td scope="col">${data.arabic_color[index].split("|")[0]}</td>
                     <td scope="col"  style="background-color:${element.split("|")[0]};"></td>
                     <td scope="col">
-                        <button class="deleteColor delete me-2" data-colorId=${index}>delete</button>
+                        <button class="deleteColor delete me-2" data-colorId=${countIndex}>delete</button>
                     </td>
             `
         colors.append(tr)
+        countIndex++;
         document.querySelectorAll('.deleteColor').forEach((element, index) => {
             element.addEventListener('click', () => {
                 document.getElementById(element.getAttribute("data-colorId")).remove();
@@ -113,7 +120,7 @@ function showProduct(data) {
         (result) => result.json()
     ).then(
         (dataApi) => {
-            dataAll = dataApi.data.forEach((element) => {
+            dataApi.data.forEach((element) => {
                 if (element.category_name === data.category_name) {
                     categoryValue = element.category_name;
                 }
@@ -122,34 +129,26 @@ function showProduct(data) {
     )
 }
 
-
-
-
-
-
-
-
-
-let categoryValue;
-
 categories.addEventListener("change", (e) => {
     categoryValue = e.target.value;
-
+    console.log(categoryValue)
     fetch(GET_DATA_CATEGORY).then(
         (result) => result.json()
     ).then(
         (dataApi) => {
-            dataAll = dataApi.data.forEach((element) => {
-                if (element.category_id === e.target.value) {
-                    document.getElementById("nameCate").value = element.category_name;
+            dataApi.data.forEach((element) => {
+                console.log(element.category_id)
 
+                if (element.category_id === +categoryValue) {
+                    console.log(categoryValue)
+
+                    document.getElementById("nameCate").value = element.category_name;
                 }
             });
         }
     )
 
 });
-
 
 
 addColor.addEventListener('click', function (e) {
@@ -182,9 +181,6 @@ addColor.addEventListener('click', function (e) {
 })
 
 
-
-
-let countIndex = 0;
 
 andSizeAndPrice.addEventListener('click', function (e) {
     if (price.value.trim() && size.value.trim() && discount.value.trim()) {
@@ -255,6 +251,7 @@ fetch(GET_DATA_CATEGORY).then(
 document.getElementById('submitButton').addEventListener('click', () => {
     submit.addEventListener('submit', function (e) {
         const formData = new FormData();
+        formData.append('id', inputSearch.value);
         formData.append('title', productName.value);
         formData.append('description', description.value);
         formData.append('arabic_title', productnameArabic.value);
@@ -268,18 +265,10 @@ document.getElementById('submitButton').addEventListener('click', () => {
         formData.append('category_id', categoryValue);
         formData.append('images', JSON.stringify(listImages));
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', ADD_PRODUCT, true);
+        xhr.open('POST', UPDATE_PRODUCT, true);
         xhr.send(formData);
     });
 })
-
-
-
-
-
-// Storage List Items
-let listItems = [];
-
 
 
 createList();
@@ -295,18 +284,27 @@ function createList() {
             let li = document.createElement("li");
             // Set Attribute in li
             li.setAttribute("data-index", index);
+            li.setAttribute("id", countIndex);
+
 
             li.innerHTML = `
             <span class="number" > ${index + 1}</span>
                 <div class="draggable" draggable="true">
                 <img src=${person} alt="" width="150" height='150px'>
                 </div>
+                <button class="number deleteImage delete " style="border-radius: 0px;"  data-id=${countIndex}>Delete</button>
+
         `
-            // Push li in List items
-            listItems.push(li);
             // Add li in draggable List
             draggableList.appendChild(li)
+            countIndex++;
         });
+    document.querySelectorAll('.deleteImage').forEach((element, index) => {
+        element.addEventListener('click', () => {
+            document.getElementById(element.getAttribute("data-id")).remove();
+            listImages = listImages.filter((value, i) => i !== index);
+        })
+    })
 }
 
 

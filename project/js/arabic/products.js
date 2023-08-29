@@ -1,5 +1,5 @@
 // URL API
-const GET_ALL_PRODUCTS = "http://127.0.0.1:8000/api/user/products";
+const GET_ALL_PRODUCTS = "http://127.0.0.1:8000/api/user/products?lang=ar";
 
 // USER SIGNIN OR NOT
 const status = JSON.parse(localStorage.getItem("sign_done"));
@@ -126,8 +126,6 @@ if (status !== true) {
 }
 
 
-
-
 // Get Elements 
 let categories = document.getElementById("categories");
 let boxesProducts = document.getElementById("boxes");
@@ -150,6 +148,7 @@ fetch(GET_ALL_PRODUCTS).then(
         dataAll = dataApi.data;
         showCategories(dataAll);
         showProducts(dataAll)
+        console.log(dataAll)
 
         document.getElementById("apply").addEventListener("click", () => {
             choose.length === 0 ? showProducts(dataAll) : showProducts(dataAll, choose);
@@ -238,7 +237,7 @@ function addProduct(product) {
                                 <h5>${element.product_name}</h5>
                             </div>
                             <div class="buttons">
-                                <p class="price d-flex"><span class="me-1">EGP</span><span>${element.price[0]}</span></p>
+                                <p class="price d-flex"><span>${element.discount[0]}</span><span class="me-1">ج.م</span></p>
                             </div>
                         </div>
                     </div>
@@ -255,7 +254,7 @@ function addProduct(product) {
                 // Set Data From Local Storage
                 localStorage.setItem("productDetails", JSON.stringify({ 'category_id': category_id, "product_id": product_id }));
                 // Go To Location Product Details
-                location.href = 'product.html'
+                location.href = 'product_arabic.html'
             })
         })
     })
@@ -274,28 +273,25 @@ function searchProduct(dataAll, value) {
                     // create div
                     let div = document.createElement("div");
                     // Add class
-                    div.setAttribute('class', "col-lg-6 mb-3")
+                    div.setAttribute('class', "col-lg-5 mb-3")
                     div.setAttribute('data-id', element.product_id)
                     div.innerHTML = `
-                    <div class="box">
-                        <div class="card overflow-hidden">
-                            <div class="image overflow-hidden" id="card" data-id="${element.id}">
-                                <img src=${element.images[0]} class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <div class="title mb-4">
-                                    <h5>${element.product_name}</h5>
+                            <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
+                                <div class="overflow-hidden">
+                                    <div class="image overflow-hidden" id="card" data-id="${element.id}">
+                                        <img src=${element.images[0]} class="card-img-top">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="title mb-2">
+                                            <h5>${element.product_name}</h5>
+                                        </div>
+                                        <div class="buttons">
+                                            <p class="price d-flex"><span>${element.discount[0]}</span><span class="me-1">ج.م</span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="buttons d-flex justify-content-between align-items-center">
-                                    <button type="button" id="addCard" data-id="${element.id}"
-                                        class="btn btn-primary buttonStyle">Add to Card
-                                    </button>
-                                    <p class="price d-flex"><span class="me-1">EGP</span><span>${element.price[0]}</span></p>
-                                </div>
                             </div>
-                        </div>
-                    <div>
-                    `
+                            `
                     boxesProducts.appendChild(div)
                 }
             })

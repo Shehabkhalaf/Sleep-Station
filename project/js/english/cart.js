@@ -141,3 +141,11 @@ document.getElementById("formPromoCode").addEventListener("submit", (e) => {
         }
     )
 })
+
+document.getElementById("checkOut").addEventListener('click', (e) => {
+    const status = JSON.parse(localStorage.getItem("sign_done"));
+    if (status !== true) {
+        e.preventDefault();
+        swal("You must be logged in to be able to complete the purchase");
+    }
+})

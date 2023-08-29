@@ -108,6 +108,13 @@ if (total > 0) {
 totalPrice.innerHTML = "EGP " + total;
 
 
+document.getElementById("checkOut").addEventListener('click', (e) => {
+    const status = JSON.parse(localStorage.getItem("sign_done"));
+    if (status !== true) {
+        e.preventDefault();
+        swal("يجب عليك تسجيل الدخول لتتمكن من إتمام عملية الشراء");
+    }
+})
 
 
 
@@ -128,14 +135,14 @@ document.getElementById("formPromoCode").addEventListener("submit", (e) => {
                         promoCode = +element.discount;
                         document.getElementById("errorPromo").innerHTML = "";
                         document.getElementById("totalPrice").innerHTML = "EGP " + (total + 60 - promoCode);
-                    }else {
+                    } else {
                         document.getElementById("errorPromo").innerHTML = "This code has expired";
                     }
                     check++;
                 }
             })
 
-            if(check ===0) {
+            if (check === 0) {
                 document.getElementById("errorPromo").innerHTML = "This code does not exist";
             }
         }

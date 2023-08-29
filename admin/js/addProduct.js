@@ -160,7 +160,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
 
 
 
-const listImages = [];
+let listImages = [];
 
 
 // Storage List Items
@@ -181,18 +181,26 @@ function createList() {
             let li = document.createElement("li");
             // Set Attribute in li
             li.setAttribute("data-index", index);
+            li.setAttribute("id", countIndex);
 
             li.innerHTML = `
             <span class="number" > ${index + 1}</span>
                 <div class="draggable" draggable="true">
                 <img src=${person} alt="" width="150" height='150px'>
                 </div>
-        `
-            // Push li in List items
-            listItems.push(li);
+                <button class="number deleteImage delete " style="border-radius: 0px;"  data-id=${countIndex}>Delete</button>
+
+                `
             // Add li in draggable List
             draggableList.appendChild(li)
+            countIndex++;
         });
+        document.querySelectorAll('.deleteImage').forEach((element, index) => {
+        element.addEventListener('click', () => {
+            document.getElementById(element.getAttribute("data-id")).remove();
+            listImages = listImages.filter((value, i) => i !== index);
+        })
+    })
 }
 
 

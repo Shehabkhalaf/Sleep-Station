@@ -118,6 +118,11 @@ footer .part-3 ul li a::before {
 .form-check .form-check-input {
   float: right;
 }
+
+#categories .form-check .form-check-input {
+  float: left;
+} 
+
 /* end medthod check out */
 
 .breadcrumb-item + .breadcrumb-item::before {
