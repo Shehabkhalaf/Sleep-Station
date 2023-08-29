@@ -31,10 +31,11 @@ class OrderController extends Controller
         $order = AdminOrder::find($request->id);
         $order_details = json_decode($order->order_details);
         foreach ($order_details as $order_detail) {
-            $pattern = '/^[\p{Arabic}\s]+$/u';
+            $pattern = '/[\p{Arabic}]/u';
             $arr_of_order_detail = explode(',', $order_detail);
             $amount = $arr_of_order_detail[count($arr_of_order_detail) - 1];
-            if (preg_match($pattern, $arr_of_order_detail[0])) {
+            $pregged = preg_match($pattern, $arr_of_order_detail[0]);
+            if ($pregged == 1) {
                 $arabic_product = ArabicProduct::where('title', $arr_of_order_detail[0])->first();
                 $product = Product::find($arabic_product->product_id);
                 $product->stock = $product->stock + $amount;
