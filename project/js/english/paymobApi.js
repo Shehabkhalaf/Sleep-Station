@@ -22,58 +22,6 @@ governorates.addEventListener("change", (e) => {
     governoratesValue = e.target.value;
 });
 
-// Click Button Check Out
-document.getElementById("checkOut").addEventListener("click", () => {
-    nameValue = nameI.value;
-    phoneValue = phone.value;
-    cardValue = card.value;
-    emailValue = email.value;
-    addressVAlue = address.value;
-
-    if (nameValue.trim()) {
-        nameI.classList.add("right")
-        nameI.classList.remove("wrong")
-    } else {
-        nameI.classList.add("wrong")
-        nameI.classList.remove("right")
-    }
-
-    if (phoneValue.trim()) {
-        phone.classList.remove("wrong")
-        phone.classList.add("right")
-    } else {
-        phone.classList.add("wrong")
-        phone.classList.remove("right")
-    }
-
-    if (emailValue.trim()) {
-        email.classList.remove("wrong")
-        email.classList.add("right");
-    } else {
-        email.classList.add("wrong")
-        email.classList.remove("right")
-    }
-
-    if (addressVAlue.trim()) {
-        address.classList.remove("wrong")
-        address.classList.add("right");
-    } else {
-        address.classList.add("wrong")
-        address.classList.remove("right")
-    }
-
-    if (governoratesValue) {
-        governorates.classList.remove("wrong")
-        governorates.classList.add("right");
-    } else {
-        governorates.classList.add("wrong")
-        governorates.classList.remove("right")
-    }
-
-    if (nameValue.trim() && emailValue.trim() && phoneValue.trim() && addressVAlue.trim() && governoratesValue) {
-        document.querySelector(".offcanvasTopButton").click();
-    }
-})
 
 
 let option = "option1";
