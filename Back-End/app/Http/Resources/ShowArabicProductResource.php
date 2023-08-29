@@ -23,6 +23,7 @@ class ShowArabicProductResource extends JsonResource
             'description' => $this->description,
             'color' => json_decode($this->color),
             'discount' => json_decode($this->product->discount),
+            'price'=>json_decode($this->product->price),
             'stock' => $this->product->stock,
             'image' => json_decode($this->product->image),
             'size' =>  json_decode($this->product->size),
