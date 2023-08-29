@@ -238,7 +238,7 @@ function addProduct(product) {
                                 <h5>${element.product_name}</h5>
                             </div>
                             <div class="buttons">
-                                <p class="price d-flex"><span class="me-1">EGP</span><span>${element.price[0]}</span></p>
+                                <p class="price d-flex"><span class="me-1">EGP</span><span>${element.discount[0]}</span></p>
                             </div>
                         </div>
                     </div>
@@ -274,28 +274,25 @@ function searchProduct(dataAll, value) {
                     // create div
                     let div = document.createElement("div");
                     // Add class
-                    div.setAttribute('class', "col-lg-6 mb-3")
+                    div.setAttribute('class', "col-lg-5 mb-3")
                     div.setAttribute('data-id', element.product_id)
                     div.innerHTML = `
-                    <div class="box">
-                        <div class="card overflow-hidden">
-                            <div class="image overflow-hidden" id="card" data-id="${element.id}">
-                                <img src=${element.images[0]} class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <div class="title mb-4">
-                                    <h5>${element.product_name}</h5>
+                            <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
+                                <div class="overflow-hidden">
+                                    <div class="image overflow-hidden" id="card" data-id="${element.id}">
+                                        <img src=${element.images[0]} class="card-img-top">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="title mb-2">
+                                            <h5>${element.product_name}</h5>
+                                        </div>
+                                        <div class="buttons">
+                                            <p class="price d-flex"><span class="me-1">EGP</span><span>${element.discount[0]}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="buttons d-flex justify-content-between align-items-center">
-                                    <button type="button" id="addCard" data-id="${element.id}"
-                                        class="btn btn-primary buttonStyle">Add to Card
-                                    </button>
-                                    <p class="price d-flex"><span class="me-1">EGP</span><span>${element.price[0]}</span></p>
-                                </div>
                             </div>
-                        </div>
-                    <div>
-                    `
+                            `
                     boxesProducts.appendChild(div)
                 }
             })
