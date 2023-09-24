@@ -20,7 +20,8 @@ buttonSubmit.addEventListener('click', function (event) {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.status) {
+                if (data.status==200) {
+                    localStorage.setItem("token",data.data.token);
                     localStorage.setItem("log", JSON.stringify(true));
                     window.location.href = 'dashboard.html'
                 }

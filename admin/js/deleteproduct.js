@@ -1,3 +1,5 @@
+//Get the token from local storage
+const token =localStorage.getItem('token');
 // URL API
 const SHOW_PRODUCT = "http://127.0.0.1:8000/api/admin/show_product/"
 const DELTE_PRODUCT = `http://127.0.0.1:8000/api/admin/delete_product`;
@@ -41,6 +43,7 @@ buttonSearch.addEventListener('click', () => {
                                 });
                                 const formData = new FormData();
                                 formData.append('id', data.data.product_id);
+                                formData.append('token', token);
                                 const xhr = new XMLHttpRequest();
                                 xhr.open('POST', DELTE_PRODUCT, true);
                                 xhr.send(formData);

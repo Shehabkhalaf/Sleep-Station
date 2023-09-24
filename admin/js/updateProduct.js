@@ -1,3 +1,5 @@
+//Get the token from local storage
+const token =localStorage.getItem('token');
 // URL API
 const UPDATE_PRODUCT = 'http://127.0.0.1:8000/api/admin/update_product';
 const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
@@ -264,6 +266,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
         formData.append('arabic_color', JSON.stringify(listColorArabic));
         formData.append('category_id', categoryValue);
         formData.append('images', JSON.stringify(listImages));
+        formData.append('token', token);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', UPDATE_PRODUCT, true);
         xhr.send(formData);

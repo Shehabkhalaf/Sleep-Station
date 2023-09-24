@@ -30,20 +30,20 @@ Route::post('admin/login', [AccessController::class, 'login']);
 Route::middleware('access')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::controller(ContactUsController::class)->group(function () {
-            Route::get('all_messages', 'allMessages');
+            Route::get('all_messages', 'allMessages')->withoutMiddleware('access');
             Route::post('delete_message', 'deleteMessage');
         });
         ##########/*Category Module*/##########
         ROute::controller(CategoryController::class)->group(function () {
             Route::post('add_category', 'addCategory');
-            Route::get('all_categories', 'allCategories');
+            Route::get('all_categories', 'allCategories')->withoutMiddleware('access');
             Route::post('delete_category', 'deleteCategory');
         });
         ##########/*Product Module*/##########
         Route::controller(ProductController::class)->group(function () {
             Route::post('add_product', 'store');
-            Route::get('all_products', 'allProducts');
-            Route::get('show_product/{id}', 'showProductWithCategory');
+            Route::get('all_products', 'allProducts')->withoutMiddleware('access');
+            Route::get('show_product/{id}', 'showProductWithCategory')->withoutMiddleware('access');
             Route::post('update_product', 'updateProduct');
             Route::post('delete_product', 'deleteProduct');
         });
@@ -51,17 +51,17 @@ Route::middleware('access')->group(function () {
         Route::controller(OfferController::class)->group(function () {
             Route::post('add_offer', 'addOffer');
             Route::post('update_offer', 'updateOffer');
-            Route::get('all_offers', 'allOffers');
-            Route::get('delete_offer/{id}', 'deleteOffer');
-            Route::get('show_offer/{id}', 'showOffer');
+            Route::get('all_offers', 'allOffers')->withoutMiddleware('access');
+            Route::get('delete_offer/{id}', 'deleteOffer')->withoutMiddleware('access');
+            Route::get('show_offer/{id}', 'showOffer')->withoutMiddleware('access');
         });
-        Route::get('all_users', [UserController::class, 'allUsers']);
+        Route::get('all_users', [UserController::class, 'allUsers'])->withoutMiddleware('access');
         #########/*Orders Module*/#########
         Route::controller(AdminOrderController::class)->group(function () {
-            Route::get('cash_orders', 'cashOrders');
+            Route::get('cash_orders', 'cashOrders')->withoutMiddleware('access');
             Route::post('accept_order', 'acceptOrder');
             Route::post('reject_order', 'rejectOrder');
-            Route::get('paid_orders', 'paidOrders');
+            Route::get('paid_orders', 'paidOrders')->withoutMiddleware('access');
         });
     });
 });

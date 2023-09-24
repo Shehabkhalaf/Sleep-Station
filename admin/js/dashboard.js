@@ -1,3 +1,5 @@
+//Get the token from local storage
+const token =localStorage.getItem('token');
 // URL API
 const GET_ALL_ORDERS = "http://127.0.0.1:8000/api/admin/paid_orders";
 const GET_ALL_USERS = "http://127.0.0.1:8000/api/admin/all_users";
@@ -148,6 +150,7 @@ fetch(CASH_ORDERS).then(
                 let id = element.getAttribute("data-idAccept");
                 const formData = new FormData();
                 formData.append('id', id);
+                formData.append('token', token);
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://127.0.0.1:8000/api/admin/accept_order', true);
                 xhr.send(formData);
@@ -161,6 +164,7 @@ fetch(CASH_ORDERS).then(
                 let id = element.getAttribute("data-idRejected");
                 const formData = new FormData();
                 formData.append('id', id);
+                formData.append('token', token);
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://127.0.0.1:8000/api/admin/reject_order', true);
                 xhr.send(formData);

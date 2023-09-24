@@ -13,7 +13,7 @@ class OfferController extends Controller
     use ApiResponse;
     public function addOffer(AddOfferRequest $request)
     {
-        $offer = Offer::create($request->all());
+        $offer = Offer::create($request->except('token'));
         return $this->JsonResponse(201, 'Offer Created', $offer);
     }
     public function updateOffer(Request $request)

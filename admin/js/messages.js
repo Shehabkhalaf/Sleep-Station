@@ -1,4 +1,5 @@
-
+//Get the token from local storage
+const token =localStorage.getItem('token');
 // URL API
 const GET_ALL_MESSAGES = `http://127.0.0.1:8000/api/admin/all_messages`;
 const DELETE_MESSAGE = `http://127.0.0.1:8000/api/admin/delete_message`;
@@ -45,7 +46,8 @@ function showMessagess(data) {
     document.querySelectorAll(".answered").forEach(element => {
         element.addEventListener("click", (e) => {
             const formData = new FormData();
-            formData.append('id', element.getAttribute("id"));
+            formData.append('id', element.getAttribute("id"));  
+            formData.append('token', token);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', DELETE_MESSAGE , true);
             xhr.send(formData);

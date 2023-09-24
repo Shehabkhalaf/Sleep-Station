@@ -1,4 +1,5 @@
-
+//Get the token from local storage
+const token =localStorage.getItem('token');
 // URL API
 const GET_ALL_OFFERS = "http://127.0.0.1:8000/api/admin/all_offers";
 const ADD_OFFERS = 'http://127.0.0.1:8000/api/admin/add_offer';
@@ -54,7 +55,7 @@ submit.addEventListener('submit', function (e) {
     formData.append('started_at', startDate.value);
     formData.append('expired_at', endDate.value);
     formData.append('discount', discount.value);
-
+    formData.append('token', token);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', ADD_OFFERS , true);
     xhr.send(formData);

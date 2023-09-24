@@ -1,9 +1,10 @@
+//Get the token from local storage
+const token =localStorage.getItem('token');
+
 // URL API
 const GET_DATA_CATEGORY = 'http://127.0.0.1:8000/api/admin/all_categories';
 const ADD_CATEGORY = 'http://127.0.0.1:8000/api/admin/add_category';
 const DELETE_CATEGORY = 'http://127.0.0.1:8000/api/admin/delete_category';
-
-
 
 // GET Elements
 let nameCategory = document.getElementById("nameCategory");
@@ -16,6 +17,7 @@ let submit = document.getElementById("submit");
 function callData() {
     // Call DATA From Api
     fetch(GET_DATA_CATEGORY).then(
+        
         (result) => result.json()
     ).then(
         (dataApi) => {
@@ -61,6 +63,7 @@ function showCategories(data) {
                         document.getElementById(button.getAttribute("data-colorId")).remove();
                         const formData = new FormData();
                         formData.append('id', button.getAttribute("data-colorId"));
+                        formData.append('token', token);
                         const xhr = new XMLHttpRequest();
                         xhr.open('POST', DELETE_CATEGORY, true);
                         xhr.send(formData);
@@ -86,6 +89,7 @@ submit.addEventListener('submit', function (e) {
         formData.append('title', nameCategory.value);
         formData.append('arabic_title', nameCategoryArabic.value);
         formData.append('status', "active");
+        formData.append('token', token);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', ADD_CATEGORY, true);
         xhr.send(formData);

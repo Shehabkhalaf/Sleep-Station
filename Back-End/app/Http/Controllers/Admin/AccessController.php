@@ -13,7 +13,7 @@ class AccessController extends Controller
     use ApiResponse;
     public function login(Request $request)
     {
-        $admin = Admin::where('email', '=', $request->username)->first();
+        $admin = Admin::where('email', '=', $request->email)->first();
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
                 $data['token'] = $admin->token;
