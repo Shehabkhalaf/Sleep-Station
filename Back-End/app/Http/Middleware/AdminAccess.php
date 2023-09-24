@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin;
 use App\Traits\ApiResponse;
 use Closure;
 use Illuminate\Http\Request;
@@ -17,10 +18,11 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->input('identification') == 'admin123456') {
+        $admin = Admin::findorFail(1);
+        if ($request->token == $admin->token) {
             return $next($request);
-        }else{
-            return $this->JsonResponse(401,'Access denied');
+        } else {
+            return $this->JsonResponse(403,'You are not allowed to use this');
         }
     }
 }

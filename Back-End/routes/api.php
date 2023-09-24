@@ -25,49 +25,46 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 ########################/*Admin Module*/##########################
 Route::post('admin/login', [AccessController::class, 'login']);
-Route::prefix('admin')->group(function () {
-    Route::controller(ContactUsController::class)->group(function () {
-        Route::get('all_messages', 'allMessages');
-        Route::post('delete_message', 'deleteMessage');
-    });
-    ##########/*Category Module*/##########
-    ROute::controller(CategoryController::class)->group(function () {
-        Route::post('add_category', 'addCategory');
-        Route::get('all_categories', 'allCategories');
-        Route::post('delete_category', 'deleteCategory');
-    });
-    ##########/*Product Module*/##########
-    Route::controller(ProductController::class)->group(function () {
-        Route::post('add_product', 'store');
-        Route::get('all_products', 'allProducts');
-        Route::get('show_product/{id}', 'showProductWithCategory');
-        Route::post('update_product', 'updateProduct');
-        Route::post('delete_product', 'deleteProduct');
-    });
-    #########/*Offers Module*/#########
-    Route::controller(OfferController::class)->group(function () {
-        Route::post('add_offer', 'addOffer');
-        Route::post('update_offer', 'updateOffer');
-        Route::get('all_offers', 'allOffers');
-        Route::get('delete_offer/{id}', 'deleteOffer');
-        Route::get('show_offer/{id}', 'showOffer');
-    });
-    Route::get('all_users', [UserController::class, 'allUsers']);
-    #########/*Orders Module*/#########
-    Route::controller(AdminOrderController::class)->group(function () {
-        Route::get('cash_orders', 'cashOrders');
-        Route::post('accept_order', 'acceptOrder');
-        Route::post('reject_order', 'rejectOrder');
-        Route::get('paid_orders', 'paidOrders');
+Route::middleware('access')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::controller(ContactUsController::class)->group(function () {
+            Route::get('all_messages', 'allMessages');
+            Route::post('delete_message', 'deleteMessage');
+        });
+        ##########/*Category Module*/##########
+        ROute::controller(CategoryController::class)->group(function () {
+            Route::post('add_category', 'addCategory');
+            Route::get('all_categories', 'allCategories');
+            Route::post('delete_category', 'deleteCategory');
+        });
+        ##########/*Product Module*/##########
+        Route::controller(ProductController::class)->group(function () {
+            Route::post('add_product', 'store');
+            Route::get('all_products', 'allProducts');
+            Route::get('show_product/{id}', 'showProductWithCategory');
+            Route::post('update_product', 'updateProduct');
+            Route::post('delete_product', 'deleteProduct');
+        });
+        #########/*Offers Module*/#########
+        Route::controller(OfferController::class)->group(function () {
+            Route::post('add_offer', 'addOffer');
+            Route::post('update_offer', 'updateOffer');
+            Route::get('all_offers', 'allOffers');
+            Route::get('delete_offer/{id}', 'deleteOffer');
+            Route::get('show_offer/{id}', 'showOffer');
+        });
+        Route::get('all_users', [UserController::class, 'allUsers']);
+        #########/*Orders Module*/#########
+        Route::controller(AdminOrderController::class)->group(function () {
+            Route::get('cash_orders', 'cashOrders');
+            Route::post('accept_order', 'acceptOrder');
+            Route::post('reject_order', 'rejectOrder');
+            Route::get('paid_orders', 'paidOrders');
+        });
     });
 });
-
 ########################/*User Module*/##########################
 Route::prefix('user')->group(function () {
     Route::controller(AuthController::class)->group(function () {
