@@ -25,6 +25,14 @@ class OrderController extends Controller
         $user = User::find(auth()->user()->id);
         $user_id = $user->id;
         $user_data = 'name:' . $user->name . '<br>' . 'email:' . $user->email . '<br>' . 'phone:' . $user->phone . '<br>' . 'location:' . $user->address;
+        $adminOrder = new AdminOrder;
+        $adminOrder->user_data = $user_data;
+        $adminOrder->order_details = $request->order_details;
+        $adminOrder->total_price = $request->total_price;
+        $adminOrder->promocode = $request->has('promocode') ? $request->promocode : 'nothing';
+        $adminOrder->paid = $request->paid_method;
+        $adminOrder->payment_details = $request->payment_details;
+        $adminOrders = $adminOrder->save();
         $order = new Order;
         $order->user_id = $user_id;
         $order->order_details = $request->order_details;
@@ -32,6 +40,7 @@ class OrderController extends Controller
         $order->paid = $request->paid_method;
         $order->promocode = $request->has('promocode') ? $request->promocode : 'nothing';
         $order->payment_details = $request->has('order_id') ? $request->order_id : 'nothing';
+        $order->order_id = $adminOrder->id;
         $UserOrdered = $order->save();
         $products = $request->products;
         foreach ($products as $product) {
@@ -40,14 +49,6 @@ class OrderController extends Controller
             $product_data->stock = ($product_data->stock) - ($product['amount']);
             $product_data->save();
         }
-        $adminOrder = new AdminOrder;
-        $adminOrder->user_data = $user_data;
-        $adminOrder->order_details = $request->order_details;
-        $adminOrder->total_price = $request->total_price;
-        $adminOrder->promocode = $order->promocode;
-        $adminOrder->paid = $request->paid_method;
-        $adminOrder->payment_details = $order->payment_details;
-        $adminOrders = $adminOrder->save();
         if ($UserOrdered && $adminOrders) {
             return $this->JsonResponse(200, 'Order Done', $UserOrdered);
         } else {

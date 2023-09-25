@@ -47,8 +47,7 @@ class OrderController extends Controller
             }
         }
         $destroyAdmin = AdminOrder::destroy($request->id);
-        $destroyUser = Order::destroy($request->id);
-        if ($destroyUser && $destroyAdmin) {
+        if ($destroyAdmin) {
             return $this->JsonResponse(200, 'Rejected');
         } else {
             return $this->JsonResponse(500, 'Error has been occured');
