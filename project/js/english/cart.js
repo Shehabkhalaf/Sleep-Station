@@ -62,7 +62,7 @@ function createProduct(product) {
       let totalPrice = document.getElementById('subtotal');
       totalPrice.innerHTML = 'EGP ' + total;
       document.getElementById('totalPrice').innerHTML =
-        'EGP ' + (total + 60 - promoCode);
+        'EGP ' + (total + 60 - (total + 60) * (promoCode / 100));
     });
   });
 
@@ -90,7 +90,7 @@ function createProduct(product) {
           .reduce((acc, ele) => acc + ele);
         totalPrice.innerHTML = 'EGP ' + total;
         document.getElementById('totalPrice').innerHTML =
-          'EGP ' + (total + 60 - promoCode);
+          'EGP ' + (total + 60 - (total + 60) * (promoCode / 100));
         checkOutButton.classList.remove('checkNone');
       }
     });
@@ -106,7 +106,7 @@ if (total > 0) {
   footerTable.forEach((e) => e.classList.remove('tablefooternone'));
   checkOutButton.classList.remove('checkNone');
   document.getElementById('totalPrice').innerHTML =
-    'EGP ' + (total + 60 - promoCode);
+    'EGP ' + (total + 60 - (total + 60) * (promoCode / 100));
 } else {
   checkOutButton.classList.add('checkNone');
   footerTable.forEach((e) => e.classList.add('tablefooternone'));
@@ -149,7 +149,7 @@ function handlePromo() {
               promoCode = +element.discount;
               promoMsg.innerHTML = '';
               document.getElementById('totalPrice').innerHTML =
-                'EGP ' + (total + 60 - promoCode);
+                'EGP ' + (total + 60 - (total + 60) * (promoCode / 100));
               promoMsg.style.color = 'black';
               promoMsg.innerHTML = `
                 <p>You have used <span>${element.promocode}</span> promocode with discount:</p>
