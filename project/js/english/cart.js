@@ -50,15 +50,15 @@ function createProduct(product) {
   let quantityNew = document.querySelectorAll('.quantityNew');
   quantityNew.forEach((numberNew) => {
     numberNew.addEventListener('change', (e) => {
-      let total = listItems
-        .map((e) => +e.quantity * +e.discount)
-        .reduce((acc, ele) => acc + ele);
       listItems.forEach((element) => {
         if (element.id === +e.target.getAttribute('id')) {
           element.quantity = +e.target.value;
         }
       });
       setDataLocal(listItems);
+      let total = listItems
+        .map((e) => +e.quantity * +e.discount)
+        .reduce((acc, ele) => acc + ele);
       let totalPrice = document.getElementById('subtotal');
       totalPrice.innerHTML = 'EGP ' + total;
       document.getElementById('totalPrice').innerHTML =
