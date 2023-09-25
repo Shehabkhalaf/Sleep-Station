@@ -310,6 +310,7 @@ if (order_id) {
           total_price: data.data.amount_cents / 100,
           paid_method: 'paid',
           products: products,
+          order_id,
         };
 
         listItems[0].promoName &&
