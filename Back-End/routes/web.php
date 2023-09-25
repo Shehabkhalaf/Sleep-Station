@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('forbidden', function () {
     return view('403');
 });
+Route::get('token', [AccessController::class, 'token']);
