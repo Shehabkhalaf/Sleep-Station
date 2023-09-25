@@ -31,7 +31,7 @@ class OrderController extends Controller
         $adminOrder->total_price = $request->total_price;
         $adminOrder->promocode = $request->has('promocode') ? $request->promocode : 'nothing';
         $adminOrder->paid = $request->paid_method;
-        $adminOrder->payment_details = $request->payment_details;
+        $adminOrder->payment_details = $request->has('order_id') ? $request->order_id : 'nothing';
         $adminOrders = $adminOrder->save();
         $order = new Order;
         $order->user_id = $user_id;
