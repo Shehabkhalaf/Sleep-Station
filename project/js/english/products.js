@@ -23,7 +23,7 @@ const header1 = `
             <img src="./images/language-icon/united-states-of-america.png"> EN
         </button>
         <ul class="dropdown-menu">
-            <li class="arabic"><a href="./homeArabic.html"><img src="./images/language-icon/egypt.png">
+            <li class="arabic"><a href="./products_arabic.html"><img src="./images/language-icon/egypt.png">
                     AR</a> </li>
             <li> <a href="./index.html"><img src="./images/language-icon/united-states-of-america.png">
                     EN</a> </li>
@@ -79,7 +79,7 @@ const header2 = `
             <img src="./images/language-icon/united-states-of-america.png"> EN
         </button>
         <ul class="dropdown-menu">
-            <li class="arabic"><a href="./homeArabic.html"><img src="./images/language-icon/egypt.png">
+            <li class="arabic"><a href="./products_arabic.html"><img src="./images/language-icon/egypt.png">
                     AR</a> </li>
             <li> <a href="./index.html"><img src="./images/language-icon/united-states-of-america.png">
                     EN</a> </li>
