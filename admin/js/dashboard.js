@@ -106,6 +106,7 @@ fetch(CASH_ORDERS).then(
     (result) => result.json()
 ).then(
     (dataApi) => {
+        console.log(dataApi);
         dataAll = dataApi.data;
         let listOrders = document.getElementById("listOrders");
 

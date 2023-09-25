@@ -256,7 +256,7 @@ function SendProduct(listItems, userToken) {
 
   listItems.forEach((item) => {
     ordersDetails.push(
-      `${item.title}, ${item.size}, ${item.color}, ${item.discount}`
+      `${item.title}, ${item.size}, ${item.color}, ${item.discount}, ${item.quantity}`
     );
     products.push({ product_id: item.productId, amount: item.quantity });
   });
@@ -300,7 +300,7 @@ if (order_id) {
 
         listItems.forEach((item) => {
           ordersDetails.push(
-            `${item.title}, ${item.size}, ${item.color}, ${item.discount}`
+            `${item.title}, ${item.size}, ${item.color}, ${item.discount}, ${item.quantity}`
           );
           products.push({ product_id: item.productId, amount: item.quantity });
         });
