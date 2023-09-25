@@ -124,6 +124,18 @@ function handlePromo() {
   promoValue = promocode.value;
   applyPromocode.disabled = false;
 
+  const status = JSON.parse(localStorage.getItem('sign_done'));
+
+  if (status !== true) {
+    swal('You must be logged in to be able to complete the purchase');
+    return;
+  }
+
+  if (listItems.length == 0) {
+    applyPromocode.disabled = true;
+    return;
+  }
+
   if (promoValue === '') {
     return;
   } else {
@@ -138,7 +150,7 @@ function handlePromo() {
               promoMsg.innerHTML = '';
               document.getElementById('totalPrice').innerHTML =
                 'EGP ' + (total + 60 - promoCode);
-              promoMsg.style.color = "black";
+              promoMsg.style.color = 'black';
               promoMsg.innerHTML = `
                 <p>You have used <span>${element.promocode}</span> promocode with discount:</p>
                 <span>${element.discount}%</span>
@@ -151,7 +163,7 @@ function handlePromo() {
               });
               setDataLocal(listItems);
             } else {
-              promoMsg.style.color = "red";
+              promoMsg.style.color = 'red';
               promoMsg.innerHTML = 'This code has expired';
             }
             check++;
@@ -159,7 +171,7 @@ function handlePromo() {
         });
 
         if (check === 0) {
-          promoMsg.style.color = "red";
+          promoMsg.style.color = 'red';
           promoMsg.innerHTML = 'This code does not exist';
         }
       });

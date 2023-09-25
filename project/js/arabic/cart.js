@@ -132,6 +132,18 @@ function handlePromo() {
   promoValue = promocode.value;
   applyPromocode.disabled = false;
 
+  const status = JSON.parse(localStorage.getItem('sign_done'));
+
+  if (status !== true) {
+    swal('You must be logged in to be able to complete the purchase');
+    return;
+  }
+
+  if (listItems.length == 0) {
+    applyPromocode.disabled = true;
+    return;
+  }
+
   if (promoValue === '') {
     return;
   } else {
