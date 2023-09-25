@@ -1,8 +1,14 @@
 // URL API
-const GET_ALL_PRODUCTS = "http://127.0.0.1:8000/api/user/products?lang=ar";
+const GET_ALL_PRODUCTS = 'http://127.0.0.1:8000/api/user/products?lang=ar';
+
+/******************/
+const urlString = new URL(window.location.href);
+const urlParams = urlString.searchParams;
+const productCat = urlParams.get('category');
+/******************/
 
 // USER SIGNIN OR NOT
-const status = JSON.parse(localStorage.getItem("sign_done"));
+const status = JSON.parse(localStorage.getItem('sign_done'));
 
 // IN CASE NOT SIGN
 const header1 = `
@@ -59,7 +65,7 @@ const header1 = `
         <a href="./signup.html" class="signup">تسجيل الدخول</a>
     </div>
 </div>
-`
+`;
 // IN CASE  SIGN
 const header2 = `
 <div class="container">
@@ -117,116 +123,128 @@ const header2 = `
         </a>
     </div>
 </div>
-`
+`;
 
 if (status !== true) {
-    document.getElementById('nav').innerHTML = header1;
+  document.getElementById('nav').innerHTML = header1;
 } else {
-    document.getElementById('nav').innerHTML = header2;
+  document.getElementById('nav').innerHTML = header2;
 }
 
+// Get Elements
+let categories = document.getElementById('categories');
+let boxesProducts = document.getElementById('boxes');
+let iconSearch = document.getElementById('iconSearch');
 
-// Get Elements 
-let categories = document.getElementById("categories");
-let boxesProducts = document.getElementById("boxes");
-let iconSearch = document.getElementById("iconSearch");
+// Get Products For Count
+let products = JSON.parse(localStorage.getItem('products'));
 
-
-// Get Products For Count 
-let products = JSON.parse(localStorage.getItem("products"));
-
-//Define Count 
-document.getElementById("count").innerHTML = products === null ? 0 : products.length;
-
-
+//Define Count
+document.getElementById('count').innerHTML =
+  products === null ? 0 : products.length;
 
 // Call Date
-fetch(GET_ALL_PRODUCTS).then(
-    (result) => result.json()
-).then(
-    (dataApi) => {
-        dataAll = dataApi.data;
-        showCategories(dataAll);
-        showProducts(dataAll)
-        console.log(dataAll)
+fetch(GET_ALL_PRODUCTS)
+  .then((result) => result.json())
+  .then((dataApi) => {
+    dataAll = dataApi.data;
+    showCategories(dataAll);
 
-        document.getElementById("apply").addEventListener("click", () => {
-            choose.length === 0 ? showProducts(dataAll) : showProducts(dataAll, choose);
-        })
-
-        document.getElementById("search").addEventListener("input", (e) => {
-            searchProduct(dataAll, e.target.value);
-        })
-
-        iconSearch.addEventListener("click", (e) => {
-            search.value = "";
-            showProducts(dataAll)
-        })
+    let isCatExist = false;
+    if (productCat) {
+      if (
+        dataAll.filter((product) => product.category_name === productCat)
+          .length > 0
+      ) {
+        isCatExist = true;
+      }
     }
-)
 
+    if (isCatExist) {
+      newData = dataAll.filter(
+        (product) => product.category_name === productCat
+      );
+      showProducts(newData);
+    } else {
+      showProducts(dataAll);
+    }
 
-let choose = []
+    document.getElementById('apply').addEventListener('click', () => {
+      choose.length === 0
+        ? showProducts(dataAll)
+        : showProducts(dataAll, choose);
+    });
 
+    document.getElementById('search').addEventListener('input', (e) => {
+      searchProduct(dataAll, e.target.value);
+    });
+
+    iconSearch.addEventListener('click', (e) => {
+      search.value = '';
+      showProducts(dataAll);
+    });
+  });
+
+let choose = [];
 
 // Show Categories
 function showCategories(data) {
-    // Create Div 
-    data.forEach((element, index) => {
-        let div = document.createElement("div");
-        div.setAttribute('class', "form-check")
-        div.setAttribute('category_id', element.category_id)
-        div.innerHTML = `
+  // Create Div
+  data.forEach((element, index) => {
+    let div = document.createElement('div');
+    div.setAttribute('class', 'form-check');
+    div.setAttribute('category_id', element.category_id);
+    div.innerHTML = `
         <input class="form-check-input" type="checkbox" value=${element.category_name} id=${index}>
         <label class="form-check-label" for=${index}>
         ${element.category_name}
         </label> 
-        `
-        categories.appendChild(div)
+        `;
+    categories.appendChild(div);
+  });
+
+  let checkInput = document.querySelectorAll('input[type="checkbox"]');
+
+  checkInput.forEach((element) => {
+    element.addEventListener('change', (e) => {
+      if (choose.length === 0) {
+        choose.push(e.target.value);
+      } else {
+        var check = choose.filter((ele) => ele !== e.target.value);
+        choose.length === check.length
+          ? choose.push(e.target.value)
+          : (choose = check);
+      }
     });
-
-    let checkInput = document.querySelectorAll('input[type="checkbox"]');
-
-
-    checkInput.forEach(element => {
-        element.addEventListener("change", (e) => {
-            if (choose.length === 0) {
-                choose.push(e.target.value)
-            } else {
-                var check = choose.filter(ele => ele !== e.target.value);
-                choose.length === check.length ? choose.push(e.target.value) : choose = check;
-            }
-        })
-    });
-
+  });
 }
 
 // Show Products
-function showProducts(data, choose = "") {
-    boxesProducts.innerHTML = ''
-    // Add Product In Dom
-    data.forEach((product, index) => {
-        if (choose === '') {
-            addProduct(product);
-        } else {
-            choose.forEach(target => {
-                if (product.category_name === target) {
-                    addProduct(product);
-                }
-            })
+function showProducts(data, choose = '') {
+  boxesProducts.innerHTML = '';
+  // Add Product In Dom
+  data.forEach((product, index) => {
+    if (choose === '') {
+      addProduct(product);
+    } else {
+      choose.forEach((target) => {
+        if (product.category_name === target) {
+          addProduct(product);
         }
-    });
+      });
+    }
+  });
 }
 
 // Add Product
 function addProduct(product) {
-    product.products.forEach(element => {
-        // create div
-        let div = document.createElement("div");
-        // Add class
-        div.setAttribute('class', "col-lg-5 mb-3")
-        div.setAttribute('data-id', element.product_id)
-        div.innerHTML = `
+  product.products.forEach((element) => {
+    // create div
+    let div = document.createElement('div');
+    // Add class
+    div.setAttribute('class', 'col-lg-5 mb-3');
+    div.setAttribute('data-id', element.product_id);
+    div.innerHTML = `
                 <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
                     <div class="overflow-hidden">
                         <div class="image overflow-hidden" id="card" data-id="${element.id}">
@@ -242,40 +260,42 @@ function addProduct(product) {
                         </div>
                     </div>
                 </div>
-                `
-        boxesProducts.appendChild(div)
+                `;
+    boxesProducts.appendChild(div);
 
-        // Storage [category_id , product_id ] In LocalStorage untill Call product Details
-        let allBoxes = document.querySelectorAll('[data-product="box"]');
-        allBoxes.forEach(element => {
-            element.addEventListener("click", (e) => {
-                let category_id = element.getAttribute("data-category");
-                let product_id = element.getAttribute("data-productId");
-                // Set Data From Local Storage
-                localStorage.setItem("productDetails", JSON.stringify({ 'category_id': category_id, "product_id": product_id }));
-                // Go To Location Product Details
-                location.href = 'product_arabic.html'
-            })
-        })
-    })
+    // Storage [category_id , product_id ] In LocalStorage untill Call product Details
+    let allBoxes = document.querySelectorAll('[data-product="box"]');
+    allBoxes.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        let category_id = element.getAttribute('data-category');
+        let product_id = element.getAttribute('data-productId');
+        // Set Data From Local Storage
+        localStorage.setItem(
+          'productDetails',
+          JSON.stringify({ category_id: category_id, product_id: product_id })
+        );
+        // Go To Location Product Details
+        location.href = `product_arabic.html?id=${product_id}`;
+      });
+    });
+  });
 }
-
 
 // Search Product
 function searchProduct(dataAll, value) {
-    boxesProducts.innerHTML = ''
-    if (value === '') {
-        showProducts(dataAll);
-    } else {
-        dataAll.forEach((product, index) => {
-            product.products.forEach(element => {
-                if (element.product_name.toUpperCase().includes(value.toUpperCase())) {
-                    // create div
-                    let div = document.createElement("div");
-                    // Add class
-                    div.setAttribute('class', "col-lg-5 mb-3")
-                    div.setAttribute('data-id', element.product_id)
-                    div.innerHTML = `
+  boxesProducts.innerHTML = '';
+  if (value === '') {
+    showProducts(dataAll);
+  } else {
+    dataAll.forEach((product, index) => {
+      product.products.forEach((element) => {
+        if (element.product_name.toUpperCase().includes(value.toUpperCase())) {
+          // create div
+          let div = document.createElement('div');
+          // Add class
+          div.setAttribute('class', 'col-lg-5 mb-3');
+          div.setAttribute('data-id', element.product_id);
+          div.innerHTML = `
                             <div class="box" data-product="box" data-category=${element.category_id} data-productId=${element.product_id}>
                                 <div class="overflow-hidden">
                                     <div class="image overflow-hidden" id="card" data-id="${element.id}">
@@ -291,13 +311,10 @@ function searchProduct(dataAll, value) {
                                     </div>
                                 </div>
                             </div>
-                            `
-                    boxesProducts.appendChild(div)
-                }
-            })
-        })
-    }
+                            `;
+          boxesProducts.appendChild(div);
+        }
+      });
+    });
+  }
 }
-
-
-
