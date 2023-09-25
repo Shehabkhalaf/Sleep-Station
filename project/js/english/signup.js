@@ -29,7 +29,7 @@ buttonSubmit.addEventListener('click', function (event) {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.status) {
+                if (data.status==201) {
                     localStorage.setItem("userData", JSON.stringify(data.data));
                     localStorage.setItem("sign_done", JSON.stringify(true));
                     window.location.href = 'products.html'
