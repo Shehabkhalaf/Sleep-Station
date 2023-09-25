@@ -31,6 +31,7 @@ class OrderController extends Controller
         $order->total_price = $request->total_price;
         $order->paid = $request->paid_method;
         $order->promocode = $request->has('promocode') ? $request->promocode : 'nothing';
+        $order->payment_details = $request->has('order_id') ? $request->order_id : 'nothing';
         $UserOrdered = $order->save();
         $products = $request->products;
         foreach ($products as $product) {
@@ -45,6 +46,7 @@ class OrderController extends Controller
         $adminOrder->total_price = $request->total_price;
         $adminOrder->promocode = $order->promocode;
         $adminOrder->paid = $request->paid_method;
+        $adminOrder->payment_details = $order->payment_details;
         $adminOrders = $adminOrder->save();
         if ($UserOrdered && $adminOrders) {
             return $this->JsonResponse(200, 'Order Done', $UserOrdered);
