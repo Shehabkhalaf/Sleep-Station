@@ -26,7 +26,7 @@ class PaymobController extends Controller
         $paymob->amount_cents = $amount_cents;
         $saved = $paymob->save();
         if ($saved) {
-            return redirect('http://127.0.0.1:5501/payment.html?order_id=' . $order_id);
+            return redirect('https://sleepstation-egypt.store/payment.html?order_id=' . $order_id);
         } else {
             return abort(404);
         }
