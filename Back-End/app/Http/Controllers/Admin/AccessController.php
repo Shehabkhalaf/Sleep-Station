@@ -25,11 +25,4 @@ class AccessController extends Controller
             return $this->JsonResponse(401, 'You are not permitted');
         }
     }
-    public function token()
-    {
-        $admin = Admin::findorFail(1);
-        $admin->token = 'R7t#xP1$9@fGzQwY2&5U8*oK$L3aXcZ6';
-        $admin->save();
-        return 'done';
-    }
 }
