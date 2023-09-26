@@ -290,7 +290,7 @@ const searchParams = new URLSearchParams(queryParams);
 
 /*< Order ID from the Url */
 const order_id = searchParams.get('order_id');
-if (order_id) {
+if (order_id.length > 0) {
   getPaymentStatus({ order_id }).then((data) => {
     // Check if user try to access the url again
     if (data.data) {
@@ -310,6 +310,7 @@ if (order_id) {
           total_price: data.data.amount_cents / 100,
           paid_method: 'paid',
           products: products,
+          order_id,
         };
 
         listItems[0].promoName &&
