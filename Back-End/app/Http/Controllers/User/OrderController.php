@@ -24,7 +24,7 @@ class OrderController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $user_id = $user->id;
-        $user_data = 'name:' . $user->name . '<br>' . 'email:' . $user->email . '<br>' . 'phone:' . $user->phone . '<br>' . 'location:' . $user->address;
+        $user_data = 'name:' . $request->name . '<br>' . 'email:' . $request->email . '<br>' . 'phone:' . $request->phone . '<br>' . 'location:' . $request->address;
         $adminOrder = new AdminOrder;
         $adminOrder->user_data = $user_data;
         $adminOrder->order_details = $request->order_details;
