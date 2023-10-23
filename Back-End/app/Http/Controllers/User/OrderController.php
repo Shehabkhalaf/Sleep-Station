@@ -21,7 +21,7 @@ class OrderController extends Controller
     }
     public function makeOrder(Request $request)
     {
-        $user_data = 'name:' . $request->name . '<br>' . 'email:' . $request->email . '<br>' . 'phone:' . $request->phone . '<br>' . 'location:' . $request->address;
+        $user_data = 'name:' . $request->name . '<br>' . 'email:' . $request->email . '<br>' . 'phone:' . $request->phone . '<br>' . 'location:' . $request->address . '<br>' . 'Governate:' . $request->governorate;
         $adminOrder = new AdminOrder;
         $adminOrder->user_data = $user_data;
         $adminOrder->order_details = $request->order_details;
