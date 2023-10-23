@@ -5,24 +5,6 @@ const userData = JSON.parse(localStorage.getItem('userData'));
 
 let listItems = productsLocal;
 
-// Get Elements
-const nameI = document.getElementById('nameInput');
-const phone = document.getElementById('phoneInput');
-const email = document.getElementById('emailInput');
-const address = document.getElementById('addressInput');
-const governorates = document.getElementById('selectedGon');
-
-// Storage Values
-let nameValue;
-let phoneValue;
-let emailValue;
-let addressVAlue;
-let governoratesValue;
-
-governorates.addEventListener('change', (e) => {
-  governoratesValue = e.target.value;
-});
-
 let option = 'card';
 
 let radio = document.querySelectorAll('.radio');
@@ -35,85 +17,16 @@ radio.forEach((ele) => {
 
 // Click Button Check Out
 document.getElementById('checkoutFinal').addEventListener('click', () => {
-  nameValue = nameI.value;
-  phoneValue = phone.value;
-  emailValue = email.value;
-  addressVAlue = address.value;
-
-  if (nameValue.trim()) {
-    nameI.classList.add('right');
-    nameI.classList.remove('wrong');
+  if (option === 'card') {
+    integration_id = 2456978;
+    frameId = '436037';
+    firstStep();
+  } else if (option === 'valu') {
+    integration_id = 2928191;
+    frameId = '686450';
+    firstStep();
   } else {
-    nameI.classList.add('wrong');
-    nameI.classList.remove('right');
-  }
-
-  if (phoneValue.trim()) {
-    phone.classList.remove('wrong');
-    phone.classList.add('right');
-  } else {
-    phone.classList.add('wrong');
-    phone.classList.remove('right');
-  }
-
-  if (emailValue.trim()) {
-    email.classList.remove('wrong');
-    email.classList.add('right');
-  } else {
-    email.classList.add('wrong');
-    email.classList.remove('right');
-  }
-
-  if (addressVAlue.trim()) {
-    address.classList.remove('wrong');
-    address.classList.add('right');
-  } else {
-    address.classList.add('wrong');
-    address.classList.remove('right');
-  }
-
-  if (governoratesValue) {
-    governorates.classList.remove('wrong');
-    governorates.classList.add('right');
-  } else {
-    governorates.classList.add('wrong');
-    governorates.classList.remove('right');
-  }
-
-  if (!validateEmail(emailValue)) {
-    email.classList.add('wrong');
-    email.classList.remove('right');
-  } else {
-    email.classList.remove('wrong');
-    email.classList.add('right');
-  }
-
-  if (!validatePhone(phoneValue)) {
-    phone.classList.add('wrong');
-    phone.classList.remove('right');
-  } else {
-    phone.classList.remove('wrong');
-    phone.classList.add('right');
-  }
-
-  if (
-    nameValue.trim() &&
-    emailValue.trim() &&
-    phoneValue.trim() &&
-    addressVAlue.trim() &&
-    governoratesValue
-  ) {
-    if (option === 'card') {
-      integration_id = 2456978;
-      frameId = '436037';
-      firstStep();
-    } else if (option === 'valu') {
-      integration_id = 2928191;
-      frameId = '686450';
-      firstStep();
-    } else {
-      SendProduct(listItems, userData.token);
-    }
+    SendProduct(listItems, userData.token);
   }
 });
 
@@ -212,17 +125,17 @@ async function thirdStep(token, id) {
     order_id: `${id}`,
     billing_data: {
       apartment: '803',
-      email: emailValue,
+      email: userData.email,
       floor: '42',
-      first_name: nameValue,
-      street: addressVAlue,
+      first_name: userData.name,
+      street: userData.addres,
       building: '8028',
-      phone_number: phoneValue,
+      phone_number: userData.phone,
       shipping_method: 'PKG',
       postal_code: '01898',
-      city: governoratesValue,
+      city: userData.governorate,
       country: 'CR',
-      last_name: nameValue,
+      last_name: userData.name,
       state: 'Utah',
     },
     currency: 'EGP',
@@ -250,7 +163,7 @@ async function cardPayment(token) {
   window.location = iframURL;
 }
 
-function SendProduct(listItems, userToken) {
+function SendProduct(listItems) {
   const ordersDetails = [];
   const products = [];
 
@@ -276,11 +189,12 @@ function SendProduct(listItems, userToken) {
     total_price: totalPrice,
     paid_method: 'cash',
     products: products,
+    ...userData,
   };
 
   listItems[0].promoName && (orderData.promocode = listItems[0].promoName);
 
-  sendOrder(orderData, userToken);
+  sendOrder(orderData);
 }
 
 /************************************ Handle Paymob status after payment *************************************/
@@ -311,15 +225,17 @@ if (order_id.length > 0) {
           paid_method: 'paid',
           products: products,
           order_id,
+          ...userData,
         };
 
         listItems[0].promoName &&
           (orderData.promocode = listItems[0].promoName);
 
-        sendOrder(orderData, userData.token);
+        sendOrder(orderData);
 
         listItems = [];
         setDataLocal(listItems);
+        localStorage.removeItem('userData');
 
         swal('successfully Ordered', 'Success Payment.', 'success').then(() => {
           window.location.replace('./products.html');
@@ -338,24 +254,12 @@ if (order_id.length > 0) {
 }
 /************************************ Handle Paymob status after payment *************************************/
 
-function validateEmail(email) {
-  const emailRegex =
-    /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
-  return emailRegex.test(email);
-}
-
-function validatePhone(phone) {
-  const phoneRegex = /^(\+?\d{12}|\d{11})$/;
-  return phoneRegex.test(phone);
-}
-
-async function sendOrder(orderData, UserToken) {
+async function sendOrder(orderData) {
   try {
     const response = await fetch(`${URL}/api/user/make_order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
-        Authorization: `Bearer ${UserToken}`,
       },
       body: JSON.stringify(orderData),
     });
@@ -365,6 +269,7 @@ async function sendOrder(orderData, UserToken) {
     if (data.status === 200) {
       listItems = [];
       localStorage.setItem('products', JSON.stringify(listItems));
+      localStorage.removeItem('userData');
 
       swal(
         'successfully Ordered',

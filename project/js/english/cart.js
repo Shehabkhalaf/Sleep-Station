@@ -1,8 +1,13 @@
 // URL API
 const GET_ALL_OFFERS = 'http://127.0.0.1:8000/api/admin/all_offers';
 
-let checkOutButton = document.getElementById('checkOut');
-let footerTable = document.querySelectorAll('.tablefooternone');
+const checkOutButton = document.getElementById('checkOut');
+const footerTable = document.querySelectorAll('.tablefooternone');
+const nameI = document.getElementById('nameInput');
+const phone = document.getElementById('phoneInput');
+const email = document.getElementById('emailInput');
+const address = document.getElementById('addressInput');
+const governorates = document.getElementById('selectedGon');
 
 let promoCode = 0;
 
@@ -18,6 +23,11 @@ function getDataLocal() {
 // Set Data In local Storage
 function setDataLocal(products) {
   localStorage.setItem('products', JSON.stringify(products));
+}
+
+// Set user data In local Storage
+function setUserDataLocal(userData) {
+  localStorage.setItem('userData', JSON.stringify(userData));
 }
 
 // Create All Products
@@ -124,13 +134,6 @@ function handlePromo() {
   promoValue = promocode.value;
   applyPromocode.disabled = false;
 
-  const status = JSON.parse(localStorage.getItem('sign_done'));
-
-  if (status !== true) {
-    swal('You must be logged in to be able to complete the purchase');
-    return;
-  }
-
   if (listItems.length == 0) {
     applyPromocode.disabled = true;
     return;
@@ -177,12 +180,107 @@ function handlePromo() {
       });
   }
 }
-/*********************************** Handle Promocode ***********************************/
 
-document.getElementById('checkOut').addEventListener('click', (e) => {
-  const status = JSON.parse(localStorage.getItem('sign_done'));
-  if (status !== true) {
-    e.preventDefault();
-    swal('You must be logged in to be able to complete the purchase');
+/*********************************** User Data ***********************************/
+// Storage Values
+let nameValue;
+let phoneValue;
+let emailValue;
+let addressValue;
+let governoratesValue;
+
+governorates.addEventListener('change', (e) => {
+  governoratesValue = e.target.value;
+});
+
+checkOutButton.addEventListener('click', () => {
+  nameValue = nameI.value;
+  phoneValue = phone.value;
+  emailValue = email.value;
+  addressValue = address.value;
+
+  if (nameValue.trim()) {
+    nameI.classList.add('right');
+    nameI.classList.remove('wrong');
+  } else {
+    nameI.classList.add('wrong');
+    nameI.classList.remove('right');
+  }
+
+  if (phoneValue.trim()) {
+    phone.classList.remove('wrong');
+    phone.classList.add('right');
+  } else {
+    phone.classList.add('wrong');
+    phone.classList.remove('right');
+  }
+
+  if (emailValue.trim()) {
+    email.classList.remove('wrong');
+    email.classList.add('right');
+  } else {
+    email.classList.add('wrong');
+    email.classList.remove('right');
+  }
+
+  if (addressValue.trim()) {
+    address.classList.remove('wrong');
+    address.classList.add('right');
+  } else {
+    address.classList.add('wrong');
+    address.classList.remove('right');
+  }
+
+  if (governoratesValue) {
+    governorates.classList.remove('wrong');
+    governorates.classList.add('right');
+  } else {
+    governorates.classList.add('wrong');
+    governorates.classList.remove('right');
+  }
+
+  if (!validateEmail(emailValue)) {
+    email.classList.add('wrong');
+    email.classList.remove('right');
+  } else {
+    email.classList.remove('wrong');
+    email.classList.add('right');
+  }
+
+  if (!validatePhone(phoneValue)) {
+    phone.classList.add('wrong');
+    phone.classList.remove('right');
+  } else {
+    phone.classList.remove('wrong');
+    phone.classList.add('right');
+  }
+
+  if (
+    nameValue.trim() &&
+    emailValue.trim() &&
+    phoneValue.trim() &&
+    addressValue.trim() &&
+    governoratesValue
+  ) {
+    const userData = {
+      name: nameValue,
+      phone: phoneValue,
+      email: emailValue,
+      address: addressValue,
+      governorate: governoratesValue,
+    };
+    setUserDataLocal(userData);
+    window.location = './payment.html';
   }
 });
+
+function validateEmail(email) {
+  const emailRegex =
+    /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
+  return emailRegex.test(email);
+}
+
+function validatePhone(phone) {
+  const phoneRegex = /^(\+?\d{12}|\d{11})$/;
+  return phoneRegex.test(phone);
+}
